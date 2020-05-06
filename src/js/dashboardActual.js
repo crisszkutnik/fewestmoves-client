@@ -48,4 +48,4 @@ class DashboardActual extends React.Component {
     }
 }
 
-export default DashboardActual
+export default DashboardActual;

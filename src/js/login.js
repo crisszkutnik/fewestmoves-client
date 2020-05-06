@@ -1,13 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useFormik} from 'formik'
+import {useHistory} from 'react-router-dom'
 import '../css/login.css'
 
 const validate = values => {
     const errors = {};
     if (!values.username) {
-      errors.firstName = 'Required';
+      errors.username = 'Required';
     } else if (values.username.length < 3 || values.username.length > 25) {
-      errors.firstName = 'Must be 15 characters or less';
+      errors.username = 'Must be 15 characters or less';
     }
   
     if (!values.password) {
@@ -20,6 +21,9 @@ const validate = values => {
 };
 
 const LoginForm = () => {
+	const history = useHistory();
+	const [resStatus, setStatus] = useState(200);
+
     const formik = useFormik({
         initialValues: {
             username: '',
@@ -27,12 +31,36 @@ const LoginForm = () => {
         },
         validate,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            fetch('http://localhost:9000/user/login', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(values)
+            })
+            .then(res => {
+				alert(res.status);
+				if(res.status == 200) {
+					setStatus(200);
+					history.push('/dashboard/actual');
+				}
+				else
+					setStatus(res.status);
+			})
+			.catch(e => setStatus(500));
         },
     });
     
     return (
       <div id='login-form'>
+		{resStatus == 400 &&
+			<div class='response-bad-response'>Failed to login. Check your username or password.</div>
+		}
+		{resStatus != 400 && resStatus != 200 &&
+			<div class='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
+		}
+
         <form onSubmit={formik.handleSubmit} id='login-form'>
 			<div className='input-field'>
 				<label htmlFor='username'>Username</label>

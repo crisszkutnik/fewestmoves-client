@@ -1,60 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import React from 'react'
+import {BrowserRouter, Route, Switch, Link, Redirect} from 'react-router-dom'
 import LoginForm from './login'
-import '../css/dashboardActual.css'
-import DashboardActual from './dashboardActual';
-
-class Navbar extends React.Component {
-    constructor(props) {
-		super(props);
-		this.state = {
-			actual: true
-		}
-		this.handleChange = this.handleChange.bind(this);
-	}
-
-	handleChange() {
-        this.setState(state => ({
-            actual: !state.actual
-        })
-    )
-    }
-
-    render() {
-        if(this.state.actual) {
-            return(
-                <nav>
-                    <Link to='/dashboard/actual' className='selected'>This week</Link>
-                    <Link to='/dashboard/results' onClick={this.handleChange}>Results</Link>
-                </nav>
-            );
-        } else {
-            return(
-                <nav>
-                    <Link to='/dashboard/actual' onClick={this.handleChange}>This week</Link>
-                    <Link to='/dashboard/results' className='selected'>Results</Link>
-                </nav>
-            );
-        }
-    }
-}
+import Dashboard from './dashboard'
+import RegisterForm from './register'
 
 const App = () => {
 	return (
 		<BrowserRouter>
 			<div>
-			<Navbar />
 			<Switch>
-				<Route exact path="/">
-					<LoginForm/>
+				<Route exact path="/login">
+					<LoginForm />
 				</Route>
-				<Route path="/dashboard/actual">
-					<DashboardActual />
+				<Route exact path="/register">
+					<RegisterForm />
 				</Route>
-				<Route path="/dashboard/second">
-
+				<Route path="/dashboard">
+					<Dashboard />
 				</Route>
+				<Route render={() => <Redirect to='/login' />}></Route>
 			</Switch>
 			</div>
 		</BrowserRouter>
