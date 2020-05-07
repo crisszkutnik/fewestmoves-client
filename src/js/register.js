@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormik} from 'formik'
 import {useHistory} from 'react-router-dom'
 import '../css/register.css'
@@ -28,6 +28,22 @@ const RegisterForm = () => {
 	const history = useHistory();
 
 	const [resStatus, setStatus] = useState(0);
+
+	useEffect(() => {
+		fetch('http://localhost:9000/user/isLogged', {
+            method: 'POST',
+            headers: {
+            	'Accept': 'application/json',
+            	'Content-Type': 'application/json'
+			},
+			credentials: 'include',
+			body: ''
+		})
+		.then(res => {
+			if(res.status == 200)
+				history.push('/dashboard/actual');
+		})
+	}, []);
 
     const formik = useFormik({
         initialValues: {

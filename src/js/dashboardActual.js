@@ -31,7 +31,8 @@ class DashboardActual extends React.Component {
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            credentials: 'include',
         })
             .then(res => res.json())
             .then(challenge => this.setState({challenges: challenge}));

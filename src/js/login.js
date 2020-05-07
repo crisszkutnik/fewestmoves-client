@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormik} from 'formik'
 import {useHistory} from 'react-router-dom'
 import '../css/login.css'
@@ -24,6 +24,22 @@ const LoginForm = () => {
 	const history = useHistory();
 	const [resStatus, setStatus] = useState(200);
 
+	useEffect(() => {
+		fetch('http://localhost:9000/user/isLogged', {
+            method: 'POST',
+            headers: {
+            	'Accept': 'application/json',
+            	'Content-Type': 'application/json'
+			},
+			credentials: 'include',
+			body: ''
+		})
+		.then(res => {
+			if(res.status == 200)
+				history.push('/dashboard/actual');
+		})
+	}, []);
+
     const formik = useFormik({
         initialValues: {
             username: '',
@@ -36,11 +52,11 @@ const LoginForm = () => {
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-              },
+			  },
+			  credentials: 'include',
               body: JSON.stringify(values)
             })
             .then(res => {
-				alert(res.status);
 				if(res.status == 200) {
 					setStatus(200);
 					history.push('/dashboard/actual');
@@ -54,11 +70,11 @@ const LoginForm = () => {
     
     return (
       <div id='login-form'>
-		{resStatus == 400 &&
-			<div class='response-bad-response'>Failed to login. Check your username or password.</div>
+		{resStatus == 403 &&
+			<div className='response-bad-response'>Failed to login. Check your username or password.</div>
 		}
-		{resStatus != 400 && resStatus != 200 &&
-			<div class='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
+		{resStatus != 403 && resStatus != 200 &&
+			<div className='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
 		}
 
         <form onSubmit={formik.handleSubmit} id='login-form'>
