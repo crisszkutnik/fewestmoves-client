@@ -35,7 +35,7 @@ const LoginForm = () => {
 			body: ''
 		})
 		.then(res => {
-			if(res.status == 200)
+			if(res.status === 200)
 				history.push('/dashboard/actual');
 		})
 	}, []);
@@ -57,7 +57,7 @@ const LoginForm = () => {
               body: JSON.stringify(values)
             })
             .then(res => {
-				if(res.status == 200) {
+				if(res.status === 200) {
 					setStatus(200);
 					history.push('/dashboard/actual');
 				}
@@ -70,10 +70,10 @@ const LoginForm = () => {
     
     return (
       <div id='login-form'>
-		{resStatus == 403 &&
+		{resStatus === 403 &&
 			<div className='response-bad-response'>Failed to login. Check your username or password.</div>
 		}
-		{resStatus != 403 && resStatus != 200 &&
+		{resStatus !== 403 && resStatus !== 200 &&
 			<div className='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
 		}
 

@@ -40,7 +40,7 @@ const RegisterForm = () => {
 			body: ''
 		})
 		.then(res => {
-			if(res.status == 200)
+			if(res.status === 200)
 				history.push('/dashboard/actual');
 		})
 	}, []);
@@ -63,10 +63,10 @@ const RegisterForm = () => {
 				body: JSON.stringify(values)
 			})
 			.then(res => {
-				if(res.status == 201) {
+				if(res.status === 201) {
 					setStatus(res.status);
 					setTimeout(() => history.push('/login'), 4000);
-				} else if(res.status == 500 || res.status == 400)
+				} else if(res.status === 500 || res.status === 400)
 					setStatus(res.status);
 			})
 			.catch(e => setStatus(500));
@@ -75,13 +75,13 @@ const RegisterForm = () => {
     
     return (
       <div id='register-form'>
-		{resStatus == 201 &&
+		{resStatus === 201 &&
 			<div class='response ok-response'>Account created correctly. Redirecting.</div>
 		}
-		{resStatus == 500 &&
+		{resStatus === 500 &&
 			<div class='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
 		}
-		{resStatus == 400 &&
+		{resStatus === 400 &&
 			<div class='response bad-response'>Error occurred. Username already taken or you have already created an account.</div>
 		}
         <form onSubmit={formik.handleSubmit}>

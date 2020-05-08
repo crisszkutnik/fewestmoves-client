@@ -2,10 +2,6 @@ import React from 'react'
 import '../css/dashboardActual.css'
 
 class ChallengeData extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className='challengeData'>
@@ -23,10 +19,28 @@ class ChallengeData extends React.Component {
 class DashboardActual extends React.Component {
     constructor() {
         super();
-        this.state = {challenges: {}}
+        this.state = {challenges: {}, viewSol: 0};
+
+        this.fetch1url = 'http://localhost:9000/challData/getChallenge';
+        this.fetch1Props = {
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include',
+        };
+
+        this.fetch2url = 'http://localhost:9000/challData/getResponse';
+        this.fetch2Props = {
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include',
+        };
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         fetch('http://localhost:9000/getChallenge', {
             headers: { 
                 'Content-Type': 'application/json',
@@ -36,6 +50,14 @@ class DashboardActual extends React.Component {
         })
             .then(res => res.json())
             .then(challenge => this.setState({challenges: challenge}));
+    }*/
+
+    componentDidMount() {
+        Promise.all([fetch(this.fetch1url, this.fetch1Props), fetch(this.fetch2url, this.fetch2Props)])
+        .then(([res1, res2]) => {
+            return [res1.json(), res2.json()];
+        })
+        .then(([challenge, uResponse]) => this.setState({challenges: challenge}));
     }
 
     render() {
