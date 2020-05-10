@@ -7,24 +7,24 @@ div#dashboard {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    max-width: 1920px;
+    max-height: 1080px;
 }
 
 div.challengeData {
     background-color: #E5E5E5;
-    width: 1000px;
-    height: 200px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
     border-radius: 20px;
+    max-width: 1000px;
+    max-height: 200px;
 }
 
 div.challengeComb {
     width: 80%;
-    line-height: 100px;
-    font-size: 30px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -33,14 +33,13 @@ div.challengeComb {
 
 div.challengeComb p {
     width: 80%;
-    height: 100%;
+    vertical-align: middle;
 }
 
 button.bton-load-sol {
     width: 20%;
     color: white;
     border: none;
-    font-size: 30px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
@@ -57,4 +56,65 @@ button.not-loaded {
 
 button.loaded-sol {
     background: #6FC56D;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    button.bton-load-sol, div.challengeComb {
+        font-size: 15px;
+    }
+
+    div.challengeData {
+        width: 300px;
+        height: 100px;
+        border-radius: 10px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    button.bton-load-sol, div.challengeComb {
+        font-size: 20px;
+    }
+
+    div.challengeData {
+        width: 500px;
+        height: 150px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    button.bton-load-sol, div.challengeComb {
+        font-size: 24px;
+    }
+
+    div.challengeData {
+        width: 600px;
+        height: 150px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    button.bton-load-sol, div.challengeComb {
+        font-size: 28px;
+    }
+
+    div.challengeData {
+        width: 900px;
+        height: 200px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    button.bton-load-sol, div.challengeComb {
+        font-size: 28px;
+    }
+
+    div.challengeData {
+        width: 1000px;
+        height: 200px;
+    }
 }
