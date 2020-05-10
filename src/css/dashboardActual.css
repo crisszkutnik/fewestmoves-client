@@ -37,7 +37,6 @@ div.challengeComb p {
 }
 
 button.bton-load-sol {
-    background: #7188D8;
     width: 20%;
     color: white;
     border: none;
@@ -49,5 +48,13 @@ button.bton-load-sol {
 }
 
 button.bton-load-sol:hover {
+    background: #6FC56D;
+}
+
+button.not-loaded {
+    background: #7188D8;
+}
+
+button.loaded-sol {
     background: #6FC56D;
 }

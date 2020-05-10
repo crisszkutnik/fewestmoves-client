@@ -1,0 +1,15 @@
+/*Width and height value must be the same as
+the container*/
+
+div#sol-panel-all {
+    position: absolute;
+    display: flex;
+    border-radius: 20px;
+    width: 1000px;
+    height: 200px;
+    background: #7188D8;
+}
+
+div#sol-panel-all a {
+    cursor: pointer;
+}
