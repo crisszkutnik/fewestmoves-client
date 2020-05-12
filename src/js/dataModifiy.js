@@ -14,7 +14,6 @@ const SolPanel = (props) => {
 
     return (
         <div id='sol-panel-all'>
-                <a onClick={props.handleChange}>X</a>
                 <form onSubmit={formik.handleSubmit} id='submit-solution'>
                     <input id='solution'
 					name='solution'
@@ -22,7 +21,12 @@ const SolPanel = (props) => {
 					onChange={formik.handleChange}
 					onBlur={formik.handleBlur}
 					value={formik.values.solution}></input>
-                    <button type='submit'>Submit</button>
+                    <div id='options'>
+                        {!props.isSolution &&
+                        <p>The solution is not correct!</p>}
+                        <a onClick={props.handleChange}>Cancel</a>
+                        <button type='submit'>Submit</button>
+                    </div>
                 </form>
         </div>
     );

@@ -43,7 +43,8 @@ button.bton-load-sol {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
-    transition: background 0.2s ease-in-out
+    transition: background 0.2s ease-in-out;
+    outline: none;
 }
 
 button.bton-load-sol:hover {
@@ -103,7 +104,7 @@ button.loaded-sol {
 
     div.challengeData {
         width: 900px;
-        height: 200px;
+        height: 180px;
     }
 }
 

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useFormik} from 'formik'
 import {useHistory} from 'react-router-dom'
 import '../css/login.css'
+import '../css/logReg.css'
 
 const validate = values => {
     const errors = {};
@@ -71,10 +72,10 @@ const LoginForm = () => {
     return (
       <div id='login-form'>
 		{resStatus === 403 &&
-			<div className='response-bad-response'>Failed to login. Check your username or password.</div>
+			<div className='bad-response'>Failed to login. Check your username or password.</div>
 		}
 		{resStatus !== 403 && resStatus !== 200 &&
-			<div className='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
+			<div className='bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
 		}
 
         <form onSubmit={formik.handleSubmit} id='login-form'>

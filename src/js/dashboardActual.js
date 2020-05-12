@@ -1,44 +1,57 @@
 import React from 'react'
 import SolPanel from './dataModifiy'
 import '../css/dashboardActual.css'
+import {isSolved} from '../functions/cubeSolve'
 
 class ChallengeData extends React.Component {
     constructor(props) {
         super(props);
 
-        //this.props.challenges
-        //this.props.resData
-        //this.props.comb
-        this.state = {showPanel: false}
+        this.state = {showPanel: false, correctResponse: true}
         this.handleChange = this.handleChange.bind(this);
         this.updateResponse = this.updateResponse.bind(this);
     }
 
     handleChange() {
         this.setState(state => ({
-            showPanel: !state.showPanel
-        }))
+            showPanel: !state.showPanel,
+            correctResponse: true
+        }));
     }
 
     updateResponse(newResponse) {
-        let res = this.props.resData;
+        let newRes = this.props.resData;
 
-        if(res[this.props.comb] != newResponse) {
-            res[this.props.comb] = newResponse;
+        if(newResponse != newRes[this.props.comb].sol) {
+            let movements;
 
-            fetch('http://localhost:9000/challData/submitResponse', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(res)
-            })
-            .then(this.handleChange())
-            .catch(e => alert('An error occured')); 
-        } else
-            this.handleChange()
+            if(newResponse == '')
+                movements = 0;
+            else
+                movements = isSolved(this.props.challenge, newResponse);
+
+            if(movements != -1) {
+                newRes[this.props.comb].sol = newResponse;
+                newRes[this.props.comb].moves = movements;
+
+                fetch('http://localhost:9000/challData/submitResponse', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(newRes)
+                })
+                .then(() => {
+                    this.setState({correctResponse: false});
+                    this.handleChange();
+                })
+                .catch(e => alert('An error occured'));
+            } else 
+                this.setState({correctResponse: false});
+        } else 
+            this.handleChange();
     }
 
     render() {
@@ -47,12 +60,12 @@ class ChallengeData extends React.Component {
                 <div className='challengeComb'>  
                     <p>{this.props.challenge}</p>
                 </div>
-                {this.props.resData[this.props.comb] == '' ?
+                {this.props.resData[this.props.comb].sol == '' ?
                     <button className='bton-load-sol not-loaded' onClick={this.handleChange}>Load solution</button>:
                     <button className='bton-load-sol loaded-sol' onClick={this.handleChange}>See solution</button>
                 }
                 {this.state.showPanel &&
-                    <SolPanel handleChange={this.handleChange} updateResponse={this.updateResponse} uRes={this.props.resData[this.props.comb]}/>
+                    <SolPanel handleChange={this.handleChange} isSolution={this.state.correctResponse} updateResponse={this.updateResponse} uRes={this.props.resData[this.props.comb].sol}/>
                 }
             </div>
         );
@@ -62,7 +75,7 @@ class ChallengeData extends React.Component {
 class DashboardActual extends React.Component {
     constructor() {
         super();
-        this.state = {challenges: {}, userResponse: {}, viewSol: 0};
+        this.state = {challenges: {}, userResponse: {}, viewSol: 0, loaded: false};
 
         this.fetch1url = 'http://localhost:9000/challData/getChallenge';
         this.fetch1Props = {
@@ -84,22 +97,25 @@ class DashboardActual extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         Promise.all([fetch(this.fetch1url, this.fetch1Props), fetch(this.fetch2url, this.fetch2Props)])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-        .then(([challenge, uRes]) => this.setState({challenges: challenge, userResponse: uRes}));
-
-        console.log(this.state.challenges);
+        .then(([challenge, uRes]) => {
+            this.setState({challenges: challenge, userResponse: uRes, loaded: true})
+        });
     }
 
     render() {
-        return(
-            <div id='dashboard'>
-                <ChallengeData challenge={this.state.challenges.comb1} updateState={this.updateState} resData={this.state.userResponse} comb={'comb1'}/>
-                <ChallengeData challenge={this.state.challenges.comb2} updateState={this.updateState} resData={this.state.userResponse} comb={'comb2'}/>
-                <ChallengeData challenge={this.state.challenges.comb3} updateState={this.updateState} resData={this.state.userResponse} comb={'comb3'}/>
-            </div>
-        );
+        if(this.state.loaded)
+            return(
+                <div id='dashboard'>
+                    <ChallengeData challenge={this.state.challenges.comb1} resData={this.state.userResponse} comb={'comb1'}/>
+                    <ChallengeData challenge={this.state.challenges.comb2} resData={this.state.userResponse} comb={'comb2'}/>
+                    <ChallengeData challenge={this.state.challenges.comb3} resData={this.state.userResponse} comb={'comb3'}/>
+                </div>
+            );
+        else
+            return (<h1>Loading</h1>);
     }
 }
 

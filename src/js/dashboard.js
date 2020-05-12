@@ -7,16 +7,14 @@ class Navbar extends React.Component {
     constructor(props) {
 		super(props);
 		this.state = {
-            actual: true,
+            actual: 0,
 		}
         this.handleChange = this.handleChange.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
-	handleChange() {
-        this.setState(state => ({
-            actual: !state.actual
-        }))
+	handleChange(newState) {
+        this.setState({actual: newState});
     }
 
     handleLogout(e) {
@@ -27,39 +25,28 @@ class Navbar extends React.Component {
     }
 
     render() {
-        if(this.state.actual) {
-            return(
-                <nav>
-                    <div id='user-nav'>
-                        <p>{this.props.user.name} {this.props.user.surname}<i className="fas fa-angle-down"></i></p>
-                        <div id='user-options'>
-                            <a>Manage user</a>
-                            <a href='/login' onClick={this.handleLogout}>Logout</a>
-                        </div>
+        return (
+            <nav>
+                <div id='user-nav'>
+                    <p>{this.props.user.name} {this.props.user.surname}<i className="fas fa-angle-down"></i></p>
+                    <div id='user-options'>
+                        <a>Manage user</a>
+                        <a href='/login' onClick={this.handleLogout}>Logout</a>
                     </div>
-                    <div id='nav-links'>
-                        <Link to='/dashboard/actual' className='selected'>This week</Link>
-                        <Link to='/dashboard/results' onClick={this.handleChange}>Results</Link>
-                    </div>
-                </nav>
-            );
-        } else {
-            return(
-                <nav>
-                    <div id='user-nav'>
-                        <p>{this.props.user.name} {this.props.user.surname}<i className="fas fa-angle-down"></i></p>
-                        <div id='user-options'>
-                            <a>Manage user</a>
-                            <a href='/login' onClick={this.handleLogout}>Logout</a>
-                        </div>
-                    </div>
-                    <div id='nav-links'>
-                        <Link to='/dashboard/actual' onClick={this.handleChange}>This week</Link>
-                        <Link to='/dashboard/results' className='selected'>Results</Link>
-                    </div>
-                </nav>
-            );
-        }
+                </div>
+                <div id='nav-links'>
+                    {this.state.actual === 0 ?
+                    <Link to='/dashboard/actual' className='selected'>This week</Link>:
+                    <Link to='/dashboard/actual' onClick={() => this.handleChange(0)}>This week</Link>}
+                    {this.state.actual === 1 ?
+                    <Link to='/dashboard/submitted' className='selected'>Submitted</Link>:
+                    <Link to='/dashboard/submitted' onClick={() => this.handleChange(1)}>Submitted</Link>}
+                    {this.state.actual === 2 ?
+                    <Link to='/dashboard/results' className='selected'>Results</Link>:
+                    <Link to='/dashboard/results' onClick={() => this.handleChange(2)}>Results</Link>} 
+                </div>
+            </nav>
+        );
     }
 }
 
@@ -101,6 +88,9 @@ const Dashboard = () => {
             <Switch>
                 <Route exact path='/dashboard/actual'>
                     <DashboardActual/>
+                </Route>
+                <Route exact path ='/dashboard/submitted'>
+
                 </Route>
                 <Route exact path ='/dashboard/results'>
 

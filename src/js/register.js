@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useFormik} from 'formik'
 import {useHistory} from 'react-router-dom'
 import '../css/register.css'
+import '../css/logReg.css'
 
 const validate = values => {
     const errors = {};
@@ -66,7 +67,7 @@ const RegisterForm = () => {
 				if(res.status === 201) {
 					setStatus(res.status);
 					setTimeout(() => history.push('/login'), 4000);
-				} else if(res.status === 500 || res.status === 400)
+				} else if(res.status === 500 || res.status === 401)
 					setStatus(res.status);
 			})
 			.catch(e => setStatus(500));
@@ -76,13 +77,13 @@ const RegisterForm = () => {
     return (
       <div id='register-form'>
 		{resStatus === 201 &&
-			<div class='response ok-response'>Account created correctly. Redirecting.</div>
+			<div className='ok-response'>Account created correctly. Redirecting.</div>
 		}
 		{resStatus === 500 &&
-			<div class='response bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
+			<div className='bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
 		}
-		{resStatus === 400 &&
-			<div class='response bad-response'>Error occurred. Username already taken or you have already created an account.</div>
+		{resStatus === 401 &&
+			<div className='bad-response'>Username already taken or you have already created an account.</div>
 		}
         <form onSubmit={formik.handleSubmit}>
 			<div className='input-field'>
