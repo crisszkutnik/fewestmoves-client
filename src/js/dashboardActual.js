@@ -19,19 +19,20 @@ class ChallengeData extends React.Component {
         }));
     }
 
-    updateResponse(newResponse) {
+    updateResponse(newResponse, newExplanation) {
         let newRes = this.props.resData;
 
-        if(newResponse != newRes[this.props.comb].sol) {
+        if(newResponse !== newRes[this.props.comb].sol || newExplanation !== newRes[this.props.comb].explanation) {
             let movements;
 
-            if(newResponse == '')
+            if(newResponse === '')
                 movements = 0;
             else
                 movements = isSolved(this.props.challenge, newResponse);
 
-            if(movements != -1) {
+            if(movements !== -1 || newExplanation !== newRes[this.props.comb].explanation) {
                 newRes[this.props.comb].sol = newResponse;
+                newRes[this.props.comb].explanation = newExplanation;
                 newRes[this.props.comb].moves = movements;
 
                 fetch('http://localhost:9000/challData/submitResponse', {
@@ -60,12 +61,12 @@ class ChallengeData extends React.Component {
                 <div className='challengeComb'>  
                     <p>{this.props.challenge}</p>
                 </div>
-                {this.props.resData[this.props.comb].sol == '' ?
+                {this.props.resData[this.props.comb].sol === '' ?
                     <button className='bton-load-sol not-loaded' onClick={this.handleChange}>Load solution</button>:
                     <button className='bton-load-sol loaded-sol' onClick={this.handleChange}>See solution</button>
                 }
                 {this.state.showPanel &&
-                    <SolPanel handleChange={this.handleChange} isSolution={this.state.correctResponse} updateResponse={this.updateResponse} uRes={this.props.resData[this.props.comb].sol}/>
+                    <SolPanel handleChange={this.handleChange} isSolution={this.state.correctResponse} updateResponse={this.updateResponse} uExp={this.props.resData[this.props.comb].explanation} uRes={this.props.resData[this.props.comb].sol}/>
                 }
             </div>
         );
@@ -106,7 +107,7 @@ class DashboardActual extends React.Component {
     }
 
     render() {
-        if(this.state.loaded)
+        if(this.state.loaded) 
             return(
                 <div id='dashboard'>
                     <ChallengeData challenge={this.state.challenges.comb1} resData={this.state.userResponse} comb={'comb1'}/>

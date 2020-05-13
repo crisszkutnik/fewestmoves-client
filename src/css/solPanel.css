@@ -23,22 +23,24 @@ div#sol-panel-all form {
     height: 100%;
 }
 
+div#sol-panel-all form .inputField {
+    border-radius: 10px;
+    border: none;
+    background: #c9c9c9;
+    align-self: center;
+    border: none;
+    outline: none;
+    width: 80%;
+    outline: none;
+    padding: 1%;
+}
+
 div#sol-panel-all div#options {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 45%;
-}
-
-div#sol-panel-all form input {
-    width: 80%;
-    padding: 1%;
-    border-radius: 10px;
-    border: none;
-    background: #c9c9c9;
-    align-self: center;
-    outline: none;
+    height: 35%;
 }
 
 div#sol-panel-all form button {
@@ -55,6 +57,12 @@ div#sol-panel-all form button {
 div#sol-panel-all form p {
     color: red;
     margin-right: 10px;
+}
+
+div#sol-panel-all form textarea {
+    resize: none;
+    height: 25%;
+    margin-top: 10px;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 767px) {
