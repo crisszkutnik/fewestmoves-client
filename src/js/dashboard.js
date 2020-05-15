@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {BrowserRouter, Route, Switch, Link, Redirect, useHistory} from 'react-router-dom';
-import '../css/navbar.css'
+import '../css/navbar.css';
 import DashboardActual from './dashboardActual';
+import SubmittedSol from './submitted';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -90,7 +91,7 @@ const Dashboard = () => {
                     <DashboardActual/>
                 </Route>
                 <Route exact path ='/dashboard/submitted'>
-
+                    <SubmittedSol />
                 </Route>
                 <Route exact path ='/dashboard/results'>
 
