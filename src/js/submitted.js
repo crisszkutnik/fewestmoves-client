@@ -14,7 +14,7 @@ class SubmittedSol extends React.Component {
         this.state.info.forEach((elem) => {
             render.push(
                 <div className='other-user-res'>
-                    <h1 className='user-name'>Name</h1>
+                    <h1 className='user-name'>{elem.name} {elem.surname}</h1>
                     <div className='results'> 
                         <p>{elem.comb1.moves}</p>
                         <p>{elem.comb2.moves}</p>
