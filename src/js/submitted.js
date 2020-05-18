@@ -1,6 +1,65 @@
 import React from 'react'
 import '../css/submitted.css'
 
+class ExtendedView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {selected: 1};
+        this.changeSelected = this.changeSelected.bind(this);
+    }
+
+    changeSelected(newValue) {
+        this.setState({selected: newValue});
+    }
+
+    render() {
+        let actualSelected = this.state.selected;
+        return(
+        <div className='extended-view'>
+            <div className='navigation'>
+                {actualSelected == 1 ? <button className='selected'>Challenge 1</button> : <button onClick={() => this.changeSelected(1)}>Challenge 1</button>}
+                {actualSelected == 2 ? <button className='selected'>Challenge 2</button> : <button onClick={() => this.changeSelected(2)}>Challenge 2</button>}
+                {actualSelected == 3 ? <button className='selected'>Challenge 3</button> : <button onClick={() => this.changeSelected(3)}>Challenge 3</button>}
+            </div>
+            <div className='see-all'>
+                <h1>Solution</h1>
+                    <p >{this.props.combinations[`comb${actualSelected}`].sol}</p>
+                <h1>Explanation</h1>
+                    <textarea readOnly value={this.props.combinations[`comb${actualSelected}`].explanation}></textarea>
+            </div>
+        </div>  
+        );
+    }
+}
+
+class UserResponse extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {completePanel: false};
+    }
+
+    render() {
+        return(
+            <div className='other-user-res'>
+            <div className='fast-view-panel'>
+                <h1 className='user-name'>{this.props.userData.name} {this.props.userData.surname}</h1>
+                <div className='results'> 
+                    <p>{this.props.userData.comb1.moves}</p>
+                    <p>{this.props.userData.comb2.moves}</p>
+                    <p>{this.props.userData.comb3.moves}</p>
+                </div>
+                <div className='button'>
+                    <span onClick={() => this.setState({completePanel: !this.state.completePanel})}>See solutions</span>
+                </div>
+            </div>
+            {this.state.completePanel &&
+                <ExtendedView combinations={this.props.userData}/>
+            }
+            </div>
+        );
+    }
+}
+
 class SubmittedSol extends React.Component {
     constructor(props) {
         super(props);
@@ -9,7 +68,7 @@ class SubmittedSol extends React.Component {
         this.renderAll = this.renderAll.bind(this);
     }
 
-    //Renders all stores responses on state
+    //Renders all stored responses on state
     renderAll() {
         let renderLeft = [];
         let renderRight = [];
@@ -17,27 +76,11 @@ class SubmittedSol extends React.Component {
         let half = Math.ceil(this.state.info.length / 2);
 
         this.state.info.forEach((elem, index) => {
-            let toPush = (<div className='other-user-res'>
-            <h1 className='user-name'>{elem.name} {elem.surname}</h1>
-            <div className='results'> 
-                <p>{elem.comb1.moves}</p>
-                <p>{elem.comb2.moves}</p>
-                <p>{elem.comb3.moves}</p>
-            </div>
-            <div className='button'>
-                <span onClick={() => this.setState({completePanel: !this.state.completePanel})}>See solutions</span>
-            </div>
-            {this.state.completePanel && 
-            <div className='complete-panel'>
-                <h1>{elem.name} {elem.surname} responses</h1>
-            </div>
-            }
-        </div>);
 
             if(index < half)
-                renderLeft.push(toPush);
+                renderLeft.push(<UserResponse userData={elem} />);
             else
-                renderRight.push(toPush);
+                renderRight.push(<UserResponse userData={elem} />);
         })
 
         return [<div className='side-container'>{renderLeft}</div>, <div className='side-container'>{renderRight}</div>];

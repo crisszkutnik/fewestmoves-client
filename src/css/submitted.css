@@ -16,3 +16,149 @@
     flex-direction: column;
     align-items: center;
 }
+
+.other-user-res {
+    display: flex;
+    background: #2B2D32;
+    color: white;
+    width: 80%;
+    margin-top: 20px;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*
+    General view panel
+*/
+
+.other-user-res .fast-view-panel {
+    width: 100%;
+    display: flex;
+    height: 80px;
+    align-items: center;
+}
+
+.other-user-res .fast-view-panel .results {
+    display: flex;
+    width: 40%;
+}
+
+.other-user-res .fast-view-panel .results p {
+    width: 33%;
+    text-align: center;
+}
+
+.other-user-res .fast-view-panel .user-name {
+    width: 40%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.other-user-res .fast-view-panel .button {
+    width: 20%;
+}
+
+.other-user-res .fast-view-panel .button span {
+    background: #7188D8;
+    padding: 6%;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.other-user-res .fast-view-panel .button span:hover {
+    background: #43b581;
+    padding: 8%;
+    cursor: pointer;
+}
+
+/*
+    Extended view panel
+*/
+
+.other-user-res .extended-view {
+    height: 240px;
+    width: 100%;
+    background: #D4D4D4;
+    box-sizing: border-box;
+}
+
+.extended-view .navigation {
+    height: 15%;
+    background: #4F4F4F;
+    display: flex;
+    align-items: center;
+}
+
+.extended-view .navigation button {
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    width: 15%;
+    font-size: 16px;
+    height: 100%;
+}
+
+.extended-view .navigation button.selected {
+    color: #7188D8;
+    border-bottom: 4px solid #7188D8;
+}
+
+.extended-view .see-all {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.extended-view .see-all h1 {
+    font-size: 20px;
+}
+
+.extended-view .see-all p, .extended-view .see-all textarea {
+    background: #C4C4C4;
+    width: 95%;
+    padding: 5px;
+    height: 10%;
+    border-radius: 5px;
+}
+
+.extended-view .see-all textarea {
+    height: 50%;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+/*
+    Load more button
+*/
+
+#last-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+#last-button button {
+    outline: none;
+    color: white;
+    background: #7188D8;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#last-button button:hover {
+    transform: scale(1.1);
+    background: #43b581;
+}
