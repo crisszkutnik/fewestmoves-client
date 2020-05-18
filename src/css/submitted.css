@@ -41,7 +41,7 @@
 
 .other-user-res .fast-view-panel .results {
     display: flex;
-    width: 40%;
+    width: 30%;
 }
 
 .other-user-res .fast-view-panel .results p {
@@ -56,19 +56,21 @@
 }
 
 .other-user-res .fast-view-panel .button {
-    width: 20%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
 }
 
 .other-user-res .fast-view-panel .button span {
     background: #7188D8;
-    padding: 6%;
+    padding: 8px;
     border-radius: 8px;
     transition: all 0.2s ease-in-out;
 }
 
 .other-user-res .fast-view-panel .button span:hover {
     background: #43b581;
-    padding: 8%;
+    padding: 12px;
     cursor: pointer;
 }
 
@@ -161,4 +163,80 @@
 #last-button button:hover {
     transform: scale(1.1);
     background: #43b581;
+}
+
+@media only screen and (max-width: 600px) {
+    .other-user-res .fast-view-panel .results p {
+        font-size: 8px;
+    }
+    .other-user-res .fast-view-panel .user-name {
+        font-size: 12px;
+    }
+    .other-user-res .fast-view-panel .button span {
+        font-size: 0.4em;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .other-user-res .fast-view-panel .results p {
+        font-size: 10px;
+    }
+    .other-user-res .fast-view-panel .user-name {
+        font-size: 14px;
+    }
+    .other-user-res .fast-view-panel .button span {
+        font-size: 0.5em;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .other-user-res .fast-view-panel .results p {
+        font-size: 14px;
+    }
+    .other-user-res .fast-view-panel .user-name {
+        font-size: 16px;
+    }
+    .other-user-res .fast-view-panel .button span {
+        font-size: 0.7em;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .other-user-res .fast-view-panel .results p {
+        font-size: 15px;
+    }
+    .other-user-res .fast-view-panel .user-name {
+        font-size: 16px;
+    }
+    .other-user-res .fast-view-panel .button span {
+        font-size: 0.85em;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1500px) {
+    .other-user-res .fast-view-panel .results p {
+        
+    }
+    .other-user-res .fast-view-panel .user-name {
+        font-size: 20px;
+    }
+    .other-user-res .fast-view-panel .button span {
+        font-size: 1em;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1500px) {
+    .other-user-res .fast-view-panel .results p {
+        
+    }
+    .other-user-res .fast-view-panel .user-name {
+        font-size: 25px;
+    }
+    .other-user-res .fast-view-panel .button span {
+        font-size: 1em;
+    }
 }
