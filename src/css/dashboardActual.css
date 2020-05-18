@@ -48,7 +48,7 @@ button.bton-load-sol {
 }
 
 button.bton-load-sol:hover {
-    background: #6FC56D;
+    background: #43b581;
 }
 
 button.not-loaded {
@@ -56,7 +56,7 @@ button.not-loaded {
 }
 
 button.loaded-sol {
-    background: #6FC56D;
+    background: #43b581;
 }
 
 /* Extra small devices (phones, 600px and down) */

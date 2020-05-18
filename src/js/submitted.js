@@ -1,37 +1,53 @@
 import React from 'react'
+import '../css/submitted.css'
 
 class SubmittedSol extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {amountReceived: 0, info: [], fetchedData: true}
+        this.state = {amountReceived: 0, info: [], fetchedData: true, completePanel: false}
         this.renderMore = this.renderMore.bind(this);
         this.renderAll = this.renderAll.bind(this);
     }
 
+    //Renders all stores responses on state
     renderAll() {
-        let render = [];
+        let renderLeft = [];
+        let renderRight = [];
 
-        this.state.info.forEach((elem) => {
-            render.push(
-                <div className='other-user-res'>
-                    <h1 className='user-name'>{elem.name} {elem.surname}</h1>
-                    <div className='results'> 
-                        <p>{elem.comb1.moves}</p>
-                        <p>{elem.comb2.moves}</p>
-                        <p>{elem.comb3.moves}</p>
-                    </div>
-                    <span>See solutions</span>
-                </div>
-            );
+        let half = Math.ceil(this.state.info.length / 2);
+
+        this.state.info.forEach((elem, index) => {
+            let toPush = (<div className='other-user-res'>
+            <h1 className='user-name'>{elem.name} {elem.surname}</h1>
+            <div className='results'> 
+                <p>{elem.comb1.moves}</p>
+                <p>{elem.comb2.moves}</p>
+                <p>{elem.comb3.moves}</p>
+            </div>
+            <div className='button'>
+                <span onClick={() => this.setState({completePanel: !this.state.completePanel})}>See solutions</span>
+            </div>
+            {this.state.completePanel && 
+            <div className='complete-panel'>
+                <h1>{elem.name} {elem.surname} responses</h1>
+            </div>
+            }
+        </div>);
+
+            if(index < half)
+                renderLeft.push(toPush);
+            else
+                renderRight.push(toPush);
         })
 
-        return render;
+        return [<div className='side-container'>{renderLeft}</div>, <div className='side-container'>{renderRight}</div>];
     }
 
     componentDidMount() {
         this.renderMore();
     }
 
+    //Loads 10 elements from the user responses
     renderMore() {
         fetch('http://localhost:9000/allRes/otherUsers', {
             method: 'POST',
@@ -52,7 +68,9 @@ class SubmittedSol extends React.Component {
         if(this.state.fetchedData)
             return (
                 <div id='dashboard-submitted'>
-                    {this.renderAll()}
+                    <div id='all-responses'>
+                        {this.renderAll()}
+                    </div>
                     <div id='last-button'><button onClick={this.renderMore}>Load more</button></div>
                 </div>
             );
