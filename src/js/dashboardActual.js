@@ -30,7 +30,7 @@ class ChallengeData extends React.Component {
             else
                 movements = isSolved(this.props.challenge, newResponse);
 
-            if(movements !== -1 || newExplanation !== newRes[this.props.comb].explanation) {
+            if(movements !== -1) {
                 newRes[this.props.comb].sol = newResponse;
                 newRes[this.props.comb].explanation = newExplanation;
                 newRes[this.props.comb].moves = movements;

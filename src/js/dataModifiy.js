@@ -9,7 +9,6 @@ const SolPanel = (props) => {
             explanation: props.uExp
         },
         onSubmit: res => {
-            console.log(res);
             props.updateResponse(res.solution, res.explanation);
         }
     })

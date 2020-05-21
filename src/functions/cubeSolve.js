@@ -187,20 +187,27 @@ function arrEq(arr1, arr2){ //to compare arrays
 	return out;
 }
 
-function checkSymmetries(c1, c2){ //checking solved state for every possible orientation @LeoCruz
-	let syms = ["","y","yy","yyy","x","xy","xyy","xyyy","xx","xxy","xxyy","xxyyy","xxx","xxxy","xxxyy","xxxyyy","z","zy","zyy","zyyy","zz","zzzy","zzzyy","zzzyyy"];
-	let c = [];
+function checkSymmetries(c1,c2){ //checking solved state for every possible orientation @LeoCruz
+	let syms = ["","y","yy","yyy",
+				"x","xy","xyy","xyyy",
+				"xx","xxy","xxyy","xxyyy",
+				"xxx","xxxy","xxxyy","xxxyyy",
+				"z","zy","zyy","zyyy",
+				"zzz","zzzy","zzzyy","zzzyyy"];
+	let syms_prime = ["","yyy","yy","y",
+						"xxx","yyyxxx","yyxxx","yxxx",
+						"xx","yyyxx","yyxx","yxx",
+						"x","yyyx","yyx","yx",
+						"zzz","yyyzzz","yyzzz","yzzz",
+						"z","yyyz","yyz","yz",]
+	//console.log(c2.state);
+	//console.log(c2.applyManeuver("y"));
 	for (let i=0; i<24; i++){
-		let s1 = c1.state;
-		let s2 = c2.state;
-		c[i] = statesAreEqual(s1,s2);
+		c1.applyManeuver(syms[i]);
+		if(statesAreEqual(c1.state,c2.state)) return true;
+		c1.applyManeuver(syms_prime[i]);
 	}
-	let out = false;
-	for (let j=0; j<24; j++){
-		out = out || c[j];
-	}
-
-	return out;
+	return false;
 }
 
 function statesAreEqual(s1,s2){ //comparison of cube.state objects

@@ -134,7 +134,7 @@ const RegisterForm = () => {
 			</div>
 
 			<div className='input-field'>
-				<label htmlFor='surname'>Name</label>
+				<label htmlFor='surname'>Surname</label>
 				<input
 					id='surname'
 					name='surname'
