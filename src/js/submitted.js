@@ -1,6 +1,41 @@
 import React from 'react'
 import '../css/submitted.css'
 
+//Receives this.props.combinations[comb]
+function extendedSolutionView(combination) {
+    let solution, explanation;
+
+    if(combination.moves === 0) {
+        solution = 'DNS';
+        explanation = "";
+    }
+    else if(combination.moves > 0) {
+        solution = combination.sol;
+        explanation = combination.explanation;
+    } else {
+        solution = 'DNF';
+        explanation = "";
+    }
+
+    return (
+        <div className='see-all'>
+            <h1>Solution</h1>
+                <p >{solution}</p>
+            <h1>Explanation</h1>
+                <textarea readOnly value={explanation}></textarea>
+        </div>
+    );
+}
+
+function showSol(moves) {
+    if(moves === 0)
+        return <p>DNS</p>
+    else if(moves < 0)
+        return <p>DNF</p>
+    else
+        return <p>{moves}</p>
+}
+
 class ExtendedView extends React.Component {
     constructor(props) {
         super(props);
@@ -17,16 +52,11 @@ class ExtendedView extends React.Component {
         return(
         <div className='extended-view'>
             <div className='navigation'>
-                {actualSelected == 1 ? <button className='selected'>Challenge 1</button> : <button onClick={() => this.changeSelected(1)}>Challenge 1</button>}
-                {actualSelected == 2 ? <button className='selected'>Challenge 2</button> : <button onClick={() => this.changeSelected(2)}>Challenge 2</button>}
-                {actualSelected == 3 ? <button className='selected'>Challenge 3</button> : <button onClick={() => this.changeSelected(3)}>Challenge 3</button>}
+                {actualSelected === 1 ? <button className='selected'>Challenge 1</button> : <button onClick={() => this.changeSelected(1)}>Challenge 1</button>}
+                {actualSelected === 2 ? <button className='selected'>Challenge 2</button> : <button onClick={() => this.changeSelected(2)}>Challenge 2</button>}
+                {actualSelected === 3 ? <button className='selected'>Challenge 3</button> : <button onClick={() => this.changeSelected(3)}>Challenge 3</button>}
             </div>
-            <div className='see-all'>
-                <h1>Solution</h1>
-                    <p >{this.props.combinations[`comb${actualSelected}`].sol}</p>
-                <h1>Explanation</h1>
-                    <textarea readOnly value={this.props.combinations[`comb${actualSelected}`].explanation}></textarea>
-            </div>
+            {extendedSolutionView(this.props.combinations[`comb${actualSelected}`])}
         </div>  
         );
     }
@@ -44,9 +74,9 @@ class UserResponse extends React.Component {
             <div className='fast-view-panel'>
                 <h1 className='user-name'>{this.props.userData.name} {this.props.userData.surname}</h1>
                 <div className='results'> 
-                    <p>{this.props.userData.comb1.moves}</p>
-                    <p>{this.props.userData.comb2.moves}</p>
-                    <p>{this.props.userData.comb3.moves}</p>
+                    <p>{showSol(this.props.userData.comb1.moves)}</p>
+                    <p>{showSol(this.props.userData.comb2.moves)}</p>
+                    <p>{showSol(this.props.userData.comb3.moves)}</p>
                 </div>
                 <div className='button'>
                     <span onClick={() => this.setState({completePanel: !this.state.completePanel})}>See solutions</span>

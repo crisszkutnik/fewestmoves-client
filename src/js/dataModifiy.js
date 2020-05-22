@@ -27,8 +27,6 @@ const SolPanel = (props) => {
 					onBlur={formik.handleBlur}
 					value={formik.values.explanation}></textarea>
                     <div id='options'>
-                        {!props.isSolution &&
-                        <p>The solution is not correct!</p>}
                         <a onClick={props.handleChange}>Cancel</a>
                         <button type='submit'>Submit</button>
                     </div>

@@ -59,6 +59,10 @@ button.loaded-sol {
     background: #43b581;
 }
 
+button.incorrect-sol {
+    background: #db3044;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     button.bton-load-sol, div.challengeComb {

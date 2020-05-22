@@ -7,15 +7,14 @@ class ChallengeData extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {showPanel: false, correctResponse: true}
+        this.state = {showPanel: false}
         this.handleChange = this.handleChange.bind(this);
         this.updateResponse = this.updateResponse.bind(this);
     }
 
     handleChange() {
         this.setState(state => ({
-            showPanel: !state.showPanel,
-            correctResponse: true
+            showPanel: !state.showPanel
         }));
     }
 
@@ -30,7 +29,6 @@ class ChallengeData extends React.Component {
             else
                 movements = isSolved(this.props.challenge, newResponse);
 
-            if(movements !== -1) {
                 newRes[this.props.comb].sol = newResponse;
                 newRes[this.props.comb].explanation = newExplanation;
                 newRes[this.props.comb].moves = movements;
@@ -49,24 +47,28 @@ class ChallengeData extends React.Component {
                     this.handleChange();
                 })
                 .catch(e => alert('An error occured'));
-            } else 
-                this.setState({correctResponse: false});
         } else 
             this.handleChange();
     }
 
     render() {
+        let showButton;
+
+        if(this.props.resData[this.props.comb].moves === 0)
+            showButton = <button className='bton-load-sol not-loaded' onClick={this.handleChange}>Load solution</button>;
+        else if(this.props.resData[this.props.comb].moves > 0)
+            showButton = <button className='bton-load-sol loaded-sol' onClick={this.handleChange}>See solution</button>;
+        else
+            showButton = <button className='bton-load-sol incorrect-sol' onClick={this.handleChange}>Incorrect solution</button>;
+
         return (
             <div className='challengeData'>
                 <div className='challengeComb'>  
                     <p>{this.props.challenge}</p>
                 </div>
-                {this.props.resData[this.props.comb].sol === '' ?
-                    <button className='bton-load-sol not-loaded' onClick={this.handleChange}>Load solution</button>:
-                    <button className='bton-load-sol loaded-sol' onClick={this.handleChange}>See solution</button>
-                }
+                {showButton}
                 {this.state.showPanel &&
-                    <SolPanel handleChange={this.handleChange} isSolution={this.state.correctResponse} updateResponse={this.updateResponse} uExp={this.props.resData[this.props.comb].explanation} uRes={this.props.resData[this.props.comb].sol}/>
+                    <SolPanel handleChange={this.handleChange} updateResponse={this.updateResponse} uExp={this.props.resData[this.props.comb].explanation} uRes={this.props.resData[this.props.comb].sol}/>
                 }
             </div>
         );
