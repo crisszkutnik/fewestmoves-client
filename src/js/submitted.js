@@ -9,12 +9,9 @@ function extendedSolutionView(combination) {
         solution = 'DNS';
         explanation = "";
     }
-    else if(combination.moves > 0) {
+    else {
         solution = combination.sol;
         explanation = combination.explanation;
-    } else {
-        solution = 'DNF';
-        explanation = "";
     }
 
     return (
