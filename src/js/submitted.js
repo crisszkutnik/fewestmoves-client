@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/submitted.css'
+import LoadingView from './loadingView'
 
 //Receives this.props.combinations[comb]
 function extendedSolutionView(combination) {
@@ -90,7 +91,7 @@ class UserResponse extends React.Component {
 class SubmittedSol extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {amountReceived: 0, info: [], fetchedData: true, completePanel: false}
+        this.state = {amountReceived: 0, info: [], fetchedData: false}
         this.renderMore = this.renderMore.bind(this);
         this.renderAll = this.renderAll.bind(this);
     }
@@ -130,7 +131,7 @@ class SubmittedSol extends React.Component {
         })
         .then(res => res.json())
         .then(usersRes => {
-            this.setState({amountReceived: this.state.amountReceived + 10, info: this.state.info.concat(usersRes)});
+            setTimeout(() => this.setState({amountReceived: this.state.amountReceived + 10, info: this.state.info.concat(usersRes), fetchedData: true}), 400)
         });
     }
 
@@ -145,7 +146,7 @@ class SubmittedSol extends React.Component {
                 </div>
             );
         else
-            return (<h1>Loading</h1>);
+            return (<LoadingView />);
     }
 }
 export default SubmittedSol;

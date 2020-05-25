@@ -2,6 +2,7 @@ import React from 'react'
 import SolPanel from './dataModifiy'
 import '../css/dashboardActual.css'
 import {isSolved} from '../functions/cubeSolve'
+import LoadingView from './loadingView'
 
 class ChallengeData extends React.Component {
     constructor(props) {
@@ -104,7 +105,7 @@ class DashboardActual extends React.Component {
         Promise.all([fetch(this.fetch1url, this.fetch1Props), fetch(this.fetch2url, this.fetch2Props)])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([challenge, uRes]) => {
-            this.setState({challenges: challenge, userResponse: uRes, loaded: true})
+            setTimeout(() => this.setState({challenges: challenge, userResponse: uRes, loaded: true}), 400);
         });
     }
 
@@ -118,7 +119,7 @@ class DashboardActual extends React.Component {
                 </div>
             );
         else
-            return (<h1>Loading</h1>);
+            return (<LoadingView />);
     }
 }
 

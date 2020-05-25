@@ -3,6 +3,7 @@
     max-width: 1920px;
     display: flex;
     flex-direction: column;
+    padding-top: 70px;
 }
 
 #all-responses {

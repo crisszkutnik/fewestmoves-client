@@ -5,6 +5,10 @@ nav {
     display: flex;
     align-items: center;
     color: white;
+    -webkit-box-shadow: -4px 9px 25px -2px rgba(0,0,0,0.51);
+    -moz-box-shadow: -4px 9px 25px -2px rgba(0,0,0,0.51);
+    box-shadow: -4px 9px 25px -2px rgba(0,0,0,0.51);
+    position: absolute;
 }
 
 nav div#nav-links a {
