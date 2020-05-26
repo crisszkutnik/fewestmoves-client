@@ -80,15 +80,15 @@
 */
 
 .other-user-res .extended-view {
-    height: 240px;
+    height: 350px;
     width: 100%;
     background: #D4D4D4;
     box-sizing: border-box;
 }
 
 .extended-view .navigation {
-    height: 15%;
-    background: #4F4F4F;
+    height: 35px;
+    background: #7188D8;
     display: flex;
     align-items: center;
 }
@@ -99,14 +99,14 @@
     border: none;
     cursor: pointer;
     color: white;
-    width: 15%;
+    padding: 0 10px;
     font-size: 16px;
     height: 100%;
 }
 
 .extended-view .navigation button.selected {
-    color: #7188D8;
-    border-bottom: 4px solid #7188D8;
+    color: black;
+    background: #D4D4D4;
 }
 
 .extended-view .see-all {
@@ -121,13 +121,13 @@
 
 .extended-view .see-all h1 {
     font-size: 20px;
+    margin: 8px 0;
 }
 
 .extended-view .see-all p, .extended-view .see-all textarea {
     background: #C4C4C4;
     width: 95%;
     padding: 5px;
-    height: 10%;
     border-radius: 5px;
 }
 
@@ -218,9 +218,6 @@
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1500px) {
-    .other-user-res .fast-view-panel .results p {
-        
-    }
     .other-user-res .fast-view-panel .user-name {
         font-size: 20px;
     }
@@ -231,9 +228,6 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1500px) {
-    .other-user-res .fast-view-panel .results p {
-        
-    }
     .other-user-res .fast-view-panel .user-name {
         font-size: 25px;
     }

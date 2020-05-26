@@ -5,9 +5,9 @@ nav {
     display: flex;
     align-items: center;
     color: white;
-    -webkit-box-shadow: -4px 9px 25px -2px rgba(0,0,0,0.51);
-    -moz-box-shadow: -4px 9px 25px -2px rgba(0,0,0,0.51);
-    box-shadow: -4px 9px 25px -2px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 0px 10px 36px 1px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 10px 36px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 10px 36px 1px rgba(0,0,0,0.3);
     position: absolute;
 }
 

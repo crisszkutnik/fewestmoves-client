@@ -111,6 +111,7 @@ const LoginForm = () => {
 			</div>
 
             <button type="submit">Submit</button>
+				<p>Don't have an account? <span onClick={() => history.push('/register')}>Register now!</span></p>
         </form>
       </div>
     );

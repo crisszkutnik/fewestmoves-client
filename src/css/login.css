@@ -40,6 +40,16 @@
     box-sizing: border-box;
 }
 
+#login-form form p {
+    color: white;
+    margin-top: 30px;
+}
+
+#login-form form p span {
+    color: #7188D8;
+    cursor: pointer;
+}
+
 .input-field {
     display: flex;
     flex-direction: column;

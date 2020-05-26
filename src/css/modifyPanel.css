@@ -1,0 +1,90 @@
+div#modify-panel {
+   position: absolute;
+   display: flex;
+   z-index: 2;
+   width: 100vw;
+   height: 100vh;
+   max-width: 1920px;
+   max-height: 1080px;
+   background-color: rgba(0, 0, 0, 0.5);
+   justify-content: center;
+   align-items: center;
+}
+
+div#modify-panel form {
+   width: 1000px;
+   padding: 50px 0;
+   background: #2B2D32;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   border-radius: 10px;
+}
+
+div#modify-panel form h1 {
+   width: 90%;
+   font-size: 30px;
+   text-align: center;
+}
+
+div#modify-panel form hr {
+   width: 80%;
+   border-radius: 5px;
+   height: 2px;
+   margin: 10px 0;
+   background: #7188d8;
+   border: none;
+}
+
+div#modify-panel form div.input-group {
+   width: 90%;
+   margin-bottom: 30px;
+}
+
+div#modify-panel form div.input-group textarea {
+   resize: none;
+   height: 350px;
+}
+
+div#modify-panel form div.input-group .inputField {
+   border: none;
+   outline: none;
+   width: 100%;
+   padding: 6px;
+   background: #737478;
+   margin-top: 5px;
+   border-radius: 4px;
+}
+
+div#modify-panel div#options {
+   display: flex;
+   width: 100%;
+   justify-content: flex-end;
+   padding-right: 100px;
+   align-items: center;
+}
+
+div#modify-panel div#options a {
+   color: #737478;
+   cursor: pointer;
+}
+
+div#modify-panel div#options button {
+   outline: none;
+   border: none;
+   font-size: 15px;
+   color: white;
+   background: #7188d8;
+   padding: 8px 12px;
+   transition: all 0.2s ease-in-out;
+   margin-left: 20px;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+div#modify-panel div#options button:hover {
+   transform: scale(1.1);
+   background: #43b581;
+}
