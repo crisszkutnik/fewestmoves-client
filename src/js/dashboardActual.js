@@ -1,66 +1,25 @@
 import React from 'react'
-import SolPanel from './dataModifiy'
 import '../css/dashboardActual.css'
-import {isSolved} from '../functions/cubeSolve'
 import LoadingView from './loadingView'
+import {isSolved} from '../functions/cubeSolve'
+import ModifyPanel from './modifyPanel'
 
 class ChallengeData extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {showPanel: false}
-        this.handleChange = this.handleChange.bind(this);
-        this.updateResponse = this.updateResponse.bind(this);
-    }
-
-    handleChange() {
-        this.setState(state => ({
-            showPanel: !state.showPanel
-        }));
-    }
-
-    updateResponse(newResponse, newExplanation) {
-        let newRes = this.props.resData;
-
-        if(newResponse !== newRes[this.props.comb].sol || newExplanation !== newRes[this.props.comb].explanation) {
-            let movements;
-
-            if(newResponse === '')
-                movements = 0;
-            else
-                movements = isSolved(this.props.challenge, newResponse);
-
-                newRes[this.props.comb].sol = newResponse;
-                newRes[this.props.comb].explanation = newExplanation;
-                newRes[this.props.comb].moves = movements;
-
-                fetch('http://localhost:9000/challData/submitResponse', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(newRes)
-                })
-                .then(() => {
-                    this.setState({correctResponse: false});
-                    this.handleChange();
-                })
-                .catch(e => alert('An error occured'));
-        } else 
-            this.handleChange();
     }
 
     render() {
         let showButton;
 
-        if(this.props.resData[this.props.comb].moves === 0)
-            showButton = <button className='bton-load-sol not-loaded' onClick={this.handleChange}>Load solution</button>;
-        else if(this.props.resData[this.props.comb].moves > 0)
-            showButton = <button className='bton-load-sol loaded-sol' onClick={this.handleChange}>See solution</button>;
+        if(this.props.solMoves === 0)
+            showButton = <button className='bton-load-sol not-loaded' onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>;
+        else if(this.props.solMoves > 0)
+            showButton = <button className='bton-load-sol loaded-sol' onClick={() => this.props.showPanel(this.props.comb)}>See solution</button>;
         else
-            showButton = <button className='bton-load-sol incorrect-sol' onClick={this.handleChange}>Incorrect solution</button>;
+            showButton = <button className='bton-load-sol incorrect-sol' onClick={() => this.props.showPanel(this.props.comb)}>Incorrect solution</button>;
 
         return (
             <div className='challengeData'>
@@ -68,9 +27,6 @@ class ChallengeData extends React.Component {
                     <p>{this.props.challenge}</p>
                 </div>
                 {showButton}
-                {this.state.showPanel &&
-                    <SolPanel handleChange={this.handleChange} updateResponse={this.updateResponse} uExp={this.props.resData[this.props.comb].explanation} uRes={this.props.resData[this.props.comb].sol}/>
-                }
             </div>
         );
     }
@@ -79,7 +35,9 @@ class ChallengeData extends React.Component {
 class DashboardActual extends React.Component {
     constructor() {
         super();
-        this.state = {challenges: {}, userResponse: {}, viewSol: 0, loaded: false};
+        this.submitResponse = this.submitResponse.bind(this);
+        this.showPanel = this.showPanel.bind(this);
+        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 0};
 
         this.fetch1url = 'http://localhost:9000/challData/getChallenge';
         this.fetch1Props = {
@@ -109,13 +67,48 @@ class DashboardActual extends React.Component {
         });
     }
 
+    showPanel(number) {
+        this.setState({showComb: number});
+    }
+
+    submitResponse(newSol, newExp, modComb) {
+        let res = this.state.userResponse;
+
+        if(newSol !== this.state.userResponse[`comb${modComb}`].sol || newExp !== this.state.userResponse[`comb${modComb}`].explanation) {
+            res[`comb${modComb}`].sol = newSol;
+            res[`comb${modComb}`].explanation = newExp;
+
+            if(newSol === '')
+                res[`comb${modComb}`].moves = 0;
+            else 
+                res[`comb${modComb}`].moves = isSolved(this.state.challenges[`comb${modComb}`], newSol);
+
+            fetch('http://localhost:9000/challData/submitResponse', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(res)
+            })
+            .then(() => {
+                this.showPanel(0);
+            })
+            .catch(e => alert('An error occured'));
+        } else
+            this.showPanel(0);
+    }
+
     render() {
-        if(this.state.loaded) 
+        if(this.state.loaded)
             return(
                 <div id='dashboard'>
-                    <ChallengeData challenge={this.state.challenges.comb1} resData={this.state.userResponse} comb={'comb1'}/>
-                    <ChallengeData challenge={this.state.challenges.comb2} resData={this.state.userResponse} comb={'comb2'}/>
-                    <ChallengeData challenge={this.state.challenges.comb3} resData={this.state.userResponse} comb={'comb3'}/>
+                    <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.showPanel(n)} comb={1}/>
+                    <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.showPanel(n)} comb={2}/>
+                    <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.showPanel(n)} comb={3}/>
+                    {this.state.showComb !== 0 &&
+                    <ModifyPanel closePanel={() => this.showPanel(0)} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>}
                 </div>
             );
         else

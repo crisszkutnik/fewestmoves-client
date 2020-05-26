@@ -1,5 +1,4 @@
 import React from 'react'
-import RubikGif from '../img/rubik.gif'
 import '../css/loadingView.css'
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -33,7 +32,11 @@ class LoadingView extends React.Component {
    }
 
    componentDidMount() {
-      setInterval(() => this.setState({dots: (this.state.dots == 3 ? 0 : this.state.dots + 1)}), 500);
+      this.setState({interval: setInterval(() => this.setState({dots: (this.state.dots == 3 ? 0 : this.state.dots + 1)}), 500)});
+   }
+
+   componentWillUnmount() {
+     clearInterval(this.state.interval);
    }
 
    render() {
