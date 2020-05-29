@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/submitted.css'
 import LoadingView from './loadingView'
+import UserSolutions from './userSolutions'
 
 //Receives this.props.combinations[comb]
 function extendedSolutionView(combination) {
@@ -18,108 +19,78 @@ function extendedSolutionView(combination) {
     return (
         <div className='see-all'>
             <h1>Solution</h1>
-                <p >{solution}</p>
+                <p>{solution}</p>
             <h1>Explanation</h1>
-                <textarea readOnly value={explanation}></textarea>
+                <textarea name='explanation' readOnly value={explanation}></textarea>
         </div>
     );
 }
 
 function showSol(moves) {
     if(moves === 0)
-        return <p>DNS</p>
+        return (<p>DNS</p>);
     else if(moves < 0)
-        return <p>DNF</p>
+        return (<p>DNF</p>);
     else
-        return <p>{moves}</p>
-}
-
-class ExtendedView extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {selected: 1};
-        this.changeSelected = this.changeSelected.bind(this);
-    }
-
-    changeSelected(newValue) {
-        this.setState({selected: newValue});
-    }
-
-    render() {
-        let actualSelected = this.state.selected;
-        return(
-        <div className='extended-view'>
-            <div className='navigation'>
-                {actualSelected === 1 ? <button className='selected'>Challenge 1</button> : <button onClick={() => this.changeSelected(1)}>Challenge 1</button>}
-                {actualSelected === 2 ? <button className='selected'>Challenge 2</button> : <button onClick={() => this.changeSelected(2)}>Challenge 2</button>}
-                {actualSelected === 3 ? <button className='selected'>Challenge 3</button> : <button onClick={() => this.changeSelected(3)}>Challenge 3</button>}
-            </div>
-            {extendedSolutionView(this.props.combinations[`comb${actualSelected}`])}
-        </div>  
-        );
-    }
-}
-
-class UserResponse extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {completePanel: false};
-    }
-
-    render() {
-        return(
-            <div className='other-user-res'>
-            <div className='fast-view-panel'>
-                <h1 className='user-name'>{this.props.userData.name} {this.props.userData.surname}</h1>
-                <div className='results'> 
-                    <p>{showSol(this.props.userData.comb1.moves)}</p>
-                    <p>{showSol(this.props.userData.comb2.moves)}</p>
-                    <p>{showSol(this.props.userData.comb3.moves)}</p>
-                </div>
-                <div className='button'>
-                    <span onClick={() => this.setState({completePanel: !this.state.completePanel})}>See solutions</span>
-                </div>
-            </div>
-            {this.state.completePanel &&
-                <ExtendedView combinations={this.props.userData}/>
-            }
-            </div>
-        );
-    }
+        return (<p>{moves}</p>);
 }
 
 class SubmittedSol extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {amountReceived: 0, info: [], fetchedData: false}
-        this.renderMore = this.renderMore.bind(this);
-        this.renderAll = this.renderAll.bind(this);
+        this.state = {amountReceived: 0, info: [], fetchedData: false, display: 0, challenges: {}};
+        this.getMore = this.getMore.bind(this);
+        this.changeDisplayInfo = this.changeDisplayInfo.bind(this);
+        this.renderNames = this.renderNames.bind(this);
+
+        this.fetch1 = 'http://localhost:9000/allRes/otherUsers';
+        this.fetch2 = 'http://localhost:9000/challData/getChallenge';
+
+        this.headers = {
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include',
+        };
     }
 
-    //Renders all stored responses on state
-    renderAll() {
-        let renderLeft = [];
-        let renderRight = [];
+    changeDisplayInfo(newElement) {
+        this.setState({display: newElement});
+    } 
 
-        let half = Math.ceil(this.state.info.length / 2);
+    componentWillMount() {
+        Promise.all([fetch(this.fetch1, Object.assign({method: 'POST'}, this.headers)), fetch(this.fetch2, Object.assign({method: 'GET'}, this.headers))])
+        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+        .then(([responses, rChallenges]) => {
+            setTimeout(() => this.setState({amountReceived: this.state.amountReceived + 10, info: responses, fetchedData: true, challenges: rChallenges}), 400);
+        });
+    }
+
+    renderNames() {
+        let all = [];
 
         this.state.info.forEach((elem, index) => {
+            let divClass;
 
-            if(index < half)
-                renderLeft.push(<UserResponse userData={elem} />);
+            if(this.state.display == index)
+                divClass = 'user-data selected';
             else
-                renderRight.push(<UserResponse userData={elem} />);
+                divClass= 'user-data';
+
+            all.push(
+                <div onClick={() => this.changeDisplayInfo(index)} className={divClass}>
+                    <h1>{elem.name} {elem.surname}</h1>
+                    <p><span>{showSol(elem.comb1.moves)}</span><span>{showSol(elem.comb2.moves)}</span><span>{showSol(elem.comb3.moves)}</span></p>
+                </div>
+            )
         })
 
-        return [<div className='side-container'>{renderLeft}</div>, <div className='side-container'>{renderRight}</div>];
-    }
-
-    componentDidMount() {
-        this.renderMore();
+        return all;
     }
 
     //Loads 10 elements from the user responses
-    renderMore() {
+    getMore() {
         fetch('http://localhost:9000/allRes/otherUsers', {
             method: 'POST',
             headers: {
@@ -131,7 +102,7 @@ class SubmittedSol extends React.Component {
         })
         .then(res => res.json())
         .then(usersRes => {
-            setTimeout(() => this.setState({amountReceived: this.state.amountReceived + 10, info: this.state.info.concat(usersRes), fetchedData: true}), 400)
+            this.setState({amountReceived: this.state.amountReceived + 10, info: this.state.info.concat(usersRes)})
         });
     }
 
@@ -139,14 +110,20 @@ class SubmittedSol extends React.Component {
         if(this.state.fetchedData)
             return (
                 <div id='dashboard-submitted'>
-                    <div id='all-responses'>
-                        {this.renderAll()}
+                    <div id='select-user'>
+                        <div id='see-users'>
+                            {this.renderNames()}
+                        </div>
+                        <div id='load-button'>
+                            <button onClick={this.getMore}>Load more</button>
+                        </div>
                     </div>
-                    <div id='last-button'><button onClick={this.renderMore}>Load more</button></div>
+                    <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges}/>
                 </div>
             );
         else
             return (<LoadingView />);
     }
 }
+
 export default SubmittedSol;

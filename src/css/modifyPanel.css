@@ -88,3 +88,119 @@ div#modify-panel div#options button:hover {
    transform: scale(1.1);
    background: #43b581;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 599px) {
+   div#modify-panel form {
+      width: 350px;
+      padding: 30px 0;
+   }
+   
+   div#modify-panel form h1 {
+      width: 90%;
+      font-size: 15px;
+   }
+   
+   div#modify-panel form div.input-group {
+      width: 85%;
+      margin-bottom: 15px;
+   }
+   
+   div#modify-panel form div.input-group textarea {
+      height: 150px;
+   }
+   
+   div#modify-panel form div.input-group .inputField {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+   }
+
+   div#modify-panel form div.input-group label {
+      font-size: 15px;
+   }
+   
+   div#modify-panel div#options button {
+      font-size: 15px;
+      padding: 6px 10px;
+      margin-left: 10px;
+   }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+   div#modify-panel form {
+      width: 500px;
+      padding: 30px 0;
+   }
+   
+   div#modify-panel form h1 {
+      width: 90%;
+      font-size: 15px;
+   }
+   
+   div#modify-panel form div.input-group {
+      width: 90%;
+      margin-bottom: 30px;
+   }
+
+   div#modify-panel form div.input-group label {
+      font-size: 15px;
+   }
+   
+   div#modify-panel form div.input-group textarea {
+      height: 175px;
+   }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+   div#modify-panel form {
+      width: 650px;
+      padding: 50px 0;
+   }
+   
+   div#modify-panel form h1 {
+      width: 90%;
+      font-size: 18px;
+   }
+   
+   div#modify-panel form div.input-group {
+      width: 90%;
+      margin-bottom: 30px;
+   }
+
+   div#modify-panel form div.input-group label {
+      font-size: 15px;
+   }
+   
+   div#modify-panel form div.input-group textarea {
+      height: 200px;
+   }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+   div#modify-panel form {
+      width: 750px;
+      padding: 50px 0;
+   }
+   
+   div#modify-panel form h1 {
+      width: 90%;
+      font-size: 22px;
+   }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+   div#modify-panel form {
+      width: 800px;
+      padding: 50px 0;
+   }
+   
+   div#modify-panel form h1 {
+      width: 90%;
+      font-size: 25px;
+   }
+}

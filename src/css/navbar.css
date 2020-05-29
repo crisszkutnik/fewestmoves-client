@@ -85,3 +85,39 @@ nav div#user-nav:hover div#user-options {
 nav div#user-nav:hover div#user-options a:hover {
     background: #7188d8;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 599px) {
+    nav div#user-nav {
+        width: 140px;
+        font-size: 12px;
+    }
+
+    nav div#user-nav p, nav div#user-options a {
+        width: 140px;
+    }
+
+    nav div#nav-links a {
+        font-size: 12px;
+        height: 50px;
+        width: 80px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    nav div#user-nav {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    nav div#user-nav p, nav div#user-options a {
+        width: 150px;
+    }
+
+    nav div#nav-links a {
+        font-size: 15px;
+        height: 50px;
+        width: 120px;
+    }
+}

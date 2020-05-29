@@ -2,236 +2,291 @@
     width: 100vw;
     max-width: 1920px;
     display: flex;
-    flex-direction: column;
-    padding-top: 70px;
-}
-
-#all-responses {
-    display: flex;
-    width: 100%;
-}
-
-.side-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.other-user-res {
-    display: flex;
-    background: #2B2D32;
-    color: white;
-    width: 80%;
-    margin-top: 20px;
-    border-radius: 10px;
-    align-items: center;
-    flex-direction: column;
-}
-
-/*
-    General view panel
-*/
-
-.other-user-res .fast-view-panel {
-    width: 100%;
-    display: flex;
-    height: 80px;
-    align-items: center;
-}
-
-.other-user-res .fast-view-panel .results {
-    display: flex;
-    width: 30%;
-}
-
-.other-user-res .fast-view-panel .results p {
-    width: 33%;
-    text-align: center;
-}
-
-.other-user-res .fast-view-panel .user-name {
-    width: 40%;
-    text-align: center;
-    overflow: hidden;
-}
-
-.other-user-res .fast-view-panel .button {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-}
-
-.other-user-res .fast-view-panel .button span {
-    background: #7188D8;
-    padding: 8px;
-    border-radius: 8px;
-    transition: all 0.2s ease-in-out;
-}
-
-.other-user-res .fast-view-panel .button span:hover {
-    background: #43b581;
-    padding: 12px;
-    cursor: pointer;
-}
-
-/*
-    Extended view panel
-*/
-
-.other-user-res .extended-view {
-    height: 350px;
-    width: 100%;
-    background: #D4D4D4;
+    height: 100vh;
+    padding-top: 20px;
     box-sizing: border-box;
-}
-
-.extended-view .navigation {
-    height: 35px;
-    background: #7188D8;
-    display: flex;
+    justify-content: center;
     align-items: center;
+    background-color: #E5E5E5;
 }
 
-.extended-view .navigation button {
-    outline: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    padding: 0 10px;
-    font-size: 16px;
-    height: 100%;
+div#display-all, div#select-user {
+    -webkit-box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
+    font-size: 10px;
 }
 
-.extended-view .navigation button.selected {
-    color: black;
-    background: #D4D4D4;
+/*
+    User selection config
+*/
+
+div#select-user {
+    width: 15%;
+    height: 700px;
+    background: white;
+    border-radius: 10px;
+    margin-right: 50px;
 }
 
-.extended-view .see-all {
-    color: black;
-    display: flex;
-    flex-direction: column;
+div#select-user div#see-users {
     width: 100%;
-    height: 80%;
+    height: 90%;
+    overflow-y: auto;
+}
+
+div#select-user div#see-users div.user-data {
     padding-top: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.extended-view .see-all h1 {
-    font-size: 20px;
-    margin: 8px 0;
+div#select-user div#see-users div.user-data:hover {
+    background: rgba(113, 136, 216, 0.5);
 }
 
-.extended-view .see-all p, .extended-view .see-all textarea {
-    background: #C4C4C4;
-    width: 95%;
-    padding: 5px;
-    border-radius: 5px;
+div#select-user div#see-users div.user-data.selected {
+    background: rgba(113, 136, 216, 0.5);
 }
 
-.extended-view .see-all textarea {
-    height: 50%;
-    resize: none;
-    border: none;
-    outline: none;
+div#select-user div#see-users div.user-data.selected:first-of-type {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+div#select-user div#see-users div.user-data h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+div#select-user div#see-users div.user-data p {
+    display: flex;
+    font-size: 1.2em;
+}
+
+div#select-user div#see-users div.user-data p span {
+    width: 20%;
+    font-weight: 200;
 }
 
 /*
-    Load more button
+    Loading button
 */
 
-#last-button {
+div#select-user div#load-button {
     width: 100%;
+    height: 10%;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    align-items: center;
 }
 
-#last-button button {
+div#select-user div#load-button button {
     outline: none;
-    color: white;
-    background: #7188D8;
     border: none;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 25px;
+    color: white;
+    padding: 1em;
+    font-size: 1.5em;
+    background: rgb(113, 136, 216);
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
+}
+
+div#select-user div#load-button button:hover {
+    background: #4e67c2;
+    transform: scale(1.1);
+}
+
+/*
+
+    Result section
+
+*/
+
+div#display-all {
+    background: white;
+    height: 700px;
+    width: 60%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+div#display-all div#title-separator {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+div#display-all div#title-separator h1 {
+    font-size: 3em;
+}
+
+div#display-all div#title-separator hr {
+    margin-top: 15px;
+    background: rgb(113, 136, 216);
+    border: none;
+    height: 2px;
+    width: 60%;
+    border-radius: 10px;
+}
+
+/*Solution and explanation*/
+
+div#display-all div.user-response {
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    padding-left: 20px;
+}
+
+div#display-all div.user-response h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+div#display-all div.user-response p, div#display-all div.user-response textarea {
+    padding: 8px;
+    background: #F3F3F3;
+    width: 95%;
+    border-radius: 5px;
+    font-size: 1.7em;
+}
+
+div#display-all div.user-response textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    height: 60%;
+}
+
+div#display-all div.user-response p:first-of-type {
+    margin-bottom: 20px;
+}
+
+
+/*Button*/
+
+div#display-all div.selector {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+div#display-all div.selector button {
+    outline: none;
+    border: none;
+    font-size: 2em;
+    background: white;
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
     transition: all 0.2s ease-in-out;
 }
 
-#last-button button:hover {
-    transform: scale(1.1);
-    background: #43b581;
+div#display-all div.selector button:nth-child(2) {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-    .other-user-res .fast-view-panel .results p {
-        font-size: 8px;
-    }
-    .other-user-res .fast-view-panel .user-name {
-        font-size: 12px;
-    }
-    .other-user-res .fast-view-panel .button span {
-        font-size: 0.4em;
-    }
+div#display-all div.selector button.selected, div#display-all div.selector button:hover {
+    background: rgb(113, 136, 216);
+    color: white;
+}
+
+/*
+    Responsive settings
+*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 599px) {
+    
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) and (max-width: 767px) {
-    .other-user-res .fast-view-panel .results p {
-        font-size: 10px;
-    }
-    .other-user-res .fast-view-panel .user-name {
-        font-size: 14px;
-    }
-    .other-user-res .fast-view-panel .button span {
-        font-size: 0.5em;
-    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .other-user-res .fast-view-panel .results p {
-        font-size: 14px;
+    /*
+        User response section
+    */
+
+    div#display-all {
+        height: 320px;
+        font-size: 3.5px;
     }
-    .other-user-res .fast-view-panel .user-name {
-        font-size: 16px;
+
+    div#display-all div#title-separator hr {
+        width: 70%;
     }
-    .other-user-res .fast-view-panel .button span {
-        font-size: 0.7em;
+
+    /*Select user section*/
+
+    div#select-user {
+        height: 320px;
+        font-size: 4px;
     }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .other-user-res .fast-view-panel .results p {
-        font-size: 15px;
-    }
-    .other-user-res .fast-view-panel .user-name {
-        font-size: 16px;
-    }
-    .other-user-res .fast-view-panel .button span {
-        font-size: 0.85em;
-    }
-}
+    /*
+        User response section
+    */
 
-@media only screen and (min-width: 1200px) and (max-width: 1500px) {
-    .other-user-res .fast-view-panel .user-name {
-        font-size: 20px;
+    div#display-all {
+        height: 400px;
+        font-size: 6px;
     }
-    .other-user-res .fast-view-panel .button span {
-        font-size: 1em;
+
+    div#display-all div#title-separator hr {
+        width: 70%;
+    }
+
+    /*Select user section*/
+
+    div#select-user {
+        height: 400px;
+        font-size: 6px;
     }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1500px) {
-    .other-user-res .fast-view-panel .user-name {
-        font-size: 25px;
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    /*
+        User response section
+    */
+
+    div#display-all {
+        height: 550px;
+        font-size: 7.5px;
     }
-    .other-user-res .fast-view-panel .button span {
-        font-size: 1em;
+
+    div#display-all div#title-separator hr {
+        width: 70%;
     }
+
+    /*Select user section*/
+
+    div#select-user {
+        height: 550px;
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    
 }
