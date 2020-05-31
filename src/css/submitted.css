@@ -60,6 +60,8 @@ div#select-user div#see-users div.user-data h1 {
     font-size: 2.5em;
     margin-bottom: 0.5em;
     font-weight: 400;
+    width: 95%;
+    overflow: hidden;
 }
 
 div#select-user div#see-users div.user-data p {
