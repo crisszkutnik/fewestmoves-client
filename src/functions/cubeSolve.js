@@ -179,12 +179,10 @@ function simplifyManeuver(scramble){ //convert any *sequence* into just string o
 }
 
 function arrEq(arr1, arr2){ //to compare arrays
-	let out = true;
 	for(let i=0; i<arr1.length; i++){
-		if (arr1[i]!=arr2[i]) out = false;
+		if (arr1[i]!=arr2[i]) return false;
 	}
-
-	return out;
+	return true;
 }
 
 function checkSymmetries(c1,c2){ //checking solved state for every possible orientation @LeoCruz
