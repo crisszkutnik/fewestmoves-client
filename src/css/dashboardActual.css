@@ -135,6 +135,16 @@ button.incorrect-sol {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    div#dashboard {
+        font-size: 8px;
+        min-height: 500px;
+    }
+
+    div.challengeData {
+        width: 58%;
+        height: 22%;
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (min-width: 1600px) {

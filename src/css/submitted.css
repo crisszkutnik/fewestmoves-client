@@ -15,6 +15,7 @@ div#display-all, div#select-user {
     -moz-box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
     font-size: 10px;
+    box-sizing: border-box;
 }
 
 /*
@@ -395,7 +396,7 @@ div#display-all div.selector button.selected, div#display-all div.selector butto
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
     #dashboard-submitted {
-        min-height: 700px;
+        min-height: 500px;
     }
     
     /*
@@ -416,6 +417,7 @@ div#display-all div.selector button.selected, div#display-all div.selector butto
     div#select-user {
         min-height: 450px;
         font-size: 8px;
+        width: 18%;
     }
 }
 
