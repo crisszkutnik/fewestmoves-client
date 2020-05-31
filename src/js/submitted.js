@@ -3,29 +3,6 @@ import '../css/submitted.css'
 import LoadingView from './loadingView'
 import UserSolutions from './userSolutions'
 
-//Receives this.props.combinations[comb]
-function extendedSolutionView(combination) {
-    let solution, explanation;
-
-    if(combination.moves === 0) {
-        solution = 'DNS';
-        explanation = "";
-    }
-    else {
-        solution = combination.sol;
-        explanation = combination.explanation;
-    }
-
-    return (
-        <div className='see-all'>
-            <h1>Solution</h1>
-                <p>{solution}</p>
-            <h1>Explanation</h1>
-                <textarea name='explanation' readOnly value={explanation}></textarea>
-        </div>
-    );
-}
-
 function showSol(moves) {
     if(moves === 0)
         return (<p>DNS</p>);

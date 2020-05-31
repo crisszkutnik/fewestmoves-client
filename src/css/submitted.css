@@ -23,10 +23,9 @@ div#display-all, div#select-user {
 
 div#select-user {
     width: 15%;
-    height: 700px;
     background: white;
     border-radius: 10px;
-    margin-right: 50px;
+    margin-right: 5em;
 }
 
 div#select-user div#see-users {
@@ -36,9 +35,9 @@ div#select-user div#see-users {
 }
 
 div#select-user div#see-users div.user-data {
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
@@ -58,7 +57,7 @@ div#select-user div#see-users div.user-data.selected:first-of-type {
 
 div#select-user div#see-users div.user-data h1 {
     font-size: 2.5em;
-    margin-bottom: 5px;
+    margin-bottom: 0.5em;
     font-weight: 400;
 }
 
@@ -109,7 +108,6 @@ div#select-user div#load-button button:hover {
 
 div#display-all {
     background: white;
-    height: 700px;
     width: 60%;
     border-radius: 10px;
     box-sizing: border-box;
@@ -122,7 +120,7 @@ div#display-all div#title-separator {
     flex-direction: column;
     height: 15%;
     justify-content: center;
-    padding-left: 20px;
+    padding-left: 2em;
 }
 
 div#display-all div#title-separator h1 {
@@ -130,7 +128,7 @@ div#display-all div#title-separator h1 {
 }
 
 div#display-all div#title-separator hr {
-    margin-top: 15px;
+    margin-top: 1.5em;
     background: rgb(113, 136, 216);
     border: none;
     height: 2px;
@@ -149,16 +147,17 @@ div#display-all div.user-response {
 
 div#display-all div.user-response h2 {
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
     font-weight: 400;
 }
 
 div#display-all div.user-response p, div#display-all div.user-response textarea {
-    padding: 8px;
+    padding: 0.8em;
     background: #F3F3F3;
     width: 95%;
     border-radius: 5px;
     font-size: 1.7em;
+    box-sizing: border-box;
 }
 
 div#display-all div.user-response textarea {
@@ -196,8 +195,8 @@ div#display-all div.selector button {
 }
 
 div#display-all div.selector button:nth-child(2) {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 div#display-all div.selector button.selected, div#display-all div.selector button:hover {
@@ -211,22 +210,144 @@ div#display-all div.selector button.selected, div#display-all div.selector butto
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 599px) {
-    
+    #dashboard-submitted {
+        min-height: 300px;
+        flex-direction: column;
+        height: 100vh;
+        padding-top: 80px;
+    }
+
+    div#select-user {
+        font-size: 4px;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+        margin-bottom: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    div#select-user div#see-users {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    div#select-user div#see-users div.user-data:first-of-type {
+        border-top-right-radius: 0px;
+    }
+
+    div#select-user div#see-users div.user-data {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 40px;
+        box-sizing: border-box;
+    }
+
+    div#display-all {
+        font-size: 3.5px;
+    }
+
+    div#select-user div#load-button {
+        width: 100%;
+        height: 40px;
+    }
+
+    /*
+        User response section
+    */
+
+    div#display-all {
+        font-size: 4px;
+        width: 80%;
+        height: 60%;
+        padding: 5px 5px;
+    }
+
+    div#display-all div#title-separator hr {
+        height: 1.5px;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) and (max-width: 767px) {
+    #dashboard-submitted {
+        min-height: 300px;
+        flex-direction: column;
+        height: 100vh;
+        padding-top: 80px;
+    }
+
+    div#select-user {
+        font-size: 5px;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+        margin-bottom: 10px;
+        max-height: 350px;
+        overflow-y: auto;
+    }
+
+    div#select-user div#see-users {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    div#select-user div#see-users div.user-data:first-of-type {
+        border-top-right-radius: 0px;
+    }
+
+    div#select-user div#see-users div.user-data {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 40px;
+        box-sizing: border-box;
+    }
+
+    div#display-all {
+        font-size: 3.5px;
+    }
+
+    div#select-user div#load-button {
+        width: 100%;
+        height: 40px;
+    }
+
+    /*
+        User response section
+    */
+
+    div#display-all {
+        font-size: 5px;
+        width: 75%;
+        height: 60%;
+        padding: 5px 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    div#display-all, div#select-user {
+        height: 75%;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+    #dashboard-submitted {
+        min-height: 400px;
+    }
+
     /*
         User response section
     */
 
     div#display-all {
-        height: 320px;
-        font-size: 3.5px;
+        font-size: 6.5px;
     }
 
     div#display-all div#title-separator hr {
@@ -236,20 +357,27 @@ div#display-all div.selector button.selected, div#display-all div.selector butto
     /*Select user section*/
 
     div#select-user {
-        height: 320px;
         font-size: 4px;
+        width: 18%;
+        font-size: 5.5px;
     }
 }
 
+
+
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #dashboard-submitted {
+        min-height: 500px;
+    }
+    
     /*
         User response section
     */
 
     div#display-all {
-        height: 400px;
         font-size: 6px;
+        max-height: 1000px;
     }
 
     div#display-all div#title-separator hr {
@@ -259,19 +387,23 @@ div#display-all div.selector button.selected, div#display-all div.selector butto
     /*Select user section*/
 
     div#select-user {
-        height: 400px;
         font-size: 6px;
+        width: 18%;
     }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    #dashboard-submitted {
+        min-height: 700px;
+    }
+    
     /*
         User response section
     */
 
     div#display-all {
-        height: 550px;
+        min-height: 450px;
         font-size: 7.5px;
     }
 
@@ -282,7 +414,7 @@ div#display-all div.selector button.selected, div#display-all div.selector butto
     /*Select user section*/
 
     div#select-user {
-        height: 550px;
+        min-height: 450px;
         font-size: 8px;
     }
 }
