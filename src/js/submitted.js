@@ -5,11 +5,11 @@ import UserSolutions from './userSolutions'
 
 function showSol(moves) {
     if(moves === 0)
-        return (<p>DNS</p>);
+        return (<span>DNS</span>);
     else if(moves < 0)
-        return (<p>DNF</p>);
+        return (<span>DNF</span>);
     else
-        return (<p>{moves}</p>);
+        return (<span>{moves}</span>);
 }
 
 class SubmittedSol extends React.Component {
@@ -56,9 +56,9 @@ class SubmittedSol extends React.Component {
                 divClass= 'user-data';
 
             all.push(
-                <div onClick={() => this.changeDisplayInfo(index)} className={divClass}>
+                <div onClick={() => this.changeDisplayInfo(index)} className={divClass} key={index}>
                     <h1>{elem.name} {elem.surname}</h1>
-                    <p><span>{showSol(elem.comb1.moves)}</span><span>{showSol(elem.comb2.moves)}</span><span>{showSol(elem.comb3.moves)}</span></p>
+                    <p>{showSol(elem.comb1.moves)}{showSol(elem.comb2.moves)}{showSol(elem.comb3.moves)}</p>
                 </div>
             )
         })

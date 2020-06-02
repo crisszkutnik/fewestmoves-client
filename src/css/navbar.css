@@ -2,7 +2,6 @@ nav {
     width: 100vw;
     background-color: #2B2D32;
     display: flex;
-    align-items: center;
     color: white;
     -webkit-box-shadow: 0px 10px 36px 1px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 10px 36px 1px rgba(0,0,0,0.3);
@@ -92,16 +91,20 @@ div#big-screen div#nav-links a.selected {
         box-sizing: border-box;
         font-size: 25px;
         cursor: pointer;
-        width: 100vw;
+        width: 20px;
         height: 50px;
         line-height: 50px;
-        position: absolute;
         background-color: #2B2D32;
+        position: absolute;
+        z-index: 2;
     }
 
     nav {
         flex-direction: column;
-        max-height: 2000px;
+        display: flex;
+        width: 100vw;
+        background: #2B2D32;
+        height: 50px;
     }
 
     div#big-screen {
@@ -112,6 +115,10 @@ div#big-screen div#nav-links a.selected {
         max-height: 2000px;
         padding-top: 50px;
         box-sizing: border-box;
+        max-height: 2000px;
+        position: absolute;
+        z-index: 1;
+        background: #2B2D32;
     }
 
     div#big-screen div#nav-links {
@@ -163,6 +170,7 @@ div#big-screen div#nav-links a.selected {
 
     nav {
         height: 50px;
+        align-items: center;
     }
 
     /*
