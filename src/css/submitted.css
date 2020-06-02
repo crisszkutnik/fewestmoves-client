@@ -62,6 +62,7 @@ div#select-user div#see-users div.user-data h1 {
     font-weight: 400;
     width: 95%;
     overflow: hidden;
+    max-height: 2.5em;
 }
 
 div#select-user div#see-users div.user-data p {
