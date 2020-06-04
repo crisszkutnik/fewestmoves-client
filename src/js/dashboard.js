@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch, Link, Redirect, useHistory} from 'react-ro
 import DashboardActual from './dashboardActual';
 import SubmittedSol from './submitted';
 import Navbar from './navbar'
+import Navbar_Guido from './navbar'
 import PrevResults from './prevResults'
 
 const Dashboard = () => {
@@ -39,7 +40,7 @@ const Dashboard = () => {
 
     return (
         <BrowserRouter>
-            <Navbar user={user} />
+            <Navbar_Guido user={user} />
             <Switch>
                 <Route exact path='/dashboard/actual'>
                     <DashboardActual/>
