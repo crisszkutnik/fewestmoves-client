@@ -1,8 +1,6 @@
-/* Da heck is this?!?!?! */
-
 nav {
     width: 100vw;
-    background-color: #2B2D32;
+    background-color: red;
     display: flex;
     color: white;
     -webkit-box-shadow: 0px 10px 36px 1px rgba(0,0,0,0.3);
