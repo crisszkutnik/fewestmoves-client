@@ -51,7 +51,7 @@ class PrevResults extends React.Component {
         if(this.state.fetchedData)
             return (
                 <div id='prev-results'>
-                    <ResTable changeDisplay={(n) => this.setState({display: n})} data={this.state.resData} getMore={this.getMore}/>
+                    <ResTable changeDisplay={(n) => this.setState({display: n})} data={this.state.resData} getMore={this.getMore} display={this.state.display}/>
                     <UserSolutions userSol={this.state.resData[this.state.display]} challenges={this.state.challenges}/>
                 </div>
             );
@@ -97,13 +97,18 @@ class ResTable extends React.Component {
         let all = [];
 
         this.props.data.forEach((elem, index)  => {
+            let className;
+
+            if(index == this.props.display)
+                className = 'selected';
+
             all.push(
-                <tr onClick={() => this.props.changeDisplay(index)} key={index}>
+                <tr className={className} onClick={() => this.props.changeDisplay(index)} key={index}>
                     <td>{elem.position}</td>
                     <td><p>{elem.name} {elem.surname}</p></td>
-                    <td>{elem.comb1.moves}</td>
-                    <td>{elem.comb2.moves}</td>
-                    <td>{elem.comb3.moves}</td>
+                    <td>{showSol(elem.comb1.moves)}</td>
+                    <td>{showSol(elem.comb2.moves)}</td>
+                    <td>{showSol(elem.comb3.moves)}</td>
                     <td>{elem.average}</td>
                     <td>{elem.lowest}</td>
                 </tr>

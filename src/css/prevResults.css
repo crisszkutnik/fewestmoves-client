@@ -95,6 +95,7 @@ table tr td p {
     max-height: 50px;
     line-height: 25px;
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -182,4 +183,8 @@ table tr td p {
     div#prev-results {
         justify-content: space-evenly;
     }
+}
+
+table tr.selected {
+    background: rgba(78, 103, 194, 0.5);
 }

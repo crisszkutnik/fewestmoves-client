@@ -3,7 +3,6 @@
     max-width: 1920px;
     display: flex;
     height: 100vh;
-    padding-top: 20px;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
@@ -27,6 +26,7 @@ div#select-user {
     background: white;
     border-radius: 10px;
     margin-right: 5em;
+    font-size: 12px;
 }
 
 div#select-user div#see-users {
@@ -49,11 +49,6 @@ div#select-user div#see-users div.user-data:hover {
 
 div#select-user div#see-users div.user-data.selected {
     background: rgba(113, 136, 216, 0.5);
-}
-
-div#select-user div#see-users div.user-data.selected:first-of-type {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
 div#select-user div#see-users div.user-data h1 {
@@ -91,7 +86,7 @@ div#select-user div#load-button button {
     outline: none;
     border: none;
     color: white;
-    padding: 1em;
+    padding: 0.5em;
     font-size: 1.5em;
     background: rgb(113, 136, 216);
     border-radius: 5px;
@@ -107,6 +102,11 @@ div#select-user div#load-button button:hover {
 /*
     Responsive settings
 */
+
+/*Cancel react defautl margin-bottom on p*/
+div#select-user div#see-users div.user-data p {
+    margin-bottom: 0;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 599px) {
@@ -147,8 +147,7 @@ div#select-user div#load-button button:hover {
     }
 
     div#select-user div#see-users div.user-data h1 {
-        height: 20px;
-        line-height: 10px;
+        height: 10px;
         overflow: hidden;
     }
 
@@ -162,13 +161,13 @@ div#select-user div#load-button button:hover {
     */
 
     div#display-all {
-        font-size: 4px;
+        font-size: 3px;
         width: 80%;
-        height: 60%;
+        height: 50%;
     }
 
     div#display-all div#title-separator hr {
-        height: 1.5px;
+        height: 1px;
     }
 }
 
@@ -198,10 +197,6 @@ div#select-user div#load-button button:hover {
         flex-wrap: wrap;
     }
 
-    div#select-user div#see-users div.user-data:first-of-type {
-        border-top-right-radius: 0px;
-    }
-
     div#select-user div#see-users div.user-data {
         display: flex;
         flex-direction: column;
@@ -220,15 +215,27 @@ div#select-user div#load-button button:hover {
     */
 
     div#display-all {
-        font-size: 5px;
+        font-size: 4px;
         width: 75%;
         height: 60%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    div#select-user div#see-users div.user-data.selected:first-of-type {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
     }
 }
 
 @media only screen and (min-width: 768px) {
     div#display-all, div#select-user {
         height: 75%;
+    }
+
+    div#select-user div#see-users div.user-data.selected:first-of-type {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
 }
 

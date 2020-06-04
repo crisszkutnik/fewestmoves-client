@@ -6,7 +6,6 @@
 
 div#display-all {
     background: white;
-    width: 60%;
     border-radius: 10px;
     box-sizing: border-box;
     display: flex;
@@ -31,7 +30,7 @@ div#display-all div#title-separator h1 {
 }
 
 div#display-all div#title-separator hr {
-    margin-top: 1.5em;
+    margin-top: 5px;
     background: rgb(113, 136, 216);
     border: none;
     height: 2px;

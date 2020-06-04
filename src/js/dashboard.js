@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react'
 import {BrowserRouter, Route, Switch, Link, Redirect, useHistory} from 'react-router-dom';
 import DashboardActual from './dashboardActual';
 import SubmittedSol from './submitted';
-import Navbar from './navbar'
-import Navbar_Guido from './navbar'
+import PageNavbar from './navbar'
 import PrevResults from './prevResults'
+import '../css/general.css'
 
 const Dashboard = () => {
     const [user, setUser] = useState({
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
     return (
         <BrowserRouter>
-            <Navbar_Guido user={user} />
+            <PageNavbar user={user} />
             <Switch>
                 <Route exact path='/dashboard/actual'>
                     <DashboardActual/>
