@@ -3,6 +3,7 @@ import LoadingView from './loadingView'
 import showSol from '../functions/func'
 import UserSolutions from './userSolutions'
 import '../css/prevResults.css'
+import { ListItemSecondaryAction } from '@material-ui/core'
 
 class PrevResults extends React.Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class PrevResults extends React.Component {
         if(this.state.fetchedData)
             return (
                 <div id='prev-results'>
-                    <ResTable changeDisplay={(n) => this.setState({display: n})} data={this.state.resData}/>
+                    <ResTable changeDisplay={(n) => this.setState({display: n})} data={this.state.resData} getMore={this.getMore}/>
                     <UserSolutions userSol={this.state.resData[this.state.display]} challenges={this.state.challenges}/>
                 </div>
             );
@@ -65,24 +66,39 @@ class ResTable extends React.Component {
         
         this.displayAll = this.displayAll.bind(this);
         this.configResize = this.configResize.bind(this);
+        this.trackScroll = this.trackScroll.bind(this);
     }
 
     componentDidMount() {
         window.addEventListener('resize', this.configResize);
+        
+        let tbody = document.getElementById('tbody');
+        tbody.addEventListener('scroll', this.trackScroll);
+
         this.configResize();
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.configResize);
+
+        let tbody = document.getElementById('tbody');
+        tbody.removeEventListener('scroll', this.trackScroll);
+    }
+
+    trackScroll() {
+        let tbody = document.getElementById('tbody');
+        let totalHeight = (document.getElementsByTagName('tr').length - 1) * document.getElementsByTagName('tr')[0].clientHeight;
+
+        if(tbody.clientHeight + tbody.scrollTop == totalHeight)
+            this.props.getMore();
     }
 
     displayAll() {
         let all = [];
 
         this.props.data.forEach((elem, index)  => {
-            console.log(elem);
             all.push(
-                <tr onClick={() => this.props.changeDisplay(index)}>
+                <tr onClick={() => this.props.changeDisplay(index)} key={index}>
                     <td>{elem.position}</td>
                     <td><p>{elem.name} {elem.surname}</p></td>
                     <td>{elem.comb1.moves}</td>
@@ -103,7 +119,7 @@ class ResTable extends React.Component {
         let theadHeight = document.getElementById('thead').clientHeight
 
         if(window.innerWidth > 830)
-            document.getElementById('tbody').style.maxHeight = `${windowHeight*0.70 - theadHeight}px`;
+            document.getElementById('tbody').style.maxHeight = `${windowHeight*0.75 - theadHeight}px`;
         else
             document.getElementById('tbody').style.maxHeight= `${windowHeight*0.40 - theadHeight*3}px`
     }
@@ -116,11 +132,11 @@ class ResTable extends React.Component {
                         <tr>
                             <th>Position</th>
                             <th>Name</th>
-                            <th>Challenge 1</th>
-                            <th>Challenge 2</th>
-                            <th>Challenge 3</th>
+                            <th>Scramble 1</th>
+                            <th>Scramble 2</th>
+                            <th>Scramble 3</th>
                             <th>Average</th>
-                            <th>Lowest</th>
+                            <th>Single</th>
                         </tr>
                     </thead>
                     <tbody id='tbody'>
