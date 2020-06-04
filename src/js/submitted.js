@@ -2,15 +2,7 @@ import React from 'react'
 import '../css/submitted.css'
 import LoadingView from './loadingView'
 import UserSolutions from './userSolutions'
-
-function showSol(moves) {
-    if(moves === 0)
-        return (<span>DNS</span>);
-    else if(moves < 0)
-        return (<span>DNF</span>);
-    else
-        return (<span>{moves}</span>);
-}
+import showSol from '../functions/func'
 
 class SubmittedSol extends React.Component {
     constructor(props) {
@@ -20,8 +12,8 @@ class SubmittedSol extends React.Component {
         this.changeDisplayInfo = this.changeDisplayInfo.bind(this);
         this.renderNames = this.renderNames.bind(this);
 
-        this.fetch1 = 'http://localhost:9000/allRes/otherUsers';
-        this.fetch2 = 'http://localhost:9000/challData/getChallenge';
+        this.fetch1 = '/allRes/otherUsers';
+        this.fetch2 = '/challData/getChallenge';
 
         this.headers = {
             headers: { 
@@ -40,7 +32,7 @@ class SubmittedSol extends React.Component {
         Promise.all([fetch(this.fetch1, Object.assign({method: 'POST'}, this.headers)), fetch(this.fetch2, Object.assign({method: 'GET'}, this.headers))])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([responses, rChallenges]) => {
-            setTimeout(() => this.setState({amountReceived: this.state.amountReceived + 10, info: responses, fetchedData: true, challenges: rChallenges}), 400);
+            setTimeout(() => this.setState({info: responses, fetchedData: true, challenges: rChallenges}), 400);
         });
     }
 
@@ -68,18 +60,18 @@ class SubmittedSol extends React.Component {
 
     //Loads 10 elements from the user responses
     getMore() {
-        fetch('http://localhost:9000/allRes/otherUsers', {
+        fetch('/allRes/otherUsers', {
             method: 'POST',
             headers: {
             	'Accept': 'application/json',
             	'Content-Type': 'application/json'
 			},
 			credentials: 'include',
-			body: JSON.stringify({skip: this.state.amountReceived})
+			body: JSON.stringify({skip: this.state.info.length})
         })
         .then(res => res.json())
         .then(usersRes => {
-            this.setState({amountReceived: this.state.amountReceived + 10, info: this.state.info.concat(usersRes)})
+            this.setState({info: this.state.info.concat(usersRes)})
         });
     }
 
@@ -87,6 +79,8 @@ class SubmittedSol extends React.Component {
         if(this.state.fetchedData)
             return (
                 <div id='dashboard-submitted'>
+                {this.state.info.length != 0 &&
+                <>
                     <div id='select-user'>
                         <div id='see-users'>
                             {this.renderNames()}
@@ -96,6 +90,11 @@ class SubmittedSol extends React.Component {
                         </div>
                     </div>
                     <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges}/>
+                </>
+                }
+                {this.state.info.length == 0 &&
+                    <h1>Nothing loaded yet!</h1>
+                }
                 </div>
             );
         else

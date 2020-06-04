@@ -9,6 +9,11 @@ class Navbar_Guido extends React.Component {
 		this.state = {
             actual: 0 //no se si usas esto en otro lugar, lo deje por las dudas
         };
+        super(props);
+
+        this.state = {show: false};
+        this.updateShow = this.updateShow.bind(this);
+        this.updatePage = this.updatePage.bind(this);
     }
 
     handleLogout(e) {
@@ -17,6 +22,13 @@ class Navbar_Guido extends React.Component {
             credentials: 'include',
         })
     } //esto no logre usarlo
+
+    updatePage(n) {
+        //Have to do both operations on mobile so a different
+        //function is created
+        this.props.handleChange(n);
+        this.setState({show: false});
+    }
 
     render() {
         return(
@@ -38,6 +50,14 @@ class Navbar_Guido extends React.Component {
             </Navbar.Collapse>
           </Navbar>
         )
+        return (
+            <nav>
+                <i class="fa fa-bars" aria-hidden="true" onClick={this.updateShow}></i>
+                {this.state.show &&
+                    <HTMLGeneral actual={this.props.actual} user={this.props.user} handleChange={this.updatePage} handleLogout={this.props.handleLogout}/>
+                }
+            </nav>
+        );
     }
 }
 
@@ -130,6 +150,12 @@ class Navbar_Guido extends React.Component {
 //             credentials: 'include',
 //         })
 //     }
+    handleLogout(e) {
+        fetch('/user/logout', {
+            method: 'POST',
+            credentials: 'include',
+        })
+    }
 
 
 //     render() {

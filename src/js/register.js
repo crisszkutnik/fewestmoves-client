@@ -31,7 +31,7 @@ const RegisterForm = () => {
 	const [resStatus, setStatus] = useState(0);
 
 	useEffect(() => {
-		fetch('http://localhost:9000/user/isLogged', {
+		fetch('/user/isLogged', {
             method: 'POST',
             headers: {
             	'Accept': 'application/json',
@@ -55,7 +55,7 @@ const RegisterForm = () => {
         },
         validate,
         onSubmit: values => {
-			fetch('http://localhost:9000/user/register', {
+			fetch('/user/register', {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',

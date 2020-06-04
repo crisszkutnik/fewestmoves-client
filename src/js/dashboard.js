@@ -4,6 +4,7 @@ import DashboardActual from './dashboardActual';
 import SubmittedSol from './submitted';
 import Navbar from './navbar'
 import Navbar_Guido from './navbar'
+import PrevResults from './prevResults'
 
 const Dashboard = () => {
     const [user, setUser] = useState({
@@ -13,7 +14,7 @@ const Dashboard = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:9000/user/isLogged', {
+        fetch('/user/isLogged', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -48,7 +49,7 @@ const Dashboard = () => {
                     <SubmittedSol />
                 </Route>
                 <Route exact path ='/dashboard/results'>
-
+                    <PrevResults />
                 </Route>
                 <Redirect to='/dashboard/actual' />
             </Switch>

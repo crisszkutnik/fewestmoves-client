@@ -26,7 +26,7 @@ const LoginForm = () => {
 	const [resStatus, setStatus] = useState(200);
 
 	useEffect(() => {
-		fetch('http://localhost:9000/user/isLogged', {
+		fetch('/user/isLogged', {
             method: 'POST',
             headers: {
             	'Accept': 'application/json',
@@ -48,7 +48,7 @@ const LoginForm = () => {
         },
         validate,
         onSubmit: values => {
-            fetch('http://localhost:9000/user/login', {
+            fetch('/user/login', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
