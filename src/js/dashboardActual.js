@@ -39,7 +39,7 @@ class DashboardActual extends React.Component {
         this.showPanel = this.showPanel.bind(this);
         this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 0};
 
-        this.fetch1url = 'http://localhost:9000/challData/getChallenge';
+        this.fetch1url = '/challData/getChallenge';
         this.fetch1Props = {
             headers: { 
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ class DashboardActual extends React.Component {
             credentials: 'include',
         };
 
-        this.fetch2url = 'http://localhost:9000/challData/getResponse';
+        this.fetch2url = '/challData/getResponse';
         this.fetch2Props = {
             method: 'POST',
             headers: { 
@@ -83,7 +83,7 @@ class DashboardActual extends React.Component {
             else 
                 res[`comb${modComb}`].moves = isSolved(this.state.challenges[`comb${modComb}`], newSol);
 
-            fetch('http://localhost:9000/challData/submitResponse', {
+            fetch('/challData/submitResponse', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

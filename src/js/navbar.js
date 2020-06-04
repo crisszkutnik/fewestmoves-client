@@ -33,10 +33,18 @@ class MobileNavbar extends React.Component {
 
         this.state = {show: false};
         this.updateShow = this.updateShow.bind(this);
+        this.updatePage = this.updatePage.bind(this);
     }
 
     updateShow() {
         this.setState({show: !this.state.show});
+    }
+
+    updatePage(n) {
+        //Have to do both operations on mobile so a different
+        //function is created
+        this.props.handleChange(n);
+        this.setState({show: false});
     }
 
     render() {
@@ -44,7 +52,7 @@ class MobileNavbar extends React.Component {
             <nav>
                 <i class="fa fa-bars" aria-hidden="true" onClick={this.updateShow}></i>
                 {this.state.show &&
-                    <HTMLGeneral actual={this.props.actual} user={this.props.user} handleChange={this.props.handleChange} handleLogout={this.props.handleLogout}/>
+                    <HTMLGeneral actual={this.props.actual} user={this.props.user} handleChange={this.updatePage} handleLogout={this.props.handleLogout}/>
                 }
             </nav>
         );
@@ -84,7 +92,7 @@ class Navbar extends React.Component {
     }
 
     handleLogout(e) {
-        fetch('http://localhost:9000/user/logout', {
+        fetch('/user/logout', {
             method: 'POST',
             credentials: 'include',
         })

@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/userSolutions.css'
 
 class UserSolutions extends React.Component {
    constructor(props) {

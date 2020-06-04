@@ -1,0 +1,185 @@
+div#prev-results {
+    display: flex;
+    width: 100vw;
+    max-width: 1920px;
+    max-height: 2000px;
+    align-items: center;
+    background-color: #E5E5E5;
+}
+
+/*
+    UserSolutions component styling
+
+    see rest of styling for this component on userSolutions.css
+*/
+
+div#prev-results div#display-all {
+    width: 35%;
+}
+
+div#prev-results div#display-all div#title-separator hr {
+    display: none;
+}
+
+div#prev-results div#display-all div#title-separator {
+    background: #2B2D32;
+    color: white;
+}
+
+/*
+    Table
+*/
+
+table {
+    border-collapse: collapse;
+    max-height: 1000px;
+    width: 100%;
+    flex-direction: column;
+    border-radius: 10px;
+    background: white;
+    font-size: 16px;
+}
+
+table thead, table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+tbody {
+    display: block;
+    overflow: auto;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+table thead th, table tr td {
+    overflow: hidden;
+    height: 50px;
+    text-align: center;
+}
+
+table thead th {
+    background: #2B2D32;
+    color: white;
+}
+
+table tr {
+    transition: all 0.2s ease-in-out;
+}
+
+table tr:nth-child(even) {
+    background: rgba(113, 136, 216, 0.2);
+}
+
+table tr:hover {
+    background: rgba(78, 103, 194, 0.5);
+    cursor: pointer;
+}
+
+table tr td p {
+    max-height: 50px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 1200px) {
+    table {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    div#prev-results {
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    div#prev-results div#display-all {
+        width: 75%;
+        height: 45%;
+        box-sizing: border-box;
+    }
+
+    div#table-container {
+        display: flex;
+        width: 75%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        font-size: 8px;
+    }
+
+    table thead th, table tr td {
+        height: 30px;
+    }
+
+    table tr td p {
+        max-height: 30px;
+        line-height: 15px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    table {
+        font-size: 5px;
+        border-radius: 5px;
+    }
+
+    table thead th, table tr td {
+        height: 20px;
+    }
+
+    table tr td p {
+        max-height: 20px;
+        line-height: 10px;
+    }
+
+    table tr:last-child td:first-child {
+        border-bottom-left-radius: 4px;
+    }
+    
+    table thead th:first-child {
+        border-top-left-radius: 4px;
+    }
+    
+    table thead th:last-child {
+        border-top-right-radius: 4px;
+    }
+    
+    table tr:last-child td:last-child {
+        border-bottom-right-radius: 4px;
+    }
+}
+
+@media only screen and (min-width: 831px) {
+    div#prev-results {
+        height: 100vh;
+    }
+
+    div#table-container {
+        display: flex;
+        width: 55%;
+        height: 75%;
+    }
+
+    div#prev-results {
+        justify-content: space-evenly;
+    }
+}

@@ -129,7 +129,7 @@ div#big-screen div#nav-links a.selected {
     }
 
     div#big-screen div#nav-links a {
-        font-size: 50px;
+        font-size: 40px;
         transition: all 0.2s ease-in-out;
     }
 
