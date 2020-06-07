@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import LoginForm from './login'
 import Dashboard from './dashboard'
 import RegisterForm from './register'
+import checkEmail from './checkEmail'
 
 const App = () => {
 	return (
@@ -15,6 +16,7 @@ const App = () => {
 				<Route exact path="/register">
 					<RegisterForm />
 				</Route>
+				<Route exact path='/verEmail/:token' component={checkEmail}/> 
 				<Route path="/dashboard">
 					<Dashboard />
 				</Route>
