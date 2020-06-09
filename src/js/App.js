@@ -16,7 +16,7 @@ const App = () => {
 				<Route exact path="/register">
 					<RegisterForm />
 				</Route>
-				<Route exact path='/verEmail/:token' component={checkEmail}/> 
+				<Route exact path='/verifyEmail/:token' component={checkEmail}/> 
 				<Route path="/dashboard">
 					<Dashboard />
 				</Route>
