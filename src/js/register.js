@@ -49,7 +49,8 @@ const RegisterForm = () => {
     const formik = useFormik({
         initialValues: {
             username: '',
-            password: '',
+				password: '',
+				email: '',
             name: '',
             surname: ''
         },
@@ -145,6 +146,21 @@ const RegisterForm = () => {
 				/>
 				{formik.touched.surname && formik.errors.surname ? (
 				<div className='form-error'>{formik.errors.surname}</div>
+				) : null}
+			</div>
+
+			<div className='input-field'>
+				<label htmlFor='email'>Email</label>
+				<input
+					id='email'
+					name='email'
+					type='text'
+					onChange={formik.handleChange}
+					onBlur={formik.handleBlur}
+					value={formik.values.email}
+				/>
+				{formik.touched.email && formik.errors.surname ? (
+				<div className='form-error'>{formik.errors.email}</div>
 				) : null}
 			</div>
 

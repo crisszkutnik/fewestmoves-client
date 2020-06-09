@@ -3,7 +3,6 @@ import LoadingView from './loadingView'
 import showSol from '../functions/func'
 import UserSolutions from './userSolutions'
 import '../css/prevResults.css'
-import { ListItemSecondaryAction } from '@material-ui/core'
 
 class PrevResults extends React.Component {
     constructor(props) {
