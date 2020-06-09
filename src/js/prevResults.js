@@ -11,7 +11,7 @@ class PrevResults extends React.Component {
         this.state = {resData: [], fetchedData: false, display: 0};
         this.getMore = this.getMore.bind(this);
 
-        this.fetch1 = 'http://localhost:9000/prevRes';
+        this.fetch1 = '/prevRes';
         this.fetch2 = '/challData/getChallenge';
 
         this.headers = {
@@ -32,7 +32,7 @@ class PrevResults extends React.Component {
     }
 
     getMore() {
-        fetch('http://localhost:9000/prevRes/', {
+        fetch('/prevRes/', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

@@ -5,20 +5,21 @@ import '../css/login.css'
 import '../css/logReg.css'
 
 const validate = values => {
-    const errors = {};
-    if (!values.username) {
+	 const errors = {};
+	 
+   if(!values.username) {
       errors.username = 'Required';
-    } else if (values.username.length < 3 || values.username.length > 25) {
-      errors.username = 'Must be 15 characters or less';
-    }
+   } else if (values.username.length < 3 || values.username.length > 30) {
+      errors.username = 'Must be between 3 and 30 characters';
+   }
   
-    if (!values.password) {
+   if(!values.password) {
       errors.password = 'Required';
-    } else if (values.username.length < 3 || values.username.length > 25) {
-      errors.password = 'Password is too short';
-    }
+   } else if (values.password.length < 3 || values.password.length > 50) {
+      errors.password = 'Password must have at least 3 characters';
+	}
   
-    return errors;
+   return errors;
 };
 
 const LoginForm = () => {
@@ -68,13 +69,17 @@ const LoginForm = () => {
 			.catch(e => setStatus(500));
         },
     });
-    
+	 
+
     return (
       <div id='login-form'>
 		{resStatus === 403 &&
 			<div className='bad-response'>Failed to login. Check your username or password.</div>
 		}
-		{resStatus !== 403 && resStatus !== 200 &&
+		{resStatus === 409 &&
+			<div className='bad-response'>Account not verified. An email was sent to the email linked to this account.</div>
+		}
+		{resStatus !== 403 && resStatus !== 200 && resStatus !== 409 &&
 			<div className='bad-response'>Error occurred. If it persists contanct webpage administrator.</div>
 		}
 

@@ -8,7 +8,7 @@ class checkEmail extends React.Component {
     componentWillMount() {
         let paramToken = this.props.match.params.token;
 
-        fetch('http://localhost:9000/email/verify', {
+        fetch('/email/verify', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
