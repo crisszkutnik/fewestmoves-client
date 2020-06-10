@@ -22,7 +22,7 @@ Your solution will be graded according to [official WCA regulations](https://www
 #### This Week
 
 You can view the solutions of the ongoing contest, to your own risk of spoilers. Since this contest is unofficial and solely intented for practice purposes, every solution becomes public as soon as it is submitted.  
-![this week view](screenshots/thisweek.PNG)
+![this week view](screenshots/thisweek.png)
 
 #### Last Week
 
