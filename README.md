@@ -11,18 +11,18 @@ You will see 3 scrambles, which make up the current week's contest, as shown:
 ![dashboard](screenshots/dashboard.png)
 
 Click on the button next to each scramble to open the submission panel:  
-![scramble panel](screenshots/scramble-panel.png)
+![scramble panel](screenshots/scramble-panel.PNG)
 
 You should submit your solution and explanation in the input fields, as follows:  
-![submission example](screenshots/scramble-panel-text.png)
+![submission example](screenshots/scramble-panel-text.PNG)
 
 Your solution will be graded according to [official WCA regulations](https://www.worldcubeassociation.org/regulations/#article-E-fewest-moves). The dashboard will change its color, signaling the validity of your submissions.  
-![example of colors](screenshots/dashboard-states.png
+![example of colors](screenshots/dashboard-states.PNG)
 
 #### This Week
 
 You can view the solutions of the ongoing contest, to your own risk of spoilers. Since this contest is unofficial and solely intented for practice purposes, every solution becomes public as soon as it is submitted.  
-![this week view](screenshots/thisweek.png)
+![this week view](screenshots/thisweek.PNG)
 
 #### Last Week
 
