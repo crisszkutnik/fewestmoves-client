@@ -17,7 +17,19 @@ class PageNavbar extends React.Component {
     }
 
     render() {
-        let name = this.props.user.name + ' ' + this.props.user.surname;
+        let name;
+
+        if(this.props.user.logged)
+            name = (<NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#manage">Manage User</NavDropdown.Item>
+                        <NavDropdown.Item href="/login" onClick={this.handleLogout}>Log Out</NavDropdown.Item>
+                    </NavDropdown>
+            );
+        else
+            name = (<NavDropdown title="Log in" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#login">Log in</NavDropdown.Item>
+                    </NavDropdown>
+            );
 
         return(
             <Navbar variant="dark" expand="lg" style={{backgroundColor: '#2B2D32', position: 'absolute', width: '100vw'}}>
@@ -25,10 +37,7 @@ class PageNavbar extends React.Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
-                    <NavDropdown title={name} id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#manage">Manage User</NavDropdown.Item>
-                        <NavDropdown.Item href="/login" onClick={this.handleLogout}>Log Out</NavDropdown.Item>
-                    </NavDropdown>
+                    {name}
                     </Nav>
                 <Nav className="ml-auto">
                     <Nav.Link href="/dashboard/actual">Compete!</Nav.Link>

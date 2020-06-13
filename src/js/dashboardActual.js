@@ -63,12 +63,16 @@ class DashboardActual extends React.Component {
         Promise.all([fetch(this.fetch1url, this.fetch1Props), fetch(this.fetch2url, this.fetch2Props)])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([challenge, uRes]) => {
+            console.log(challenge);
             setTimeout(() => this.setState({challenges: challenge, userResponse: uRes, loaded: true}), 400);
         });
     }
 
     showPanel(number) {
-        this.setState({showComb: number});
+        if(this.props.user.logged)
+            this.setState({showComb: number});
+        else
+            alert('You have to be logged in');
     }
 
     submitResponse(newSol, newExp, modComb) {

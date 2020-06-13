@@ -14,28 +14,27 @@ const Dashboard = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('/user/isLogged', {
-            method: 'POST',
+        fetch('/wcalogin/isLogged', {
+            method: 'GET',
             credentials: 'include',
             headers: {
             	'Accept': 'application/json',
             	'Content-Type': 'application/json'
 			},
-			body: ''
         })
-        .then(res => {
-            if(res.status === 403) 
-                history.push('/login');
-            else if(res.status === 200) 
-                return res.json();
-        })
+        .then(res => res.json())
         .then(resUser => {
-            setUser({
-                name: resUser.name,
-                surname: resUser.surname
-            });
+            if(resUser.logged)
+                setUser({
+                    name: resUser.name,
+                    logged: true
+                });
+            else
+                setUser({
+                    name: "",
+                    logged: false
+                });
         })
-        .catch(e =>  history.push('/login'));
     }, []);
 
     return (
@@ -43,7 +42,7 @@ const Dashboard = () => {
             <PageNavbar user={user} />
             <Switch>
                 <Route exact path='/dashboard/actual'>
-                    <DashboardActual/>
+                    <DashboardActual user={user}/>
                 </Route>
                 <Route exact path ='/dashboard/submitted'>
                     <SubmittedSol />
