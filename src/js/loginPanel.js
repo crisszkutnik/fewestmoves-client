@@ -4,13 +4,9 @@ import {useHistory} from 'react-router-dom'
 const LoginPanel = () => {
    const history = useHistory();
 
-   const WCALogin = () => {
-      history.push('/wcalogin/login')
-   }
-
    return (
       <div id='login-panel'>
-         <button onClick={WCALogin}>Login with WCA</button>
+         <a href='/wcalogin/login'>Login with WCA</a>
       </div>
    );
 }
