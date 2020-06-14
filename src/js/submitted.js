@@ -49,7 +49,7 @@ class SubmittedSol extends React.Component {
 
             all.push(
                 <div onClick={() => this.changeDisplayInfo(index)} className={divClass} key={index}>
-                    <h1>{elem.name} {elem.surname}</h1>
+                    <h1>{elem.name}</h1>
                     <p>{showSol(elem.comb1.moves)}{showSol(elem.comb2.moves)}{showSol(elem.comb3.moves)}</p>
                 </div>
             )
@@ -76,27 +76,25 @@ class SubmittedSol extends React.Component {
     }
 
     render() {
+        console.log(this.state);
+
         if(this.state.fetchedData)
-            return (
-                <div id='dashboard-submitted'>
-                {this.state.info.length != 0 &&
-                <>
-                    <div id='select-user'>
-                        <div id='see-users'>
-                            {this.renderNames()}
+            if(this.state.info.length == 0)
+                return(<div id='dashboard-submitted'><h1>Nothing loaded yet!</h1></div>);
+            else
+                return (
+                    <div id='dashboard-submitted'>
+                        <div id='select-user'>
+                            <div id='see-users'>
+                                {this.renderNames()}
+                            </div>
+                            <div id='load-button'>
+                                <button onClick={this.getMore}>Load more</button>
+                            </div>
                         </div>
-                        <div id='load-button'>
-                            <button onClick={this.getMore}>Load more</button>
-                        </div>
+                        <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges}/>
                     </div>
-                    <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges}/>
-                </>
-                }
-                {this.state.info.length == 0 &&
-                    <h1>Nothing loaded yet!</h1>
-                }
-                </div>
-            );
+                );
         else
             return (<LoadingView />);
     }

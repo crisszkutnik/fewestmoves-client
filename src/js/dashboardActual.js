@@ -3,6 +3,7 @@ import '../css/dashboardActual.css'
 import LoadingView from './loadingView'
 import {isSolved} from '../functions/cubeSolve'
 import ModifyPanel from './modifyPanel'
+import LoginPanel from './loginPanel'
 
 class ChallengeData extends React.Component {
     constructor(props) {
@@ -69,10 +70,12 @@ class DashboardActual extends React.Component {
     }
 
     showPanel(number) {
+        this.setState({showComb: number});
+
         if(this.props.user.logged)
-            this.setState({showComb: number});
+            this.state({panel: <ModifyPanel closePanel={() => this.showPanel(0)} challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>});
         else
-            alert('You have to be logged in');
+            this.setState({panel: <LoginPanel />})
     }
 
     submitResponse(newSol, newExp, modComb) {
@@ -112,7 +115,7 @@ class DashboardActual extends React.Component {
                     <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.showPanel(n)} comb={2}/>
                     <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.showPanel(n)} comb={3}/>
                     {this.state.showComb !== 0 &&
-                    <ModifyPanel closePanel={() => this.showPanel(0)} challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>}
+                    this.state.panel}
                 </div>
             );
         else

@@ -8,8 +8,7 @@ import '../css/general.css'
 
 const Dashboard = () => {
     const [user, setUser] = useState({
-        name: '',
-        surname: ''
+        name: ''
     });
     const history = useHistory();
 

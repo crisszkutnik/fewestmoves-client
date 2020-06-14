@@ -104,7 +104,7 @@ class ResTable extends React.Component {
             all.push(
                 <tr className={className} onClick={() => this.props.changeDisplay(index)} key={index}>
                     <td>{elem.position}</td>
-                    <td><p>{elem.name} {elem.surname}</p></td>
+                    <td><p>{elem.name}</p></td>
                     <td>{showSol(elem.comb1.moves)}</td>
                     <td>{showSol(elem.comb2.moves)}</td>
                     <td>{showSol(elem.comb3.moves)}</td>
