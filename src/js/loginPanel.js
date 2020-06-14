@@ -6,7 +6,7 @@ const LoginPanel = () => {
 
    return (
       <div id='login-panel'>
-         <a href='/wcalogin/login'>Login with WCA</a>
+         <a href='http://localhost:9000/wcalogin/login'>Login with WCA</a>
       </div>
    );
 }
