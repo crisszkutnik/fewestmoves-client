@@ -4,6 +4,8 @@ import LoadingView from './loadingView'
 import {isSolved} from '../functions/cubeSolve'
 import ModifyPanel from './modifyPanel'
 import LoginPanel from './loginPanel'
+import {Container, Row, Col} from 'react-bootstrap'
+import ReactDOM from 'react-dom'
 
 class ChallengeData extends React.Component {
     constructor(props) {
@@ -14,21 +16,29 @@ class ChallengeData extends React.Component {
 
     render() {
         let showButton;
+        let showClass = 'text-white text-center px-2 solBtn contPadding';
+        let text;
 
-        if(this.props.solMoves === 0)
-            showButton = <button className='bton-load-sol not-loaded' onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>;
-        else if(this.props.solMoves > 0)
-            showButton = <button className='bton-load-sol loaded-sol' onClick={() => this.props.showPanel(this.props.comb)}>See solution</button>;
-        else
-            showButton = <button className='bton-load-sol incorrect-sol' onClick={() => this.props.showPanel(this.props.comb)}>Incorrect solution</button>;
+        let click = () => this.props.showPanel(this.props.comb);
+
+        if(this.props.solMoves === 0) {
+            text = 'Load solution';
+            showClass += ' sol-loaded';
+        } else if(this.props.solMoves > 0) {
+            text = 'See solution';
+            showClass += ' sol-not-loaded'
+        } else {
+            text += 'Incorrect solution'
+            showClass += ' sol-incorrect';
+        }
 
         return (
-            <div className='challengeData'>
-                <div className='challengeComb'>  
-                    <p>{this.props.challenge}</p>
-                </div>
-                {showButton}
-            </div>
+            <Row className="justify-content-center mb-2 rowSetting">
+                <Col xs="9" sm="9" md="8" lg="8" xl="8" className="text-center scrambleContainer contPadding px-3">
+                    {this.props.challenge}
+                </Col>
+                <Col xs="2" lg="2" xl="2" onClick={click} className={showClass}>{text}</Col>
+            </Row>
         );
     }
 }
@@ -72,7 +82,7 @@ class DashboardActual extends React.Component {
         if(this.props.user.logged)
             return (<ModifyPanel closePanel={() => this.setState({showComb: 0})} challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>);
         else
-            return (<LoginPanel />);
+            return (<LoginPanel closePanel={() => this.setState({showComb: 0})}/>);
     }
 
     submitResponse(newSol, newExp, modComb) {
@@ -97,23 +107,23 @@ class DashboardActual extends React.Component {
                 body: JSON.stringify(res)
             })
             .then(() => {
-                this.showPanel(0);
+                this.setState({showComb: 0})
             })
             .catch(e => alert('An error occured'));
         } else
-            this.showPanel(0);
+            this.setState({showComb: 0})
     }
 
     render() {
         if(this.state.loaded)
             return(
-                <div id='dashboard'>
+                <Container id='dashboardActual'>
                     <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.setState({showComb: n})} comb={1}/>
                     <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.setState({showComb: n})} comb={2}/>
                     <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.setState({showComb: n})} comb={3}/>
                     {this.state.showComb !== 0 &&
                     this.showPanel()}
-                </div>
+                </Container>
             );
         else
             return (<LoadingView />);

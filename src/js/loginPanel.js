@@ -1,12 +1,22 @@
 import React from 'react'
-import {useHistory} from 'react-router-dom'
+import '../css/loginPanel.css'
+import wca_logo from '../img/wca_logo.svg'
+import {Container, Row, Col} from "react-bootstrap"
 
-const LoginPanel = () => {
-   const history = useHistory();
-
+const LoginPanel = (props) => {
    return (
-      <div id='login-panel'>
-         <a href='http://localhost:9000/wcalogin/login'>Login with WCA</a>
+      <div id="login-background">
+         <Container id='login-panel' className="px-5 py-3">
+            <Row className="justify-content-end">
+               <button onClick={props.closePanel}>x</button>
+            </Row>
+            <Row className="justify-content-center my-3">
+               <h3>Select a method to log in</h3>
+            </Row>
+            <Row className="justify-content-center">
+               <a className="px-3 py-3" href='http://localhost:9000/wcalogin/login'><img src={wca_logo}></img></a>
+            </Row>
+         </Container>
       </div>
    );
 }

@@ -1,159 +1,107 @@
-div#dashboard {
-    align-items: center;
-    justify-content: center;
+#dashboardActual {
     display: flex;
     height: 100vh;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 1920px;
     max-height: 1080px;
-    font-size: 10px;
-}
-
-div.challengeData {
-    background-color: #E5E5E5;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: row;
-    margin-top: 2em;
-    border-radius: 15px;
-    height: 20%;
-    width: 70%;
-    -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
-    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
-}
-
-div.challengeData:first-of-type {
-    margin-top: 5em;
-}
-
-div.challengeComb {
-    width: 80%;
-    text-align: center;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
-div.challengeComb p {
-    width: 80%;
-    font-size: 3em;
-    vertical-align: middle;
+.scrambleContainer {
+    background: #E5E5E5;
 }
 
-button.bton-load-sol {
-    width: 20%;
-    font-size: 3em;
-    color: white;
-    border: none;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+.solBtn {
     cursor: pointer;
-    transition: background 0.2s ease-in-out;
-    outline: none;
+    background: #7188D8;
+    transition: all 0.2s ease-in-out;
 }
 
-button.bton-load-sol:hover {
+.solBtn:hover {
     background: #4e67c2;
 }
 
-button.not-loaded {
-    background: #7188D8;
-}
-
-button.loaded-sol {
+.sol-not-loaded {
     background: #43b581;
 }
 
-button.incorrect-sol {
+.sol-loaded {
+    background: #7188D8;
+}
+
+.sol-incorrect {
     background: #db3044;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 599px) {
-    div#dashboard {
-        min-height: 300px;
-        font-size: 4px;
-        height: 100vh;
+.scrambleContainer {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.solBtn {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.contPadding {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+@media (max-width: 575px) {
+    .contPadding {
+        font-size: 13px;
+        
     }
 
-    div.challengeData {
-        border-radius: 8px;
-        width: 80%;
-        height: 14%;
-        margin-bottom: 20px;    
-    }
-
-    button.bton-load-sol {
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
+    .rowSetting {
+        height: 100px;
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 767px) {
-    div#dashboard {
-        min-height: 300px;
-        font-size: 4px;
+@media (min-width: 576px) {
+    .contPadding {
+        font-size: 16px;
+        
     }
 
-    div.challengeData {
-        width: 60%;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    div#dashboard {
-        min-height: 400px;
-        font-size: 7px;
-    }
-
-    div.challengeData {
-        width: 80%;
-        height: 13%;
-        margin-bottom: 20px;
+    .rowSetting {
+        height: 120px;
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    div#dashboard {
-        min-height: 500px;
-        font-size: 7px;
+@media (min-width: 767px) {
+    .contPadding {
+        font-size: 22px;
+        
     }
 
-    div.challengeData {
-        width: 60%;
-        max-height: 180px;
+    .rowSetting {
+        height: 130px;
     }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-    div#dashboard {
-        font-size: 8px;
-        min-height: 500px;
+@media (min-width: 991px) {
+    .contPadding {
+        font-size: 25px;
+        
     }
 
-    div.challengeData {
-        width: 58%;
-        height: 22%;
-        margin-bottom: 20px;
+    .rowSetting {
+        height: 140px;
     }
 }
 
-@media only screen and (min-width: 1600px) {
-    div#dashboard {
-        min-height: 800px;
+@media (min-width: 1200px) {
+    .contPadding {
+        font-size: 30px;
+        
     }
 
-    div.challengeData {
-        max-width: 1000px;
-        max-height: 200px;        
+    .rowSetting {
+        height: 200px;
     }
 }
