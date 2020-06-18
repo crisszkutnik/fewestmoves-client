@@ -11,13 +11,11 @@ div#loading-view {
    flex-direction: column;
 }
 
-div#loading-view img {
-   height: 200px;
-   width: 200px;
-   filter: grayscale(100%);
+div#loading-view svg {
+   transform: scale(1.5);
 }
 
 div#loading-view h2 {
    color: white;
-   margin-top: 80px;
+   margin-top: 50px;
 }

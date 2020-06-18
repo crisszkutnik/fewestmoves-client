@@ -1,6 +1,7 @@
 import React from 'react'
 import {useFormik} from  'formik'
 import '../css/modifyPanel.css'
+import {Container, Row, Col} from 'react-bootstrap'
 
 const ModifyPanel = (props) => {
    const formik = useFormik({
@@ -16,28 +17,48 @@ const ModifyPanel = (props) => {
    return (
        <div id='modify-panel'>
                <form onSubmit={formik.handleSubmit} id='submit-solution'>
-						<h1>{props.challenge}</h1>
-						<hr />
-                  <div className='input-group'>
-							<label for='solution'>Solution</label>
-							<input id='solution' className='inputField'
-							name='solution'
-							type='text'
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-                    value={formik.values.solution}></input>
-                  </div>
-						<div className='input-group'>
-							<label for='explanation'>Explanation</label>
-							<textarea className='inputField' name='explanation'
-							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							value={formik.values.explanation}></textarea>
-						</div>
-                    <div id='options'>
-                       <a onClick={props.closePanel}>Cancel</a>
-                       <button type='submit'>Submit</button>
-                    </div>
+                  <Container id="modify-container">
+                     <Row>
+                        <Col>
+                           <h2>{props.challenge}</h2>
+                           <hr />
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col>
+                           <label for='solution'>Solution</label>
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col>
+                           <input id='solution' className='inputField'
+                              name='solution'
+                              type='text'
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              value={formik.values.solution}></input>
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col className='mt-4'>
+                           <label for='explanation'>Explanation</label>
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col className='mb-4'>
+                           <textarea className='inputField' name='explanation'
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              value={formik.values.explanation}></textarea>
+                        </Col>
+                     </Row>
+                     <Row>
+                        <Col id="end-buttons">
+                           <a onClick={props.closePanel}>Cancel</a>
+                           <button type='submit'>Submit</button>
+                        </Col>
+                     </Row>
+                  </Container>
                </form>
        </div>
    );
