@@ -22,7 +22,6 @@ class PageNavbar extends React.Component {
 
         if(this.props.user.logged)
             name = (<NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#manage">Manage User</NavDropdown.Item>
                         <NavDropdown.Item href="/dashboard/actual" onClick={this.handleLogout}>Log Out</NavDropdown.Item>
                     </NavDropdown>
             );

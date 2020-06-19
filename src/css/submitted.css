@@ -7,318 +7,88 @@
     justify-content: center;
     align-items: center;
     background-color: #E5E5E5;
+    overflow-x: hidden;
 }
 
-div#display-all, div#select-user {
-    -webkit-box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
-    box-shadow: 5px 5px 21px -11px rgba(0,0,0,0.75);
-    font-size: 10px;
-    box-sizing: border-box;
-}
-
-/*
-    User selection config
-*/
-
-div#select-user {
-    width: 15%;
+#see-users {
     background: white;
-    border-radius: 10px;
-    margin-right: 5em;
-    font-size: 12px;
+    width: 15%;
+    min-width: 350px;
+    height: 80%;
+    border-radius: 8px;
+    margin-right: 50px;
 }
 
-div#select-user div#see-users {
-    width: 100%;
-    height: 90%;
-    overflow-y: auto;
-}
-
-div#select-user div#see-users div.user-data {
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-bottom: 1em;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-div#select-user div#see-users div.user-data:hover {
-    background: rgba(113, 136, 216, 0.5);
-}
-
-div#select-user div#see-users div.user-data.selected {
-    background: rgba(113, 136, 216, 0.5);
-}
-
-div#select-user div#see-users div.user-data h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-    font-weight: 400;
-    width: 95%;
-    overflow: hidden;
-    max-height: 2.5em;
-}
-
-div#select-user div#see-users div.user-data p {
+#load-button {
     display: flex;
-    font-size: 1.2em;
-}
-
-div#select-user div#see-users div.user-data p span {
-    width: 20%;
-    font-weight: 200;
-}
-
-/*
-    Loading button
-*/
-
-div#select-user div#load-button {
-    width: 100%;
     height: 10%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-div#select-user div#load-button button {
+#load-button button {
     outline: none;
     border: none;
+    height: 40px;
+    width: 100px;
+    background: #7188D8;
     color: white;
-    padding: 0.5em;
-    font-size: 1.5em;
-    background: rgb(113, 136, 216);
     border-radius: 5px;
     transition: all 0.5s ease-in-out;
-    cursor: pointer;
 }
 
-div#select-user div#load-button button:hover {
-    background: #4e67c2;
+#load-button button:hover {
     transform: scale(1.1);
 }
 
-/*
-    Responsive settings
-*/
-
-/*Cancel react defautl margin-bottom on p*/
-div#select-user div#see-users div.user-data p {
-    margin-bottom: 0;
+#user-container {
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 599px) {
+#user-container .user-data {
+    box-sizing: border-box;
+    padding: 10px 0 8px 10px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+#user-container .user-data:first-of-type {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+#user-container .user-data:hover {
+    background: rgba(113, 136, 216, 0.5);  
+}
+
+#user-container .selected {
+    background: rgba(78, 103, 194, 0.5);
+}
+
+@media (max-width: 990px) {
     #dashboard-submitted {
-        min-height: 300px;
         flex-direction: column;
-        height: 100vh;
-        padding-top: 80px;
+        height: 220vh;
     }
 
-    div#select-user {
-        font-size: 4px;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        margin-right: 0;
-        margin-bottom: 10px;
-        max-height: 300px;
-        overflow-y: auto;
-    }
-
-    div#select-user div#see-users {
-        display: flex;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    div#select-user div#see-users div.user-data:first-of-type {
-        border-top-right-radius: 0px;
-    }
-
-    div#select-user div#see-users div.user-data {
-        display: flex;
-        flex-direction: column;
-        width: 30%;
-        height: 40px;
-        box-sizing: border-box;
-    }
-
-    div#select-user div#see-users div.user-data h1 {
-        height: 10px;
-        overflow: hidden;
-    }
-
-    div#select-user div#load-button {
-        width: 100%;
-        height: 40px;
-    }
-
-    /*
-        User response section
-    */
-
-    div#display-all {
-        font-size: 3px;
-        width: 80%;
+    #see-users {
+        margin-right: 0px;
+        width: 70%;
         height: 50%;
+        margin-bottom: 50px;
     }
 
-    div#display-all div#title-separator hr {
-        height: 1px;
-    }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 767px) {
-    #dashboard-submitted {
-        min-height: 300px;
-        flex-direction: column;
-        height: 100vh;
-        padding-top: 80px;
-    }
-
-    div#select-user {
-        font-size: 5px;
-        width: 75%;
-        display: flex;
-        flex-direction: column;
-        margin-right: 0;
-        margin-bottom: 10px;
-        max-height: 350px;
-        overflow-y: auto;
-    }
-
-    div#select-user div#see-users {
-        display: flex;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    div#select-user div#see-users div.user-data {
-        display: flex;
-        flex-direction: column;
-        width: 30%;
-        height: 40px;
-        box-sizing: border-box;
-    }
-
-    div#select-user div#load-button {
-        width: 100%;
-        height: 40px;
-    }
-
-    /*
-        User response section
-    */
-
-    div#display-all {
-        font-size: 4px;
-        width: 75%;
-        height: 60%;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    div#select-user div#see-users div.user-data.selected:first-of-type {
-        border-top-left-radius: 0px;
-        border-top-right-radius: 0px;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    div#display-all, div#select-user {
-        height: 75%;
-    }
-
-    div#select-user div#see-users div.user-data.selected:first-of-type {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    #dashboard-submitted {
-        min-height: 400px;
-    }
-
-    /*
-        User response section
-    */
-
-    div#display-all {
-        font-size: 6.5px;
-    }
-
-    div#display-all div#title-separator hr {
+    #dashboard-submitted #display-all {
         width: 70%;
-    }
-
-    /*Select user section*/
-
-    div#select-user {
-        font-size: 4px;
-        width: 18%;
-        font-size: 5.5px;
+        height: 40%;
     }
 }
 
-
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    #dashboard-submitted {
-        min-height: 500px;
-    }
-    
-    /*
-        User response section
-    */
-
-    div#display-all {
-        font-size: 6px;
-        max-height: 1000px;
-    }
-
-    div#display-all div#title-separator hr {
-        width: 70%;
-    }
-
-    /*Select user section*/
-
-    div#select-user {
-        font-size: 6px;
-        width: 18%;
-    }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-    #dashboard-submitted {
-        min-height: 500px;
-    }
-    
-    /*
-        User response section
-    */
-
-    div#display-all {
-        min-height: 450px;
-        font-size: 7.5px;
-    }
-
-    div#display-all div#title-separator hr {
-        width: 70%;
-    }
-
-    /*Select user section*/
-
-    div#select-user {
-        min-height: 450px;
-        font-size: 8px;
-        width: 18%;
+@media (min-width: 991px) {
+    #dashboard-submitted #display-all {
+        width: 50%;
+        height: 80%;
     }
 }

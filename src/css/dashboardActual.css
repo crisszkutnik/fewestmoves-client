@@ -102,6 +102,12 @@
     }
 
     .rowSetting {
+        height: 180px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .rowSetting {
         height: 200px;
     }
 }

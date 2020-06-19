@@ -1,106 +1,109 @@
-/*
-
-    Result section
-
-*/
-
-div#display-all {
+#display-all {
+    margin: 0;
     background: white;
     border-radius: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
 }
 
-div#display-all div#title-separator {
-    display: flex;
-    flex-direction: column;
-    height: 13%;
-    justify-content: center;
-    padding-left: 2em;
-    margin-bottom: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-sizing: border-box;
-    padding-right: 5px;
+#display-all hr {
+    background: #7188D8;
+    height: 1px;
 }
 
-div#display-all div#title-separator h1 {
-    font-size: 3em;
+#display-all h2 {
+    font-size: 2em;
 }
 
-div#display-all div#title-separator hr {
-    margin-top: 5px;
-    background: rgb(113, 136, 216);
-    border: none;
-    height: 2px;
-    width: 60%;
-    border-radius: 10px;
-}
-
-/*Solution and explanation*/
-
-div#display-all div.user-response {
-    display: flex;
-    flex-direction: column;
-    height: 75%;
-    padding-left: 20px;
-}
-
-div#display-all div.user-response h2 {
-    font-size: 2.5em;
-    margin-bottom: 1em;
+#display-all h3 {
+    font-size: 2em;
     font-weight: 400;
 }
 
-div#display-all div.user-response p, div#display-all div.user-response textarea {
-    padding: 0.8em;
-    background: #F3F3F3;
-    width: 95%;
+#display-all textarea, #display-all input {
+    outline: none;
+    background: rgba(220, 220, 220);
+    border: 2px solid rgba(210, 210, 210);
+    width: 100%;
+    resize: none;
     border-radius: 5px;
-    font-size: 1.7em;
-    box-sizing: border-box;
+    padding: 5px;
+    font-size: 1em;
 }
 
-div#display-all div.user-response textarea {
-    border: none;
-    outline: none;
-    resize: none;
+#display-all input {
+    height: 40px;
+}
+
+#display-all textarea {
     height: 60%;
 }
 
-div#display-all div.user-response p:first-of-type {
-    margin-bottom: 20px;
+#display-all #buttons button {
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0);
+    margin: 0 20px;
+    transition: all 0.2s ease-in-out;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 25px;
 }
 
-/*Button*/
+#display-all #res-data {
+    height: 75%;
+}
 
-div#display-all div.selector {
-    display: flex;
-    width: 100%;
-    height: 10%;
+#display-all #res-data #explanation {
+    margin-top: 10px;
+}
+
+#display-all #buttons button.selected, #display-all #buttons button:hover {
+    color: white;
+    background: #7188D8;
+}
+
+#display-all #buttons {
     justify-content: center;
     align-items: center;
+    display: flex;
 }
 
-div#display-all div.selector button {
-    outline: none;
-    border: none;
-    font-size: 2em;
-    background: white;
-    width: 1.5em;
-    height: 1.5em;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: all 0.2s ease-in-out;
+@media (max-width: 575px) {
+    #display-all {
+        font-size: 8px;
+    }
+
+    #display-all #res-data {
+        height: 75%;
+    }
 }
 
-div#display-all div.selector button:nth-child(2) {
-    margin-left: 2em;
-    margin-right: 2em;
+@media (min-width: 576px) {
+    #display-all {
+        font-size: 12px;
+    }
 }
 
-div#display-all div.selector button.selected, div#display-all div.selector button:hover {
-    background: rgb(113, 136, 216);
-    color: white;
+@media (min-width: 767px) {
+    #display-all {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 991px) {
+    #display-all {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #display-all {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1500px) {
+    #display-all {
+        font-size: 15px;
+    }
 }

@@ -3,6 +3,9 @@ import '../css/submitted.css'
 import LoadingView from './loadingView'
 import UserSolutions from './userSolutions'
 import showSol from '../functions/func'
+import {Container, Row, Col} from 'react-bootstrap'
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 class SubmittedSol extends React.Component {
     constructor(props) {
@@ -49,8 +52,16 @@ class SubmittedSol extends React.Component {
 
             all.push(
                 <div onClick={() => this.changeDisplayInfo(index)} className={divClass} key={index}>
-                    <h1>{elem.name}</h1>
-                    <p>{showSol(elem.comb1.moves)}{showSol(elem.comb2.moves)}{showSol(elem.comb3.moves)}</p>
+                    <Row>
+                        <Col>
+                        <h2>{elem.name}</h2> 
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p>{showSol(elem.comb1.moves)}{showSol(elem.comb2.moves)}{showSol(elem.comb3.moves)}</p>
+                        </Col>
+                    </Row>
                 </div>
             )
         })
@@ -84,15 +95,17 @@ class SubmittedSol extends React.Component {
             else
                 return (
                     <div id='dashboard-submitted'>
-                        <div id='select-user'>
-                            <div id='see-users'>
-                                {this.renderNames()}
-                            </div>
+                        <div id='see-users'>
+                            <SimpleBar id='simple-bar' style={{ height: '90%' }}>
+                                <Container id='user-container'>
+                                        {this.renderNames()}     
+                                </Container>
+                            </SimpleBar>
                             <div id='load-button'>
                                 <button onClick={this.getMore}>Load more</button>
                             </div>
                         </div>
-                        <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges}/>
+                        <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges} />
                     </div>
                 );
         else

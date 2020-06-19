@@ -6,7 +6,7 @@ div#modify-panel {
    height: 100vh;
    max-width: 1920px;
    background-color: rgba(0, 0, 0, 0.5);
-   justify-content: center;
+   justify-content: space-around;
    align-items: center;
    left: 0;
 }
