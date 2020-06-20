@@ -1,113 +1,212 @@
 #dashboardActual {
     display: flex;
-    height: 100vh;
-    max-height: 1080px;
+    background-color: var(--dark1);
     flex-direction: column;
-    justify-content: center;
+    overflow-x: hidden;
 }
 
-.scrambleContainer {
-    background: #E5E5E5;
+#header {
+    display: flex;
+    padding-top: 56px;
+    align-items: center;
 }
 
-.solBtn {
-    cursor: pointer;
-    background: #7188D8;
-    transition: all 0.2s ease-in-out;
+#header h1 {
+    padding: 8px 50px;
+    background: var(--default-violet);
+    color: white;
+    font-weight: 200;
 }
 
-.solBtn:hover {
-    background: #4e67c2;
+#challenges {
+    display: flex;
+    height: 80%;
+    padding-top: 50px;
 }
 
-.sol-not-loaded {
-    background: #43b581;
+.solution-card {
+    background-color: var(--dark2);
 }
 
-.sol-loaded {
-    background: #7188D8;
+.sol-status {
+    height: 20%;
+    display: flex;
 }
 
-.sol-incorrect {
-    background: #db3044;
+.sol-status p {
+    font-weight: 300;
+    font-size: 1.8em;
+    margin-bottom: 0;
+    margin-left: 12px;
 }
 
-.scrambleContainer {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+.sol-not-loaded .sol-status p {
+    color: var(--default-violet);
 }
 
-.solBtn {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+.sol-incorrect p {
+    color: var(--incorrect-red);
 }
 
-.contPadding {
-    height: 100%;
+.sol-loaded p {
+    color: var(--ok-green);
+}
+
+.sol-status-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
+.sol-status img {
+    height: 50px;
+    width: 50px;
+}
 
-@media (max-width: 575px) {
-    .contPadding {
-        font-size: 13px;
-        
+.sol-moves {
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sol-moves h2 {
+    font-size: 10em;
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 0.8;
+    height: auto;
+}
+
+.sol-moves span {
+    color: var(--dark3);
+    font-size: 1.5em;
+}
+
+.sol-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
+.sol-button button {
+    outline: none;
+    border: none;
+    background: var(--default-violet);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+}
+
+.sol-button button:hover {
+    transform: scale(1.1);
+    background: var(--darker-violet);
+}
+
+.sol-button .col {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 990px) {
+    #header {
+        align-items: flex-end;
     }
 
-    .rowSetting {
-        height: 100px;
+    #challenges {
+        flex-direction: column;
+        height: 90%;
+    }
+
+    #dashboardActual {
+        height: 1600px;
+    }
+
+    .solution-card {
+        font-size: 12px;
+        margin-top: 30px;
+        min-height: 400px;
+    }
+
+    .solution-card h2 {
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 575px) {
+    #header h1 {
+        font-size: 4.5vw;
+    }
+
+    #header {
+        height: 8%;
+    }
+
+    .solution-card {
+        width: 65%;
     }
 }
 
 @media (min-width: 576px) {
-    .contPadding {
-        font-size: 16px;
-        
+    #header h1 {
+        font-size: 28px;
     }
 
-    .rowSetting {
-        height: 120px;
+    #header {
+        height: 10%;
+    }
+
+    .solution-card {
+        width: 50%;
     }
 }
 
 @media (min-width: 767px) {
-    .contPadding {
-        font-size: 22px;
-        
-    }
-
-    .rowSetting {
-        height: 130px;
+    .solution-card {
+        width: 40%;
     }
 }
 
 @media (min-width: 991px) {
-    .contPadding {
-        font-size: 25px;
-        
+    #dashboardActual {
+        height: 100vh;
     }
 
-    .rowSetting {
-        height: 140px;
+    #header {
+        height: 20%;
+    }
+
+    .solution-card {
+        font-size: 12px;
+        width: 28%;
+        height: 60%;
+    }
+
+    #challenges {
+        flex-direction: row;
     }
 }
 
 @media (min-width: 1200px) {
-    .contPadding {
-        font-size: 30px;
-        
+    #challenges {
+        height: 80%;
     }
 
-    .rowSetting {
-        height: 180px;
+    .solution-card {
+        font-size: 14px;
+        width: 25%;
+        height: 70%;
     }
 }
 
 @media (min-width: 1500px) {
-    .rowSetting {
-        height: 200px;
+    .solution-card {
+        font-size: 15px;
+        width: 20%;
+        height: 70%;
     }
 }

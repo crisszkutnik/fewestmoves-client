@@ -1,83 +1,172 @@
-div#modify-panel {
-   position: absolute;
-   display: flex;
-   z-index: 2;
-   width: 100vw;
+#modify-panel {
    height: 100vh;
-   max-width: 1920px;
-   background-color: rgba(0, 0, 0, 0.5);
-   justify-content: space-around;
-   align-items: center;
+   width: 100vw;
+   position: absolute;
+   top: 0;
    left: 0;
+   background: rgba(0, 0, 0, 0.5);
+   z-index: 3;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-div#modify-container {
-   background-color: #2B2D32;
+#modify-container {
+   width: 900px;
+   height: 800px;
+   background-color: var(--dark1);
    color: white;
-   border-radius: 8px;
 }
 
-div#modify-container hr {
-   background: #7188D8;
-   height: 1px;
+#title {
+   height: 15%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: var(--default-violet-75);
 }
 
-div#modify-container textarea, div#modify-container input {
-   width: 100%;
-   border: 2px solid #7a7a7a;
-   border-radius: 5px;
-   background: rgba(196, 196, 196);
-   outline: none;
-   padding: 3px;
-}
-
-div#modify-container textarea {
-   resize: none;
-   height: 200px;
-}
-
-div#modify-container div#end-buttons {
-   justify-content: flex-end;
+.label {
+   height: 7.5%;
    display: flex;
    align-items: center;
 }
 
-div#modify-container div#end-buttons > * {
+.label label {
+   font-size: 1.5em;
+   color: var(--dark3);
+   margin: 0;
+}
+
+#solution {
+   height: 5%;
+}
+
+#explanation {
+   height: 45%;
+}
+
+#end-buttons {
+   height: 20%;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+/*
+   Element styling
+*/
+
+#modify-container input {
+   height: 100%;
+}
+
+#modify-container h2 {
+   font-size: 3.5em;
+}
+
+#modify-container textarea, #modify-container input {
+   width: 100%;
+   outline: none;
+   border: 2px solid var(--dark2);
+   border-radius: 5px;
+   background: var(--dark4);
+   padding: 5px;
+   color: white;
+}
+
+#modify-container textarea {
+   resize: none;
+   height: 100%;
+}
+
+#end-buttons button {
+   outline: none;
+   border: none;
+   background: var(--default-violet);
+   color: white;
+   padding: 10px 20px;
+   border-radius: 5px;
+   transition: all 0.25s ease-in-out;
+   font-size: 1.5em;
+}
+
+#end-buttons button:hover {
+   transform: scale(1.1);
+   background: var(--darker-violet);
+}
+
+#end-buttons a {
+   font-size: 1.5em;
+   transition: all 0.25s ease-in-out;
+}
+
+#end-buttons a:hover {
+   color: var(--incorrect-red);
    cursor: pointer;
 }
 
-div#modify-container div#end-buttons button {
-   border: none;
-   outline: none;
-   color: white;
-   padding: 5px 8px;
-   background-color: #7188D8;
-   border-radius: 5px;
-   transition: all 0.2s ease-in-out;
-}
-
-div#modify-container div#end-buttons button:hover {
-   transform: scale(1.1);
-}
-
-div#modify-container div#end-buttons a {
-   margin-right: 20px;
-}
-
 @media (max-width: 575px) {
-   div#modify-container {
-      padding: 40px 20px;
+   #modify-container {
+      width: 90vw;
+      height: 600px;
+      font-size: 5.5px;
+   }
+
+   #modify-container textarea {
+      resize: none;
+      height: 95%;
+   }
+
+   #end-buttons button {
+      font-size: 2em;
+   }
+   
+   #end-buttons a {
+      font-size: 2em;
+   }
+
+   .label label {
+      font-size: 2.5em;
    }
 }
 
 @media (min-width: 576px) {
-   div#modify-container {
-      padding: 40px 35px;
+   #modify-container {
+      width: 500px;
+      height: 700px;
+      font-size: 8px;
+   }
+
+   #modify-container textarea {
+      resize: none;
+      height: 95%;
+   }
+}
+
+@media (min-width: 767px) {
+   #modify-container {
+      width: 700px;
+      height: 700px;
+      font-size: 10px;
+   }
+
+   #modify-container textarea {
+      resize: none;
+      height: 95%;
    }
 }
 
 @media (min-width: 991px) {
-   div#modify-container {
-      padding: 60px 40px;
+   #modify-container {
+      width: 900px;
+      height: 800px;
+   }
+}
+
+@media (min-width: 1200px) {
+   #modify-container {
+      width: 900px;
+      height: 800px;
    }
 }

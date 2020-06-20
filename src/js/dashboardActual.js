@@ -5,40 +5,62 @@ import {isSolved} from '../functions/cubeSolve'
 import ModifyPanel from './modifyPanel'
 import LoginPanel from './loginPanel'
 import {Container, Row, Col} from 'react-bootstrap'
-import ReactDOM from 'react-dom'
+import correctIMG from '../img/tick.svg'
+import incorrectIMG from '../img/incorrect.svg'
+import notLoadedIMG from '../img/exclamation.svg'
+
 
 class ChallengeData extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {showPanel: false}
     }
 
     render() {
-        let showButton;
-        let showClass = 'text-white text-center px-2 solBtn contPadding';
+        let showClass = 'text-white text-center solution-card px-2';
         let text;
-
-        let click = () => this.props.showPanel(this.props.comb);
+        let moves;
+        let image;
 
         if(this.props.solMoves === 0) {
-            text = 'Load solution';
-            showClass += ' sol-loaded';
+            text = 'Not loaded yet';
+            showClass += ' sol-not-loaded';
+            moves = 0;
+            image = <img src={notLoadedIMG}></img>
         } else if(this.props.solMoves > 0) {
-            text = 'See solution';
-            showClass += ' sol-not-loaded'
+            text = 'Correct solution';
+            showClass += ' sol-loaded';
+            moves = this.props.solMoves;
+            image = <img src={correctIMG}></img>
         } else {
             text = 'Incorrect solution'
             showClass += ' sol-incorrect';
+            moves = 'DNF';
+            image = <img src={incorrectIMG}></img>
         }
 
         return (
-            <Row className="justify-content-center mb-2 rowSetting">
-                <Col xs="9" sm="9" md="8" lg="8" xl="8" className="text-center scrambleContainer contPadding px-3">
-                    {this.props.challenge}
-                </Col>
-                <Col xs="2" lg="2" xl="2" onClick={click} className={showClass}>{text}</Col>
-            </Row>
+            <Container className={showClass}>
+                <Row className='sol-status'>
+                    <Col className='sol-status-info'>
+                        {image}
+                        <p>{text}</p>
+                    </Col>
+                </Row>
+                <Row className='sol-moves'>
+                    <Col>
+                        <h2>{moves}</h2><br />
+                        {moves >= 0 &&
+                        <span>
+                        movements
+                        </span>}
+                    </Col>
+                </Row>
+                <Row className='sol-button'> 
+                    <Col>
+                        <button onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
@@ -48,7 +70,7 @@ class DashboardActual extends React.Component {
         super();
         this.submitResponse = this.submitResponse.bind(this);
         this.showPanel = this.showPanel.bind(this);
-        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 0};
+        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 1};
 
         this.fetch1url = '/challData/getChallenge';
         this.fetch1Props = {
@@ -117,13 +139,18 @@ class DashboardActual extends React.Component {
     render() {
         if(this.state.loaded)
             return(
-                <Container id='dashboardActual'>
-                    <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.setState({showComb: n})} comb={1}/>
-                    <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.setState({showComb: n})} comb={2}/>
-                    <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.setState({showComb: n})} comb={3}/>
-                    {this.state.showComb !== 0 &&
-                    this.showPanel()}
-                </Container>
+                <div id='dashboardActual'>
+                    <div id='header'>
+                        <h1>Take a look at this week challenges</h1>
+                    </div>
+                    <div id='challenges'>
+                        <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.setState({showComb: n})} comb={1}/>
+                        <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.setState({showComb: n})} comb={2}/>
+                        <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.setState({showComb: n})} comb={3}/>
+                        {this.state.showComb !== 0 &&
+                        this.showPanel()}
+                    </div>
+                </div>
             );
         else
             return (<LoadingView />);

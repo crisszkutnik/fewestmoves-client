@@ -18,18 +18,17 @@ const ModifyPanel = (props) => {
        <div id='modify-panel'>
                <form onSubmit={formik.handleSubmit} id='submit-solution'>
                   <Container id="modify-container">
-                     <Row>
+                     <Row id='title'>
                         <Col>
                            <h2>{props.challenge}</h2>
-                           <hr />
                         </Col>
                      </Row>
-                     <Row>
-                        <Col>
+                     <Row className='label'>
+                        <Col >
                            <label for='solution'>Solution</label>
                         </Col>
                      </Row>
-                     <Row>
+                     <Row id='solution'>
                         <Col>
                            <input id='solution' className='inputField'
                               name='solution'
@@ -39,22 +38,24 @@ const ModifyPanel = (props) => {
                               value={formik.values.solution}></input>
                         </Col>
                      </Row>
-                     <Row>
-                        <Col className='mt-4'>
+                     <Row className='label'>
+                        <Col>
                            <label for='explanation'>Explanation</label>
                         </Col>
                      </Row>
-                     <Row>
-                        <Col className='mb-4'>
+                     <Row id='explanation'>
+                        <Col >
                            <textarea className='inputField' name='explanation'
                               onChange={formik.handleChange}
                               onBlur={formik.handleBlur}
                               value={formik.values.explanation}></textarea>
                         </Col>
                      </Row>
-                     <Row>
-                        <Col id="end-buttons">
+                     <Row id="end-buttons">
+                        <Col xs="2" md="2" lg="1">
                            <a onClick={props.closePanel}>Cancel</a>
+                        </Col>
+                        <Col xs="4" sm="3" md="2">
                            <button type='submit'>Submit</button>
                         </Col>
                      </Row>

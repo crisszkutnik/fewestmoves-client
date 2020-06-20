@@ -14,7 +14,7 @@
 }
 
 #login-panel {
-    background-color: #2B2D32;
+    background-color: var(--dark1);
     display: block;
 }
 
@@ -31,7 +31,7 @@
     border-radius: 50%;
     text-align: center;
     line-height: 20px;
-    background: red;
+    background: var(--incorrect-red);
 }
 
 #login-panel a {
