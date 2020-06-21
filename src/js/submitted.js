@@ -54,7 +54,7 @@ class SubmittedSol extends React.Component {
                 <div onClick={() => this.changeDisplayInfo(index)} className={divClass} key={index}>
                     <Row>
                         <Col>
-                        <h2>{elem.name}</h2> 
+                            <h2>{elem.name}</h2> 
                         </Col>
                     </Row>
                     <Row>
@@ -87,8 +87,6 @@ class SubmittedSol extends React.Component {
     }
 
     render() {
-        console.log(this.state);
-
         if(this.state.fetchedData)
             if(this.state.info.length == 0)
                 return(<div id='dashboard-submitted'><h1>Nothing loaded yet!</h1></div>);
@@ -96,9 +94,9 @@ class SubmittedSol extends React.Component {
                 return (
                     <div id='dashboard-submitted'>
                         <div id='see-users'>
-                            <SimpleBar id='simple-bar' style={{ height: '90%' }}>
+                            <SimpleBar id='simple-bar'>
                                 <Container id='user-container'>
-                                        {this.renderNames()}     
+                                        {this.renderNames()}       
                                 </Container>
                             </SimpleBar>
                             <div id='load-button'>

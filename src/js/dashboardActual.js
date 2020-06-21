@@ -70,7 +70,7 @@ class DashboardActual extends React.Component {
         super();
         this.submitResponse = this.submitResponse.bind(this);
         this.showPanel = this.showPanel.bind(this);
-        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 1};
+        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 0};
 
         this.fetch1url = '/challData/getChallenge';
         this.fetch1Props = {

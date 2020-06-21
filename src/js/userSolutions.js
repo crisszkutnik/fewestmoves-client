@@ -23,23 +23,34 @@ class UserSolutions extends React.Component {
       }
 
       return (
-         <Container id='display-all' className='px-3 py-3'>
-            <Row>
+         <Container id='display-all'>
+            <Row id='title'>
                <Col>
                   <h2 className='scramble'>{this.props.challenges[`comb${this.state.solDisplay}`]}</h2>
-                  <hr className='separator' />
                </Col>
             </Row>
-            <Row id='res-data'>
+            <Row className='body-title'>
                <Col>
                   <h3>Solution</h3>
-                  <input type='text' value={this.props.userSol[`comb${this.state.solDisplay}`].sol} id="solution"></input>
-                  <h3 id='explanation'>Explanation</h3>
+               </Col>
+            </Row>
+            <Row id='solution'>
+               <Col>
+                  <input type='text' value={this.props.userSol[`comb${this.state.solDisplay}`].sol}></input>
+               </Col>
+            </Row>
+            <Row className='body-title'>
+               <Col>
+               <h3 id='explanation'>Explanation</h3>
+               </Col>
+            </Row>
+            <Row id='explanation'>
+               <Col>
                   <textarea readOnly value={this.props.userSol[`comb${this.state.solDisplay}`].explanation}></textarea>
                </Col>
             </Row>
-            <Row>
-               <Col id="buttons">
+            <Row id="buttons">
+               <Col>
                   <button className={buttonClass(1)} onClick={() => this.changeDisplay(1)}>1</button>
                   <button className={buttonClass(2)} onClick={() => this.changeDisplay(2)}>2</button>
                   <button className={buttonClass(3)} onClick={() => this.changeDisplay(3)}>3</button>

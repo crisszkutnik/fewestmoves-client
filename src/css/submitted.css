@@ -2,21 +2,14 @@
     width: 100vw;
     max-width: 1920px;
     display: flex;
-    height: 100vh;
-    box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
-    background-color: #E5E5E5;
+    background-color: var(--dark1);
     overflow-x: hidden;
 }
 
 #see-users {
-    background: white;
-    width: 15%;
-    min-width: 350px;
-    height: 80%;
+    background: var(--dark2);
     border-radius: 8px;
-    margin-right: 50px;
+    color: white;
 }
 
 #load-button {
@@ -29,9 +22,8 @@
 #load-button button {
     outline: none;
     border: none;
-    height: 40px;
-    width: 100px;
-    background: #7188D8;
+    padding: 10px 8px;
+    background: var(--default-violet);
     color: white;
     border-radius: 5px;
     transition: all 0.5s ease-in-out;
@@ -41,10 +33,19 @@
     transform: scale(1.1);
 }
 
+#simple-bar {
+    height: 90%;
+}
+
 #user-container {
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+#user-container h2 {
+    font-size: 2em;
+    overflow: hidden;
 }
 
 #user-container .user-data {
@@ -60,33 +61,109 @@
 }
 
 #user-container .user-data:hover {
-    background: rgba(113, 136, 216, 0.5);  
+    background: var(--darker-violet);  
 }
 
 #user-container .selected {
-    background: rgba(78, 103, 194, 0.5);
+    background: var(--default-violet-75);
 }
 
 @media (max-width: 990px) {
     #dashboard-submitted {
         flex-direction: column;
-        height: 220vh;
+        height: 1800px;
+        padding-top: 100px;
+        align-items: center;
     }
 
     #see-users {
-        margin-right: 0px;
         width: 70%;
-        height: 50%;
-        margin-bottom: 50px;
+        height: 700px;
+        font-size: 12px;
     }
 
     #dashboard-submitted #display-all {
         width: 70%;
-        height: 40%;
+        margin-top: 20px;
+        height: 600px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 575px) {
+    #see-users {
+        font-size: 12px;
+        height: 600px;
+    }
+    #dashboard-submitted #display-all {
+        font-size: 7.5px;
+        height: 600px;
+    }
+
+    #dashboard-submitted #display-all input, #dashboard-submitted #display-all textarea {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 767px) {
+    #see-users {
+        width: 70%;
+        height: 700px;
+        font-size: 12px;
+    }
+
+    #dashboard-submitted #display-all {
+        width: 70%;
+        margin-top: 20px;
+        height: 800px;
+        font-size: 12px;
     }
 }
 
 @media (min-width: 991px) {
+    #dashboard-submitted {
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    #see-users {
+        width: 25%;
+        height: 80%;
+        margin-right: 50px;
+        font-size: 12px;
+    }
+
+    #dashboard-submitted #display-all {
+        width: 60%;
+        height: 80%;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #see-users {
+        width: 22%;
+        height: 80%;
+        font-size: 14px;
+    }
+
+    #dashboard-submitted #display-all {
+        width: 60%;
+        height: 80%;
+    }
+}
+
+@media (min-width: 1500px) {
+    #see-users {
+        width: 18%;
+        height: 80%;
+    }
+
     #dashboard-submitted #display-all {
         width: 50%;
         height: 80%;

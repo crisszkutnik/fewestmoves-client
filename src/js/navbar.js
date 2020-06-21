@@ -33,7 +33,7 @@ class PageNavbar extends React.Component {
 
         return(
             <Navbar variant="dark" expand="lg" style={{backgroundColor: '#2B2D32', position: 'absolute', width: '100vw', zIndex: '3'}}>
-            <Navbar.Brand href="/dashboard/actual">Cubitos</Navbar.Brand>
+            <Navbar.Brand href="/dashboard/actual">Fewest Moves</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>

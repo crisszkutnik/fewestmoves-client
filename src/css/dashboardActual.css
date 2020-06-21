@@ -135,6 +135,10 @@
     .solution-card h2 {
         line-height: 1.2;
     }
+
+    .sol-status p {
+        font-size: 1.6em;
+    }
 }
 
 @media (max-width: 575px) {

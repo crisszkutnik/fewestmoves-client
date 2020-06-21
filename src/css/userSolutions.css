@@ -1,109 +1,102 @@
 #display-all {
     margin: 0;
-    background: white;
+    background: var(--dark2);
     border-radius: 10px;
+    color: white;
+    padding: 0;
 }
 
-#display-all hr {
-    background: #7188D8;
-    height: 1px;
+#display-all > *:not(#title) {
+    padding: 0 15px;
 }
 
-#display-all h2 {
+#title {
+    background: var(--default-violet-75);
+    height: 12.5%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#title h2 {
     font-size: 2em;
 }
 
-#display-all h3 {
-    font-size: 2em;
-    font-weight: 400;
+.body-title {
+    height: 7.5%;
+    justify-content: center;
 }
 
-#display-all textarea, #display-all input {
-    outline: none;
-    background: rgba(220, 220, 220);
-    border: 2px solid rgba(210, 210, 210);
+.body-title h3 {
+    font-size: 1.8em;
+}
+
+.body-title .col {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#solution {
+    height: 5%;
+}
+
+#solution .col {
+    height: 100%;
+}
+
+#solution .col input, #explanation .col textarea {
+    border: 0;
+    outline: 0;
     width: 100%;
-    resize: none;
+    background: var(--dark4);
+    border: 2px solid var(--dark3);
     border-radius: 5px;
     padding: 5px;
-    font-size: 1em;
-}
-
-#display-all input {
-    height: 40px;
-}
-
-#display-all textarea {
-    height: 60%;
-}
-
-#display-all #buttons button {
-    border: none;
-    outline: none;
-    background: rgba(0,0,0,0);
-    margin: 0 20px;
-    transition: all 0.2s ease-in-out;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    line-height: 25px;
-}
-
-#display-all #res-data {
-    height: 75%;
-}
-
-#display-all #res-data #explanation {
-    margin-top: 10px;
-}
-
-#display-all #buttons button.selected, #display-all #buttons button:hover {
     color: white;
-    background: #7188D8;
 }
 
-#display-all #buttons {
+#solution .col input {
+    height: 100%;
+}
+
+#explanation {
+    height: 45%;
+}
+
+#explanation .col textarea {
+    resize: none;
+    height: 95%;
+}
+
+#buttons {
+    height: 20%;
+}
+
+#buttons .col {
+    height: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-@media (max-width: 575px) {
-    #display-all {
-        font-size: 8px;
-    }
-
-    #display-all #res-data {
-        height: 75%;
-    }
+#buttons button {
+    border: 0;
+    outline: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    font-size: 1em;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    transition: all 0.25s ease-in-out;
 }
 
-@media (min-width: 576px) {
-    #display-all {
-        font-size: 12px;
-    }
+#buttons button:nth-child(2) {
+    margin: 0 40px;
 }
 
-@media (min-width: 767px) {
-    #display-all {
-        font-size: 12px;
-    }
-}
-
-@media (min-width: 991px) {
-    #display-all {
-        font-size: 12px;
-    }
-}
-
-@media (min-width: 1200px) {
-    #display-all {
-        font-size: 14px;
-    }
-}
-
-@media (min-width: 1500px) {
-    #display-all {
-        font-size: 15px;
-    }
+#buttons button.selected, #buttons button:hover  {
+    background: var(--default-violet);
 }
