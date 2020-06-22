@@ -63,6 +63,27 @@ div#prev-results {
     cursor: pointer;
 }
 
+#end-button {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#end-button button {
+    border: none;
+    outline: none;
+    background: var(--default-violet);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+}
+
+#end-button button:hover {
+    transform: scale(1.1);
+    background: var(--darker-violet);
+}
+
 @media (max-width: 991px) {
     * {
         overflow-x: hidden;
