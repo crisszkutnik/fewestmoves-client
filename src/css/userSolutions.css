@@ -29,6 +29,7 @@
 
 .body-title h3 {
     font-size: 1.8em;
+    overflow: hidden;
 }
 
 .body-title .col {
@@ -61,16 +62,16 @@
 }
 
 #explanation {
-    height: 45%;
+    height: 50%;
 }
 
 #explanation .col textarea {
     resize: none;
-    height: 95%;
+    height: 98%;
 }
 
 #buttons {
-    height: 20%;
+    height: 15%;
 }
 
 #buttons .col {

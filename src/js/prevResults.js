@@ -147,7 +147,6 @@ class ResTable extends React.Component {
                 <SimpleBar style={{maxHeight: `${this.state.maxHeight}px`}}>
                     <Container id='table-body'>
                         {this.displayAll()}
-                        {this.displayAll()}
                     </Container>
                 </SimpleBar>
             </div>

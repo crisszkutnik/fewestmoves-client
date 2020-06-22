@@ -1,7 +1,7 @@
 #modify-panel {
    height: 100vh;
    width: 100vw;
-   position: absolute;
+   position: fixed;
    top: 0;
    left: 0;
    background: rgba(0, 0, 0, 0.5);
@@ -16,6 +16,7 @@
    height: 800px;
    background-color: var(--dark1);
    color: white;
+   padding: 0;
 }
 
 #modify-container #title {
@@ -68,6 +69,7 @@
 #modify-container textarea, #modify-container input {
    width: 100%;
    outline: none;
+   font-size: 1.5em;
    border: 2px solid var(--dark2);
    border-radius: 5px;
    background: var(--dark4);
@@ -109,21 +111,20 @@
 @media (max-width: 575px) {
    #modify-container {
       width: 90vw;
-      height: 600px;
-      font-size: 5.5px;
+      height: 400px;
+      font-size: 7px;
+   }
+
+   #modify-container > *:not(#title):not(h1) {
+      padding: 0 10px;
    }
 
    #modify-container textarea {
-      resize: none;
       height: 95%;
    }
 
-   #end-buttons button {
-      font-size: 2em;
-   }
-   
-   #end-buttons a {
-      font-size: 2em;
+   #end-buttons  {
+      font-size: 6px;
    }
 
    .label label {
@@ -136,6 +137,10 @@
       width: 500px;
       height: 700px;
       font-size: 8px;
+   }
+
+   #modify-container > *:not(#title):not(h1) {
+      padding: 0 20px;
    }
 
    #modify-container textarea {
@@ -152,7 +157,6 @@
    }
 
    #modify-container textarea {
-      resize: none;
       height: 95%;
    }
 }

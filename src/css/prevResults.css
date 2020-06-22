@@ -3,7 +3,7 @@ div#prev-results {
     width: 100vw;
     max-width: 1920px;
     align-items: center;
-    background-color: #ebebeb;
+    background-color: var(--dark1);
 }
 
 #table-container .row, #table-container .col {
@@ -12,10 +12,11 @@ div#prev-results {
 }
 
 #table-container {
-    background-color: white;
+    background-color: var(--dark4);
     text-align: center;
     border-radius: 6px;
     width: 100%;
+    color: white;
 }
 
 #table-container p {
@@ -24,7 +25,7 @@ div#prev-results {
 }
 
 #table-head {
-    background-color: #2B2D32;
+    background-color: var(--dark2);
     color: white;
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
@@ -50,15 +51,15 @@ div#prev-results {
 }
 
 .table-row.selected {
-    background: rgba(78, 103, 194, 0.5);
+    background: var(--default-violet-75);
 }
 
 .table-row:nth-child(even) {
-    background: rgba(113, 136, 216, 0.2);
+    background: var(--dark3);
 }
 
 .table-row:hover {
-    background: rgba(78, 103, 194, 0.5);
+    background: var(--darker-violet);
     cursor: pointer;
 }
 
@@ -119,11 +120,19 @@ div#prev-results {
     #table-container {
         font-size: 8px;
     }
+
+    div#prev-results #display-all {
+        font-size: 2.2vw;
+    }
 }
 
 @media (min-width: 576px) {
     #table-container {
         font-size: 12px;
+    }
+
+    div#prev-results #display-all {
+        font-size: 11px;
     }
 }
 
@@ -131,10 +140,18 @@ div#prev-results {
     #table-container {
         font-size: 14px;
     }
+
+    div#prev-results #display-all {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 991px) {
     #table-container {
+        font-size: 12px;
+    }
+
+    div#prev-results #display-all {
         font-size: 12px;
     }
 }
@@ -143,10 +160,18 @@ div#prev-results {
     #table-container {
         font-size: 14px;
     }
+
+    div#prev-results #display-all {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 1500px) {
     #table-container {
         font-size: 16px;
+    }
+
+    div#prev-results #display-all {
+        font-size: 15px;
     }
 }
