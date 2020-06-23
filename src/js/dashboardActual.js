@@ -28,8 +28,8 @@ class ChallengeData extends React.Component {
     }
 
     componentWillUnmount() {
-        document.getElementById('load-sol-button${this.props.nComb}').removeEventListener('mouseenter');
-        document.getElementById('load-sol-button${this.props.nComb}').removeEventListener('mouseout');
+        document.getElementById(`load-sol-button${this.props.comb}`).removeEventListener('mouseenter');
+        document.getElementById(`load-sol-button${this.props.comb}`).removeEventListener('mouseout');
     }
 
     render() {
