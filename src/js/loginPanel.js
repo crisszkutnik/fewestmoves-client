@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css/loginPanel.css'
 import wca_logo from '../img/wca_logo.svg'
-import {Container, Row, Col} from "react-bootstrap"
+import {Container, Row} from "react-bootstrap"
 
 const LoginPanel = (props) => {
    return (
@@ -14,7 +14,7 @@ const LoginPanel = (props) => {
                <h3>Select a method to log in</h3>
             </Row>
             <Row className="justify-content-center">
-               <a className="px-3 py-3" href='http://localhost:9000/wcalogin/login'><img src={wca_logo}></img></a>
+               <a className="px-3 py-3" href='http://localhost:9000/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
             </Row>
          </Container>
       </div>

@@ -53,7 +53,7 @@ const ModifyPanel = (props) => {
                      </Row>
                      <Row id="end-buttons">
                         <Col xs="2" md="2" lg="1">
-                           <a onClick={props.closePanel}>Cancel</a>
+                           <button id='cancel' onClick={props.closePanel}>Cancel</button>
                         </Col>
                         <Col xs="4" sm="3" md="2">
                            <button type='submit'>Submit</button>

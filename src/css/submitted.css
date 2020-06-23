@@ -105,9 +105,6 @@
     }
 }
 
-@media (min-width: 576px) {
-}
-
 @media (min-width: 767px) {
     #see-users {
         width: 70%;
@@ -117,7 +114,6 @@
 
     #dashboard-submitted #display-all {
         width: 70%;
-        margin-top: 20px;
         height: 800px;
         font-size: 12px;
     }
@@ -153,8 +149,9 @@
     }
 
     #dashboard-submitted #display-all {
-        width: 60%;
+        width: 50%;
         height: 80%;
+        font-size: 12px;
     }
 }
 

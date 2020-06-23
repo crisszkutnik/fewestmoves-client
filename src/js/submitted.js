@@ -45,7 +45,7 @@ class SubmittedSol extends React.Component {
         this.state.info.forEach((elem, index) => {
             let divClass;
 
-            if(this.state.display == index)
+            if(this.state.display === index)
                 divClass = 'user-data selected';
             else
                 divClass= 'user-data';
@@ -88,7 +88,7 @@ class SubmittedSol extends React.Component {
 
     render() {
         if(this.state.fetchedData)
-            if(this.state.info.length == 0)
+            if(this.state.info.length === 0)
                 return(<div id='dashboard-submitted'><h1>Nothing loaded yet!</h1></div>);
             else
                 return (

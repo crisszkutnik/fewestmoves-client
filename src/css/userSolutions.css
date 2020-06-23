@@ -16,6 +16,8 @@
     margin: 0;
     justify-content: center;
     align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #title h2 {
@@ -23,13 +25,14 @@
 }
 
 .body-title {
-    height: 7.5%;
     justify-content: center;
 }
 
 .body-title h3 {
     font-size: 1.8em;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 .body-title .col {
@@ -61,11 +64,8 @@
     height: 100%;
 }
 
-#explanation {
-    height: 50%;
-}
 
-#explanation .col textarea {
+#display-all #explanation .col textarea {
     resize: none;
     height: 98%;
 }
@@ -100,4 +100,28 @@
 
 #buttons button.selected, #buttons button:hover  {
     background: var(--default-violet);
+}
+
+@media (max-height: 991px) {
+    #display-all #explanation {
+        height: 50%;
+    }
+
+    #buttons button {
+        font-size: 14px;
+    }
+
+    .body-title {
+        height: 7.5%;
+    }
+}
+
+@media (min-height: 992px) {
+    #display-all #explanation {
+        height: 48%;
+    }
+
+    .body-title {
+        height: 8.5%;
+    }
 }

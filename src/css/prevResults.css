@@ -50,17 +50,18 @@ div#prev-results {
     transition: all 0.5s ease-in-out;
 }
 
-.table-row.selected {
-    background: var(--default-violet-75);
+.table-row:hover {
+    background: var(--darker-violet);
+    cursor: pointer;
 }
 
 .table-row:nth-child(even) {
     background: var(--dark3);
 }
 
-.table-row:hover {
-    background: var(--darker-violet);
-    cursor: pointer;
+
+.table-row.selected {
+    background: var(--default-violet-75);
 }
 
 #end-button {

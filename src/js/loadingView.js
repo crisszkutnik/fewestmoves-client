@@ -33,7 +33,7 @@ class LoadingView extends React.Component {
    }
 
    componentDidMount() {
-      this.setState({interval: setInterval(() => this.setState({dots: (this.state.dots == 3 ? 0 : this.state.dots + 1)}), 500)});
+      this.setState({interval: setInterval(() => this.setState({dots: (this.state.dots === 3 ? 0 : this.state.dots + 1)}), 500)});
    }
 
    componentWillUnmount() {

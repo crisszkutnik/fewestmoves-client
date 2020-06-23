@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {BrowserRouter, Route, Switch, Link, Redirect, useHistory} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import DashboardActual from './dashboardActual';
 import SubmittedSol from './submitted';
 import PageNavbar from './navbar'
@@ -10,7 +10,6 @@ const Dashboard = () => {
     const [user, setUser] = useState({
         name: ''
     });
-    const history = useHistory();
 
     useEffect(() => {
         fetch('/wcalogin/isLogged', {

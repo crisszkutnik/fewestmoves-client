@@ -2,7 +2,6 @@ import React from 'react'
 import '../css/userSolutions.css'
 import {Container, Row, Col} from 'react-bootstrap'
 import 'simplebar/dist/simplebar.min.css';
-import SimpleBar from 'simplebar-react';
 
 class UserSolutions extends React.Component {
    constructor(props) {
@@ -16,7 +15,7 @@ class UserSolutions extends React.Component {
 
    render() {
       const buttonClass = (num) => {
-         if(num == this.state.solDisplay)
+         if(num === this.state.solDisplay)
             return 'selected'
          else
             return ''
@@ -41,7 +40,7 @@ class UserSolutions extends React.Component {
             </Row>
             <Row className='body-title'>
                <Col>
-               <h3 id='explanation'>Explanation</h3>
+               <h3>Explanation</h3>
                </Col>
             </Row>
             <Row id='explanation'>

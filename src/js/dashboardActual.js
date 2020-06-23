@@ -11,10 +11,6 @@ import notLoadedIMG from '../img/exclamation.svg'
 
 
 class ChallengeData extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let showClass = 'text-white text-center solution-card px-2';
         let text;
@@ -25,17 +21,17 @@ class ChallengeData extends React.Component {
             text = 'Not loaded yet';
             showClass += ' sol-not-loaded';
             moves = 0;
-            image = <img src={notLoadedIMG}></img>
+            image = <img alt='Exclamation sign' src={notLoadedIMG}></img>
         } else if(this.props.solMoves > 0) {
             text = 'Correct solution';
             showClass += ' sol-loaded';
             moves = this.props.solMoves;
-            image = <img src={correctIMG}></img>
+            image = <img alt='Correct solution' src={correctIMG}></img>
         } else {
             text = 'Incorrect solution'
             showClass += ' sol-incorrect';
             moves = 'DNF';
-            image = <img src={incorrectIMG}></img>
+            image = <img alt='Incorrect solution' src={incorrectIMG}></img>
         }
 
         return (

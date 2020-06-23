@@ -100,7 +100,7 @@ class ResTable extends React.Component {
         this.props.data.forEach((elem, index)  => {
             let className = 'table-row';
 
-            if(index == this.props.display)
+            if(index === this.props.display)
                 className += ' selected';
 
             all.push(
