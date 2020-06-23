@@ -11,6 +11,13 @@
    align-items: center;
 }
 
+form {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+}
+
 #modify-container {
    width: 900px;
    height: 800px;
@@ -85,14 +92,14 @@
 #end-buttons button {
    outline: none;
    border: none;
-   font-size: 1.5em;
+   font-size: 1.4em;
    transition: all 0.25s ease-in-out;
 }
 
 #end-buttons button[type=submit] {
    background: var(--default-violet);
    color: white;
-   padding: 10px 20px;
+   padding: 8px 16px;
    border-radius: 5px;
 }
 
@@ -104,6 +111,7 @@
 #end-buttons #cancel {
    background: rgba(0, 0, 0, 0);
    color: white;
+   margin-right: 20px;
 }
 
 #end-buttons #cancel:hover {
@@ -111,10 +119,15 @@
    cursor: pointer;
 }
 
+#end-buttons .col {
+   display: flex;
+   justify-content: flex-end;
+}
+
 @media (max-width: 575px) {
    #modify-container {
-      width: 90vw;
-      height: 400px;
+      width: 90%;
+      height: 60%;
       font-size: 7px;
    }
 
@@ -127,7 +140,7 @@
    }
 
    #end-buttons  {
-      font-size: 6px;
+      font-size: 8px;
    }
 
    .label label {
@@ -137,9 +150,9 @@
 
 @media (min-width: 576px) {
    #modify-container {
-      width: 500px;
-      height: 700px;
-      font-size: 8px;
+      width: 90%;
+      height: 70%;
+      font-size: 10px;
    }
 
    #modify-container > *:not(#title):not(h1) {
@@ -147,15 +160,14 @@
    }
 
    #modify-container textarea {
-      resize: none;
       height: 95%;
    }
 }
 
 @media (min-width: 767px) {
    #modify-container {
-      width: 700px;
-      height: 600px;
+      width: 70%;
+      height: 80%;
       font-size: 12px;   
    }
 
@@ -166,14 +178,15 @@
 
 @media (min-width: 991px) {
    #modify-container {
-      width: 900px;
-      height: 800px;
+      width: 60%;
+      height: 70%;
+      font-size: 12px;
    }
 }
 
 @media (min-width: 1200px) {
    #modify-container {
-      width: 700px;
-      height: 650px;
+      width: 40%;
+      height: 70%;
    }
 }

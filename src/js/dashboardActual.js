@@ -47,7 +47,7 @@ class ChallengeData extends React.Component {
                         <h2>{moves}</h2><br />
                         {moves >= 0 &&
                         <span>
-                        movements
+                        moves
                         </span>}
                     </Col>
                 </Row>
@@ -137,7 +137,7 @@ class DashboardActual extends React.Component {
             return(
                 <div id='dashboardActual'>
                     <div id='header'>
-                        <h1>Take a look at this week challenges</h1>
+                        <h1>Take a look at this week's challenges</h1>
                     </div>
                     <div id='challenges'>
                         <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.setState({showComb: n})} comb={1}/>

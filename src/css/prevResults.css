@@ -45,23 +45,21 @@ div#prev-results {
     overflow: hidden;
 }
 
-
 .table-row {
     transition: all 0.5s ease-in-out;
-}
-
-.table-row:hover {
-    background: var(--darker-violet);
-    cursor: pointer;
 }
 
 .table-row:nth-child(even) {
     background: var(--dark3);
 }
 
-
 .table-row.selected {
     background: var(--default-violet-75);
+}
+
+.table-row:hover {
+    background: var(--darker-violet);
+    cursor: pointer;
 }
 
 #end-button {

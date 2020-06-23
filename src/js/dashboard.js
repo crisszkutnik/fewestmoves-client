@@ -5,6 +5,7 @@ import SubmittedSol from './submitted';
 import PageNavbar from './navbar'
 import PrevResults from './prevResults'
 import '../css/general.css'
+import '../css/anim.css'
 
 const Dashboard = () => {
     const [user, setUser] = useState({
