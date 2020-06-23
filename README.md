@@ -1,4 +1,4 @@
-Client-side code of the web-based Rubik's Cube unofficial weekly competition that runs in the Facebook FMC group. Currently under development.
+Client-side code of the web-based Rubik's Cube unofficial weekly competition that runs in the Facebook FMC group.
 
 --
 
@@ -28,3 +28,5 @@ You can view the solutions of the ongoing contest, to your own risk of spoilers.
 
 Here you can check the rankings for the results of the previous week. Yeah, nice names. They are sorted following official indications: double sort by mean, then by single.  
 ![last week view](screenshots/lastweek.png)
+
+## Enjoy.
