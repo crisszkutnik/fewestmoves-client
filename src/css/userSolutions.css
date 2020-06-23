@@ -1,107 +1,127 @@
-/*
-
-    Result section
-
-*/
-
-div#display-all {
-    background: white;
-    width: 60%;
+#display-all {
+    margin: 0;
+    background: var(--dark2);
     border-radius: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    color: white;
+    padding: 0;
 }
 
-div#display-all div#title-separator {
-    display: flex;
-    flex-direction: column;
-    height: 13%;
+#display-all > *:not(#title) {
+    padding: 0 15px;
+}
+
+#title {
+    background: var(--default-violet-75);
+    height: 12.5%;
+    margin: 0;
     justify-content: center;
-    padding-left: 2em;
-    margin-bottom: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-sizing: border-box;
-    padding-right: 5px;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-div#display-all div#title-separator h1 {
-    font-size: 3em;
+#title h2 {
+    font-size: 2em;
 }
 
-div#display-all div#title-separator hr {
-    margin-top: 1.5em;
-    background: rgb(113, 136, 216);
-    border: none;
-    height: 2px;
-    width: 60%;
-    border-radius: 10px;
-}
-
-/*Solution and explanation*/
-
-div#display-all div.user-response {
-    display: flex;
-    flex-direction: column;
-    height: 75%;
-    padding-left: 20px;
-}
-
-div#display-all div.user-response h2 {
-    font-size: 2.5em;
-    margin-bottom: 1em;
-    font-weight: 400;
-}
-
-div#display-all div.user-response p, div#display-all div.user-response textarea {
-    padding: 0.8em;
-    background: #F3F3F3;
-    width: 95%;
-    border-radius: 5px;
-    font-size: 1.7em;
-    box-sizing: border-box;
-}
-
-div#display-all div.user-response textarea {
-    border: none;
-    outline: none;
-    resize: none;
-    height: 60%;
-}
-
-div#display-all div.user-response p:first-of-type {
-    margin-bottom: 20px;
-}
-
-/*Button*/
-
-div#display-all div.selector {
-    display: flex;
-    width: 100%;
-    height: 10%;
+.body-title {
     justify-content: center;
+}
+
+.body-title h3 {
+    font-size: 1.8em;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.body-title .col {
+    height: 100%;
+    display: flex;
     align-items: center;
 }
 
-div#display-all div.selector button {
-    outline: none;
-    border: none;
-    font-size: 2em;
-    background: white;
-    width: 1.5em;
-    height: 1.5em;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: all 0.2s ease-in-out;
+#solution {
+    height: 5%;
 }
 
-div#display-all div.selector button:nth-child(2) {
-    margin-left: 2em;
-    margin-right: 2em;
+#solution .col {
+    height: 100%;
 }
 
-div#display-all div.selector button.selected, div#display-all div.selector button:hover {
-    background: rgb(113, 136, 216);
+#solution .col input, #explanation .col textarea {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    background: var(--dark4);
+    border: 2px solid var(--dark3);
+    border-radius: 5px;
+    padding: 5px;
     color: white;
+}
+
+#solution .col input {
+    height: 100%;
+}
+
+
+#display-all #explanation .col textarea {
+    resize: none;
+    height: 98%;
+}
+
+#buttons {
+    height: 15%;
+}
+
+#buttons .col {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#buttons button {
+    border: 0;
+    outline: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    font-size: 1em;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    transition: all 0.25s ease-in-out;
+}
+
+#buttons button:nth-child(2) {
+    margin: 0 40px;
+}
+
+#buttons button.selected, #buttons button:hover  {
+    background: var(--default-violet);
+}
+
+@media (max-height: 991px) {
+    #display-all #explanation {
+        height: 50%;
+    }
+
+    #buttons button {
+        font-size: 14px;
+    }
+
+    .body-title {
+        height: 7.5%;
+    }
+}
+
+@media (min-height: 992px) {
+    #display-all #explanation {
+        height: 48%;
+    }
+
+    .body-title {
+        height: 8.5%;
+    }
 }

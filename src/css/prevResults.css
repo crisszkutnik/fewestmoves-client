@@ -2,184 +2,196 @@ div#prev-results {
     display: flex;
     width: 100vw;
     max-width: 1920px;
-    max-height: 2000px;
     align-items: center;
-    background-color: #E5E5E5;
+    background-color: var(--dark1);
 }
 
-/*
-    UserSolutions component styling
-
-    see rest of styling for this component on userSolutions.css
-*/
-
-div#prev-results div#display-all {
-    width: 35%;
+#table-container .row, #table-container .col {
+    flex-wrap: nowrap !important;
+    font-size: 1em;
 }
 
-div#prev-results div#display-all div#title-separator hr {
-    display: none;
-}
-
-div#prev-results div#display-all div#title-separator {
-    background: #2B2D32;
-    color: white;
-}
-
-/*
-    Table
-*/
-
-table {
-    border-collapse: collapse;
-    max-height: 1000px;
-    width: 100%;
-    flex-direction: column;
-    border-radius: 10px;
-    background: white;
-    font-size: 16px;
-}
-
-table thead, table tbody tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-}
-
-tbody {
-    display: block;
-    overflow: auto;
-}
-
-table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
-}
-
-table thead th:first-child {
-    border-top-left-radius: 10px;
-}
-
-table thead th:last-child {
-    border-top-right-radius: 10px;
-}
-
-table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-}
-
-table thead th, table tr td {
-    overflow: hidden;
-    height: 50px;
+#table-container {
+    background-color: var(--dark4);
     text-align: center;
-}
-
-table thead th {
-    background: #2B2D32;
+    border-radius: 6px;
+    width: 100%;
     color: white;
 }
 
-table tr {
-    transition: all 0.2s ease-in-out;
+#table-container p {
+    margin: 0;
+    word-wrap: break-word;
 }
 
-table tr:nth-child(even) {
-    background: rgba(113, 136, 216, 0.2);
+#table-head {
+    background-color: var(--dark2);
+    color: white;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+} 
+
+#table-body {
+    overflow-y: auto;
 }
 
-table tr:hover {
-    background: rgba(78, 103, 194, 0.5);
+.table-row > *, #thead > * {
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+}
+
+.table-row > * {
+    overflow: hidden;
+}
+
+.table-row {
+    transition: all 0.5s ease-in-out;
+}
+
+.table-row:nth-child(even) {
+    background: var(--dark3);
+}
+
+.table-row.selected {
+    background: var(--default-violet-75);
+}
+
+.table-row:hover {
+    background: var(--darker-violet);
     cursor: pointer;
 }
 
-table tr td p {
-    max-height: 50px;
-    line-height: 25px;
-    overflow: hidden;
+#end-button {
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 
-@media only screen and (max-width: 1200px) {
-    table {
+#end-button button {
+    border: none;
+    outline: none;
+    background: var(--default-violet);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
+}
+
+#end-button button:hover {
+    transform: scale(1.1);
+    background: var(--darker-violet);
+}
+
+@media (max-width: 991px) {
+    * {
+        overflow-x: hidden;
+    }
+
+    #prev-results {
+        flex-direction: column;
+        height: 1200px;
+    }
+
+    div#prev-results #display-all {
+        height: 600px;
+        width: 70%;        
+        margin-top: 20px;
+    }
+    
+    #table-container {
+        width: 70%;
+        margin-top: 80px;
+        height: 40%;
+        overflow-y: hidden;
+        flex-wrap: nowrap !important;
+        flex-direction: row;
+    }
+
+    #table-container > * {
+        flex-wrap: nowrap !important;
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 992px) {
+    div#prev-results {
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    
+
+    div#prev-results #display-all {
+        height: 80%;
+        width: 40%;
+    }
+    
+    #table-container {
+        width: 50%;
+        height: 80%;
+        margin-right: 30px;
+    }
+}
+
+/* Text size */
+
+@media (max-width: 575px) {
+    #table-container {
+        font-size: 8px;
+    }
+
+    div#prev-results #display-all {
+        font-size: 2.2vw;
+    }
+}
+
+@media (min-width: 576px) {
+    #table-container {
+        font-size: 12px;
+    }
+
+    div#prev-results #display-all {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 767px) {
+    #table-container {
+        font-size: 14px;
+    }
+
+    div#prev-results #display-all {
         font-size: 12px;
     }
 }
 
-@media only screen and (max-width: 830px) {
-    div#prev-results {
-        flex-direction: column;
-        height: 100vh;
-        justify-content: center;
+@media (min-width: 991px) {
+    #table-container {
+        font-size: 12px;
     }
 
-    div#prev-results div#display-all {
-        width: 75%;
-        height: 45%;
-        box-sizing: border-box;
-    }
-
-    div#table-container {
-        display: flex;
-        width: 75%;
-        margin-bottom: 20px;
-    }
-
-    table {
-        font-size: 8px;
-    }
-
-    table thead th, table tr td {
-        height: 30px;
-    }
-
-    table tr td p {
-        max-height: 30px;
-        line-height: 15px;
+    div#prev-results #display-all {
+        font-size: 12px;
     }
 }
 
-@media only screen and (max-width: 650px) {
-    table {
-        font-size: 5px;
-        border-radius: 5px;
+@media (min-width: 1200px) {
+    #table-container {
+        font-size: 14px;
     }
 
-    table thead th, table tr td {
-        height: 20px;
-    }
-
-    table tr td p {
-        max-height: 20px;
-        line-height: 10px;
-    }
-
-    table tr:last-child td:first-child {
-        border-bottom-left-radius: 4px;
-    }
-    
-    table thead th:first-child {
-        border-top-left-radius: 4px;
-    }
-    
-    table thead th:last-child {
-        border-top-right-radius: 4px;
-    }
-    
-    table tr:last-child td:last-child {
-        border-bottom-right-radius: 4px;
+    div#prev-results #display-all {
+        font-size: 12px;
     }
 }
 
-@media only screen and (min-width: 831px) {
-    div#prev-results {
-        height: 100vh;
+@media (min-width: 1500px) {
+    #table-container {
+        font-size: 16px;
     }
 
-    div#table-container {
-        display: flex;
-        width: 55%;
-        height: 75%;
-    }
-
-    div#prev-results {
-        justify-content: space-evenly;
+    div#prev-results #display-all {
+        font-size: 15px;
     }
 }

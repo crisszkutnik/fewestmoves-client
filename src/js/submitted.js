@@ -3,6 +3,9 @@ import '../css/submitted.css'
 import LoadingView from './loadingView'
 import UserSolutions from './userSolutions'
 import showSol from '../functions/func'
+import {Container, Row, Col} from 'react-bootstrap'
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 class SubmittedSol extends React.Component {
     constructor(props) {
@@ -42,15 +45,23 @@ class SubmittedSol extends React.Component {
         this.state.info.forEach((elem, index) => {
             let divClass;
 
-            if(this.state.display == index)
+            if(this.state.display === index)
                 divClass = 'user-data selected';
             else
                 divClass= 'user-data';
 
             all.push(
                 <div onClick={() => this.changeDisplayInfo(index)} className={divClass} key={index}>
-                    <h1>{elem.name} {elem.surname}</h1>
-                    <p>{showSol(elem.comb1.moves)}{showSol(elem.comb2.moves)}{showSol(elem.comb3.moves)}</p>
+                    <Row>
+                        <Col>
+                            <h2>{elem.name}</h2> 
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p>{showSol(elem.comb1.moves)}{showSol(elem.comb2.moves)}{showSol(elem.comb3.moves)}</p>
+                        </Col>
+                    </Row>
                 </div>
             )
         })
@@ -77,26 +88,24 @@ class SubmittedSol extends React.Component {
 
     render() {
         if(this.state.fetchedData)
-            return (
-                <div id='dashboard-submitted'>
-                {this.state.info.length != 0 &&
-                <>
-                    <div id='select-user'>
+            if(this.state.info.length === 0)
+                return(<div id='dashboard-submitted'><h1>Nothing loaded yet!</h1></div>);
+            else
+                return (
+                    <div id='dashboard-submitted'>
                         <div id='see-users'>
-                            {this.renderNames()}
+                            <SimpleBar id='simple-bar'>
+                                <Container id='user-container'>
+                                        {this.renderNames()}       
+                                </Container>
+                            </SimpleBar>
+                            <div id='load-button'>
+                                <button onClick={this.getMore}>Load more</button>
+                            </div>
                         </div>
-                        <div id='load-button'>
-                            <button onClick={this.getMore}>Load more</button>
-                        </div>
+                        <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges} />
                     </div>
-                    <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges}/>
-                </>
-                }
-                {this.state.info.length == 0 &&
-                    <h1>Nothing loaded yet!</h1>
-                }
-                </div>
-            );
+                );
         else
             return (<LoadingView />);
     }

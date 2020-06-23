@@ -1,159 +1,216 @@
-div#dashboard {
-    align-items: center;
-    justify-content: center;
+#dashboardActual {
     display: flex;
-    height: 100vh;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--dark1);
     flex-direction: column;
-    max-width: 1920px;
-    max-height: 1080px;
-    font-size: 10px;
+    overflow-x: hidden;
 }
 
-div.challengeData {
-    background-color: #E5E5E5;
-    margin-left: auto;
-    margin-right: auto;
+#header {
     display: flex;
-    flex-direction: row;
-    margin-top: 2em;
-    border-radius: 15px;
+    padding-top: 56px;
+    align-items: center;
+}
+
+#header h1 {
+    padding: 8px 50px;
+    background: var(--default-violet);
+    color: white;
+    font-weight: 200;
+}
+
+#challenges {
+    display: flex;
+    height: 80%;
+    padding-top: 50px;
+}
+
+.solution-card {
+    background-color: var(--dark2);
+}
+
+.sol-status {
     height: 20%;
-    width: 70%;
-    -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
-    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
+    display: flex;
 }
 
-div.challengeData:first-of-type {
-    margin-top: 5em;
+.sol-status p {
+    font-weight: 300;
+    font-size: 1.8em;
+    margin-bottom: 0;
+    margin-left: 12px;
 }
 
-div.challengeComb {
-    width: 80%;
-    text-align: center;
+.sol-not-loaded .sol-status p {
+    color: var(--default-violet);
+}
+
+.sol-incorrect p {
+    color: var(--incorrect-red);
+}
+
+.sol-loaded p {
+    color: var(--ok-green);
+}
+
+.sol-status-info {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-div.challengeComb p {
-    width: 80%;
-    font-size: 3em;
-    vertical-align: middle;
+.sol-status img {
+    height: 50px;
+    width: 50px;
 }
 
-button.bton-load-sol {
-    width: 20%;
-    font-size: 3em;
-    color: white;
-    border: none;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
+.sol-moves {
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sol-moves h2 {
+    font-size: 10em;
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 0.8;
+    height: auto;
+}
+
+.sol-moves span {
+    color: var(--dark3);
+    font-size: 1.5em;
+}
+
+.sol-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
+.sol-button button {
     outline: none;
+    border: none;
+    background: var(--default-violet);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: all 0.25s ease-in-out;
 }
 
-button.bton-load-sol:hover {
-    background: #4e67c2;
+.sol-button button:hover {
+    transform: scale(1.1);
+    background: var(--darker-violet);
 }
 
-button.not-loaded {
-    background: #7188D8;
+.sol-button .col {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-button.loaded-sol {
-    background: #43b581;
+@media (max-width: 990px) {
+    #header {
+        align-items: flex-end;
+    }
+
+    #challenges {
+        flex-direction: column;
+        height: 90%;
+    }
+
+    #dashboardActual {
+        height: 1600px;
+    }
+
+    .solution-card {
+        font-size: 12px;
+        margin-top: 30px;
+        min-height: 400px;
+    }
+
+    .solution-card h2 {
+        line-height: 1.2;
+    }
+
+    .sol-status p {
+        font-size: 1.6em;
+    }
 }
 
-button.incorrect-sol {
-    background: #db3044;
+@media (max-width: 575px) {
+    #header h1 {
+        font-size: 4.5vw;
+    }
+
+    #header {
+        height: 8%;
+    }
+
+    .solution-card {
+        width: 65%;
+    }
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 599px) {
-    div#dashboard {
-        min-height: 300px;
-        font-size: 4px;
+@media (min-width: 576px) {
+    #header h1 {
+        font-size: 28px;
+    }
+
+    #header {
+        height: 10%;
+    }
+
+    .solution-card {
+        width: 50%;
+    }
+}
+
+@media (min-width: 767px) {
+    .solution-card {
+        width: 40%;
+    }
+}
+
+@media (min-width: 991px) {
+    #dashboardActual {
         height: 100vh;
     }
 
-    div.challengeData {
-        border-radius: 8px;
-        width: 80%;
-        height: 14%;
-        margin-bottom: 20px;    
+    #header {
+        height: 20%;
     }
 
-    button.bton-load-sol {
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 767px) {
-    div#dashboard {
-        min-height: 300px;
-        font-size: 4px;
+    .solution-card {
+        font-size: 12px;
+        width: 28%;
+        height: 60%;
     }
 
-    div.challengeData {
-        width: 60%;
+    #challenges {
+        flex-direction: row;
     }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    div#dashboard {
-        min-height: 400px;
-        font-size: 7px;
+@media (min-width: 1200px) {
+    #challenges {
+        height: 80%;
     }
 
-    div.challengeData {
-        width: 80%;
-        height: 13%;
-        margin-bottom: 20px;
+    .solution-card {
+        font-size: 14px;
+        width: 25%;
+        height: 70%;
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    div#dashboard {
-        min-height: 500px;
-        font-size: 7px;
-    }
-
-    div.challengeData {
-        width: 60%;
-        max-height: 180px;
-    }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-    div#dashboard {
-        font-size: 8px;
-        min-height: 500px;
-    }
-
-    div.challengeData {
-        width: 58%;
-        height: 22%;
-        margin-bottom: 20px;
-    }
-}
-
-@media only screen and (min-width: 1600px) {
-    div#dashboard {
-        min-height: 800px;
-    }
-
-    div.challengeData {
-        max-width: 1000px;
-        max-height: 200px;        
+@media (min-width: 1500px) {
+    .solution-card {
+        font-size: 15px;
+        width: 20%;
+        height: 70%;
     }
 }

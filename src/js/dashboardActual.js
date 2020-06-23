@@ -3,31 +3,60 @@ import '../css/dashboardActual.css'
 import LoadingView from './loadingView'
 import {isSolved} from '../functions/cubeSolve'
 import ModifyPanel from './modifyPanel'
+import LoginPanel from './loginPanel'
+import {Container, Row, Col} from 'react-bootstrap'
+import correctIMG from '../img/tick.svg'
+import incorrectIMG from '../img/incorrect.svg'
+import notLoadedIMG from '../img/exclamation.svg'
+
 
 class ChallengeData extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {showPanel: false}
-    }
-
     render() {
-        let showButton;
+        let showClass = 'text-white text-center solution-card px-2';
+        let text;
+        let moves;
+        let image;
 
-        if(this.props.solMoves === 0)
-            showButton = <button className='bton-load-sol not-loaded' onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>;
-        else if(this.props.solMoves > 0)
-            showButton = <button className='bton-load-sol loaded-sol' onClick={() => this.props.showPanel(this.props.comb)}>See solution</button>;
-        else
-            showButton = <button className='bton-load-sol incorrect-sol' onClick={() => this.props.showPanel(this.props.comb)}>Incorrect solution</button>;
+        if(this.props.solMoves === 0) {
+            text = 'Not loaded yet';
+            showClass += ' sol-not-loaded';
+            moves = 0;
+            image = <img alt='Exclamation sign' src={notLoadedIMG}></img>
+        } else if(this.props.solMoves > 0) {
+            text = 'Correct solution';
+            showClass += ' sol-loaded';
+            moves = this.props.solMoves;
+            image = <img alt='Correct solution' src={correctIMG}></img>
+        } else {
+            text = 'Incorrect solution'
+            showClass += ' sol-incorrect';
+            moves = 'DNF';
+            image = <img alt='Incorrect solution' src={incorrectIMG}></img>
+        }
 
         return (
-            <div className='challengeData'>
-                <div className='challengeComb'>  
-                    <p>{this.props.challenge}</p>
-                </div>
-                {showButton}
-            </div>
+            <Container className={showClass}>
+                <Row className='sol-status'>
+                    <Col className='sol-status-info'>
+                        {image}
+                        <p>{text}</p>
+                    </Col>
+                </Row>
+                <Row className='sol-moves'>
+                    <Col>
+                        <h2>{moves}</h2><br />
+                        {moves >= 0 &&
+                        <span>
+                        moves
+                        </span>}
+                    </Col>
+                </Row>
+                <Row className='sol-button'> 
+                    <Col>
+                        <button onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
@@ -67,8 +96,11 @@ class DashboardActual extends React.Component {
         });
     }
 
-    showPanel(number) {
-        this.setState({showComb: number});
+    showPanel() {
+        if(this.props.user.logged)
+            return (<ModifyPanel closePanel={() => this.setState({showComb: 0})} challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>);
+        else
+            return (<LoginPanel closePanel={() => this.setState({showComb: 0})}/>);
     }
 
     submitResponse(newSol, newExp, modComb) {
@@ -93,22 +125,27 @@ class DashboardActual extends React.Component {
                 body: JSON.stringify(res)
             })
             .then(() => {
-                this.showPanel(0);
+                this.setState({showComb: 0})
             })
             .catch(e => alert('An error occured'));
         } else
-            this.showPanel(0);
+            this.setState({showComb: 0})
     }
 
     render() {
         if(this.state.loaded)
             return(
-                <div id='dashboard'>
-                    <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.showPanel(n)} comb={1}/>
-                    <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.showPanel(n)} comb={2}/>
-                    <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.showPanel(n)} comb={3}/>
-                    {this.state.showComb !== 0 &&
-                    <ModifyPanel closePanel={() => this.showPanel(0)} challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>}
+                <div id='dashboardActual'>
+                    <div id='header'>
+                        <h1>Take a look at this week's challenges</h1>
+                    </div>
+                    <div id='challenges'>
+                        <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.setState({showComb: n})} comb={1}/>
+                        <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.setState({showComb: n})} comb={2}/>
+                        <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.setState({showComb: n})} comb={3}/>
+                        {this.state.showComb !== 0 &&
+                        this.showPanel()}
+                    </div>
                 </div>
             );
         else

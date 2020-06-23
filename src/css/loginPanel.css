@@ -1,0 +1,90 @@
+#login-background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    max-height: 1080px;
+    max-width: 1920px;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-panel {
+    background-color: var(--dark1);
+    display: block;
+}
+
+#login-panel h3 {
+    color: white;
+}
+
+#login-panel button {
+    color: #2B2D32;
+    border: none;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    background: var(--incorrect-red);
+}
+
+#login-panel a {
+    background: rgba(249, 229, 183);
+    border: 2px solid #e1c699;
+    transition: all 0.2s ease-in-out;
+}
+
+#login-panel a:hover {
+    background: #e1c699;
+}
+
+@media (max-width: 575px) {
+    #login-panel {
+        width: 90vw;
+    }
+
+    #login-panel img {
+        width: 180px;
+        height: 110px;
+    }
+}
+
+@media (min-width: 576px) {
+    #login-panel {
+        width: 565px;
+    }
+
+    #login-panel img {
+        width: 380px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 767px) {
+    #login-panel {
+        width: 700px;
+    }
+
+    #login-panel img {
+        width: 380px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 991px) {
+    #login-panel {
+        width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #login-panel {
+        width: 800px;
+    }
+}
