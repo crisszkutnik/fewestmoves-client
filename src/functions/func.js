@@ -2,11 +2,11 @@ import React from 'react'
 
 function showSol(moves) {
     if(moves === 0)
-        return (<span>DNS</span>);
+        return (<span className='mr-4'>DNS</span>);
     else if(moves < 0)
-        return (<span>DNF</span>);
+        return (<span className='mr-4'>DNF</span>);
     else
-        return (<span>{moves}</span>);
+        return (<span className='mr-4'>{moves}</span>);
 }
 
 export default showSol;

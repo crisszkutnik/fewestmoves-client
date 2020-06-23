@@ -1,142 +1,179 @@
-div#modify-panel {
-   position: absolute;
-   display: flex;
-   z-index: 2;
-   width: 100vw;
+#modify-panel {
    height: 100vh;
-   max-width: 1920px;
-   background-color: rgba(0, 0, 0, 0.5);
+   width: 100vw;
+   position: fixed;
+   top: 0;
+   left: 0;
+   background: rgba(0, 0, 0, 0.5);
+   z-index: 3;
+   display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 10px;
 }
 
-div#modify-panel form {
-   width: 50%;
-   background: #2B2D32;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+#modify-container {
+   width: 900px;
+   height: 800px;
+   background-color: var(--dark1);
    color: white;
-   border-radius: 10px;
-   font-size: 10px;
-   box-sizing: border-box;
-   padding: 30px 0;
+   padding: 0;
 }
 
-div#modify-panel form h1 {
-   width: 90%;
-   font-size: 3em;
-   text-align: center;
-}
-
-div#modify-panel form hr {
-   width: 80%;
-   border-radius: 5px;
-   height: 2px;
-   margin: 15px 0;
-   background: #7188d8;
-   border: none;
-}
-
-div#modify-panel form div.input-group {
-   width: 90%;
-   margin-bottom: 3em;
-}
-
-div#modify-panel form div.input-group textarea {
-   resize: none;
-   height: 200px;
-}
-
-div#modify-panel form div.input-group label {
-   font-size: 1.5em;
-}
-
-
-div#modify-panel form div.input-group .inputField {
-   border: none;
-   outline: none;
-   width: 98%;
-   padding: 6px;
-   background: #8c8d91;
-   margin-top: 5px;
-   border-radius: 4px;
-}
-
-div#modify-panel div#options {
+#modify-container #title {
+   height: 15%;
    display: flex;
-   width: 100%;
+   justify-content: center;
+   align-items: center;
+   background: var(--default-violet-75);
+}
+
+.label {
+   height: 7.5%;
+   display: flex;
+   align-items: center;
+}
+
+.label label {
+   font-size: 1.5em;
+   color: var(--dark3);
+   margin: 0;
+}
+
+#solution {
+   height: 5%;
+}
+
+#explanation {
+   height: 45%;
+}
+
+#end-buttons {
+   height: 20%;
+   display: flex;
    justify-content: flex-end;
-   padding-right: 100px;
    align-items: center;
 }
 
-div#modify-panel div#options a {
-   color: #737478;
-   cursor: pointer;
-   font-size: 1.5em;
+/*
+   Element styling
+*/
+
+#modify-container input {
+   height: 100%;
 }
 
-div#modify-panel div#options button {
+#modify-container h2 {
+   font-size: 3.5em;
+}
+
+#modify-container textarea, #modify-container input {
+   width: 100%;
+   outline: none;
+   font-size: 1.5em;
+   border: 2px solid var(--dark2);
+   border-radius: 5px;
+   background: var(--dark4);
+   padding: 5px;
+   color: white;
+}
+
+#modify-container textarea {
+   resize: none;
+   height: 95%;
+}
+
+#end-buttons button {
    outline: none;
    border: none;
    font-size: 1.5em;
+   transition: all 0.25s ease-in-out;
+}
+
+#end-buttons button[type=submit] {
+   background: var(--default-violet);
    color: white;
-   background: #7188d8;
-   padding: 8px 12px;
-   transition: all 0.2s ease-in-out;
-   margin-left: 15px;
-   cursor: pointer;
+   padding: 10px 20px;
    border-radius: 5px;
 }
 
-div#modify-panel div#options button:hover {
+#end-buttons button[type=submit]:hover {
    transform: scale(1.1);
-   background: #4e67c2;
+   background: var(--darker-violet);
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 599px) {
-   div#modify-panel form {
-      max-height: 558px;
+#end-buttons #cancel {
+   background: rgba(0, 0, 0, 0);
+   color: white;
+}
+
+#end-buttons #cancel:hover {
+   color: var(--incorrect-red);
+   cursor: pointer;
+}
+
+@media (max-width: 575px) {
+   #modify-container {
+      width: 90vw;
+      height: 400px;
+      font-size: 7px;
+   }
+
+   #modify-container > *:not(#title):not(h1) {
+      padding: 0 10px;
+   }
+
+   #modify-container textarea {
+      height: 95%;
+   }
+
+   #end-buttons  {
       font-size: 6px;
-      width: 90%;
+   }
+
+   .label label {
+      font-size: 2.5em;
    }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 767px) {
-   div#modify-panel form {
-      max-height: 558px;
-      font-size: 6px;
-      width: 90%;
+@media (min-width: 576px) {
+   #modify-container {
+      width: 500px;
+      height: 700px;
+      font-size: 8px;
+   }
+
+   #modify-container > *:not(#title):not(h1) {
+      padding: 0 20px;
+   }
+
+   #modify-container textarea {
+      resize: none;
+      height: 95%;
    }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-   div#modify-panel form {
-      max-height: 558px;
-      font-size: 7px;
-      width: 75%;
+@media (min-width: 767px) {
+   #modify-container {
+      width: 700px;
+      height: 600px;
+      font-size: 12px;   
+   }
+
+   #modify-container textarea {
+      height: 95%;
    }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-   div#modify-panel form {
-      max-height: 558px;
-      font-size: 7px;
-      width: 70%;
+@media (min-width: 991px) {
+   #modify-container {
+      width: 900px;
+      height: 800px;
    }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-   div#modify-panel form {
-      max-height: 600px;
-      font-size: 7px;
+@media (min-width: 1200px) {
+   #modify-container {
+      width: 700px;
+      height: 650px;
    }
 }

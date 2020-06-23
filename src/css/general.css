@@ -1,3 +1,15 @@
+:root {
+    --default-violet: #7C3FEF;
+    --default-violet-75: rgba(124, 63, 239, 0.75) ;
+    --darker-violet: #592bad; 
+    --dark1: #16171B;
+    --dark2: #202125;
+    --dark3: #3d3f45;
+    --dark4: #27282D;
+    --incorrect-red:  rgb(247, 48, 77);
+    --ok-green: #01B075;
+}
+
 * {
     margin: 0;
     padding: 0;

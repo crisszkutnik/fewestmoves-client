@@ -1,11 +1,12 @@
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import React from 'react'
+import LoginPanel from './loginPanel';
 
 class PageNavbar extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {show: false};
+        this.state = {showLogin: false};
         this.handleLogout = this.handleLogout.bind(this);
     }
 
@@ -17,18 +18,26 @@ class PageNavbar extends React.Component {
     }
 
     render() {
-        let name = this.props.user.name + ' ' + this.props.user.surname;
+        let name;
+
+        if(this.props.user.logged)
+            name = (<NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
+                        <NavDropdown.Item href="/dashboard/actual" onClick={this.handleLogout}>Log Out</NavDropdown.Item>
+                    </NavDropdown>
+            );
+        else
+            name = (<NavDropdown title="Log in" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.setState({showLogin: true})}>Log in</NavDropdown.Item>
+                    </NavDropdown>
+            );
 
         return(
-            <Navbar variant="dark" expand="lg" style={{backgroundColor: '#2B2D32', position: 'absolute', width: '100vw'}}>
-            <Navbar.Brand href="/dashboard/actual">Cubitos</Navbar.Brand>
+            <Navbar variant="dark" expand="lg" style={{backgroundColor: '#2B2D32', position: 'absolute', width: '100vw', zIndex: '3'}}>
+            <Navbar.Brand href="/dashboard/actual">Fewest Moves</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
-                    <NavDropdown title={name} id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#manage">Manage User</NavDropdown.Item>
-                        <NavDropdown.Item href="/login" onClick={this.handleLogout}>Log Out</NavDropdown.Item>
-                    </NavDropdown>
+                    {name}
                     </Nav>
                 <Nav className="ml-auto">
                     <Nav.Link href="/dashboard/actual">Compete!</Nav.Link>
@@ -36,6 +45,8 @@ class PageNavbar extends React.Component {
                     <Nav.Link href="/dashboard/results">Last Week</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
+            {this.state.showLogin &&
+            <LoginPanel closePanel={() => this.setState({showLogin: false})}/>}
           </Navbar>
         );
     }

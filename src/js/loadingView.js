@@ -1,29 +1,30 @@
 import React from 'react'
 import '../css/loadingView.css'
 import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-/*Imported from materialUI page*/
+// Imported from Material UI webpage
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    width: 300,
+    display: 'flex',
     '& > * + *': {
-      marginTop: theme.spacing(2),
+      marginLeft: theme.spacing(2),
     },
   },
 }));
 
-function LinearIndeterminate() {
+function CircularIndeterminate() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <LinearProgress />
+      <CircularProgress />
     </div>
   );
 }
+
+// My code
 
 class LoadingView extends React.Component {
    constructor() {
@@ -32,7 +33,7 @@ class LoadingView extends React.Component {
    }
 
    componentDidMount() {
-      this.setState({interval: setInterval(() => this.setState({dots: (this.state.dots == 3 ? 0 : this.state.dots + 1)}), 500)});
+      this.setState({interval: setInterval(() => this.setState({dots: (this.state.dots === 3 ? 0 : this.state.dots + 1)}), 500)});
    }
 
    componentWillUnmount() {
@@ -42,7 +43,7 @@ class LoadingView extends React.Component {
    render() {
       return(
          <div id='loading-view'>
-            <LinearIndeterminate />
+            <CircularIndeterminate />
             <h2>Loading{'.'.repeat(this.state.dots)}</h2>
          </div>
       )
