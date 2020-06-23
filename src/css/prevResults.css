@@ -17,6 +17,9 @@ div#prev-results {
     border-radius: 6px;
     width: 100%;
     color: white;
+    -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
 }
 
 #table-container p {

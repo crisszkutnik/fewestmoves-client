@@ -4,6 +4,9 @@
     border-radius: 10px;
     color: white;
     padding: 0;
+    -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
 }
 
 #display-all > *:not(#title) {
@@ -57,6 +60,7 @@
     border: 2px solid var(--dark3);
     border-radius: 5px;
     padding: 5px;
+    font-size: 1.25em;
     color: white;
 }
 

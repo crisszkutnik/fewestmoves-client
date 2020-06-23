@@ -10,6 +10,9 @@
     background: var(--dark2);
     border-radius: 8px;
     color: white;
+    -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
 }
 
 #load-button {

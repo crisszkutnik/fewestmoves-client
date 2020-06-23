@@ -19,8 +19,6 @@ form {
 }
 
 #modify-container {
-   width: 900px;
-   height: 800px;
    background-color: var(--dark1);
    color: white;
    padding: 0;
@@ -185,6 +183,14 @@ form {
 }
 
 @media (min-width: 1200px) {
+   #modify-container {
+      width: 45%;
+      height: 80%;
+      font-size: 12px;
+   }
+}
+
+@media (min-width: 1500px) {
    #modify-container {
       width: 40%;
       height: 70%;

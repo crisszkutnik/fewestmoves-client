@@ -1,18 +1,44 @@
-.alert-enter {
-   opacity: 0;
-   transform: scale(0.9);
- }
- .alert-enter-active {
-   opacity: 1;
-   transform: translateX(0);
-   transition: opacity 300ms, transform 300ms;
- }
- .alert-exit {
-   opacity: 1;
- }
- .alert-exit-active {
-   opacity: 0;
-   transform: scale(0.9);
-   transition: opacity 300ms, transform 300ms;
- }
- 
+@keyframes fade-in-big {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+} 
+
+@keyframes fade-out-big {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  } 
+}
+
+.fade-in {
+  animation-name: fade-in-big;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+}
+
+.fade-in-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fade-out-big {
+  animation-name: fade-out-big;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.card-expand-hover {
+  transform: scale(1.05);
+}

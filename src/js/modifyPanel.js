@@ -10,13 +10,14 @@ const ModifyPanel = (props) => {
            explanation: props.resData.explanation
        },
        onSubmit: res => {
-          props.submitRes(res.solution, res.explanation, props.nComb);
+          document.getElementById('modify-container').classList.add('fade-out-big');
+          setTimeout(() => props.submitRes(res.solution, res.explanation, props.nComb), 250);
        }
    })
 
    return (
        <div id='modify-panel'>
-               <form onSubmit={formik.handleSubmit} id='submit-solution'>
+               <form onSubmit={formik.handleSubmit} className='fade-in' id='submit-solution'>
                   <Container id="modify-container">
                      <Row id='title'>
                         <Col>
@@ -45,7 +46,7 @@ const ModifyPanel = (props) => {
                      </Row>
                      <Row id='explanation'>
                         <Col >
-                           <textarea className='inputField' name='explanation'
+                           <textarea spellcheck='false' className='inputField' name='explanation'
                               onChange={formik.handleChange}
                               onBlur={formik.handleBlur}
                               value={formik.values.explanation}></textarea>
@@ -53,7 +54,7 @@ const ModifyPanel = (props) => {
                      </Row>
                      <Row id="end-buttons">
                         <Col>
-                           <button id='cancel' onClick={props.closePanel}>Cancel</button>
+                           <button id='cancel'>Cancel</button>
                            <button type='submit'>Submit</button>
                         </Col>
                      </Row>

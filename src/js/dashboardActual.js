@@ -11,8 +11,29 @@ import notLoadedIMG from '../img/exclamation.svg'
 
 
 class ChallengeData extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        //Animation setup
+
+        document.getElementById(`load-sol-button${this.props.comb}`).addEventListener('mouseenter', () => {
+            document.getElementById(`scramble${this.props.comb}`).classList.add('card-expand-hover');
+        })
+
+        document.getElementById(`load-sol-button${this.props.comb}`).addEventListener('mouseout', () => {
+            document.getElementById(`scramble${this.props.comb}`).classList.remove('card-expand-hover');
+        })
+    }
+
+    componentWillUnmount() {
+        document.getElementById('load-sol-button${this.props.nComb}').removeEventListener('mouseenter');
+        document.getElementById('load-sol-button${this.props.nComb}').removeEventListener('mouseout');
+    }
+
     render() {
-        let showClass = 'text-white text-center solution-card px-2';
+        let showClass = `text-white text-center solution-card px-2`;
         let text;
         let moves;
         let image;
@@ -35,7 +56,7 @@ class ChallengeData extends React.Component {
         }
 
         return (
-            <Container className={showClass}>
+            <Container className={showClass} id={`scramble${this.props.comb}`}>
                 <Row className='sol-status'>
                     <Col className='sol-status-info'>
                         {image}
@@ -53,7 +74,7 @@ class ChallengeData extends React.Component {
                 </Row>
                 <Row className='sol-button'> 
                     <Col>
-                        <button onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>
+                        <button id={`load-sol-button${this.props.comb}`} onClick={() => this.props.showPanel(this.props.comb)}>Load solution</button>
                     </Col>
                 </Row>
             </Container>
@@ -98,9 +119,9 @@ class DashboardActual extends React.Component {
 
     showPanel() {
         if(this.props.user.logged)
-            return (<ModifyPanel closePanel={() => this.setState({showComb: 0})} challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>);
+            return (<ModifyPanel challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>);
         else
-            return (<LoginPanel closePanel={() => this.setState({showComb: 0})}/>);
+            return (<LoginPanel/>);
     }
 
     submitResponse(newSol, newExp, modComb) {

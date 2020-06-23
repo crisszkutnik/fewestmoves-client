@@ -16,6 +16,9 @@
     background: var(--default-violet);
     color: white;
     font-weight: 200;
+    -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
 }
 
 #challenges {
@@ -26,6 +29,11 @@
 
 .solution-card {
     background-color: var(--dark2);
+    -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
 }
 
 .sol-status {
@@ -59,8 +67,8 @@
 }
 
 .sol-status img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 
 .sol-moves {
@@ -201,7 +209,7 @@
     }
 
     .solution-card {
-        font-size: 14px;
+        font-size: 12px;
         width: 25%;
         height: 70%;
     }
