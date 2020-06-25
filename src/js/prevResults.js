@@ -103,14 +103,20 @@ class ResTable extends React.Component {
             if(index === this.props.display)
                 className += ' selected';
 
+            let moves1 = showSol(elem.comb1.moves);
+            let moves2 = showSol(elem.comb2.moves);
+            let moves3 = showSol(elem.comb3.moves);
+
+            console.log(elem);
+
             all.push(
                 <Row className={className} onClick={() => this.props.changeDisplay(index)} key={index}>
                     <Col xs="1">{elem.position}</Col>
                     <Col xs="3"><p>{elem.name}</p></Col>
-                    <Col xs="2">{showSol(elem.comb1.moves)}</Col>
-                    <Col xs="2">{showSol(elem.comb2.moves)}</Col>
-                    <Col xs="2">{showSol(elem.comb3.moves)}</Col>
-                    <Col xs="1">{elem.average}</Col>
+                    <Col xs="2">{moves1}</Col>
+                    <Col xs="2">{moves2}</Col>
+                    <Col xs="2">{moves3}</Col>
+                    <Col xs="1">{(elem.comb1.moves !== 0 && elem.comb2.moves !== 0 && elem.comb3.moves !== 0) ? elem.average : 'DNF'}</Col>
                     <Col xs="1">{elem.lowest}</Col>
                 </Row>
             );
@@ -120,7 +126,7 @@ class ResTable extends React.Component {
 
     render() {
         return (
-            <div id='table-container'>
+            <div className='fade-in' id='table-container'>
                 <Container id='table-head'>
                     <Row id='thead'>
                         <Col xs="1">Pos.</Col>

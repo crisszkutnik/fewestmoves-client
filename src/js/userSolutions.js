@@ -22,7 +22,7 @@ class UserSolutions extends React.Component {
       }
 
       return (
-         <Container id='display-all'>
+         <Container className='fade-in' id='display-all'>
             <Row id='title'>
                <Col>
                   <h2 className='scramble'>{this.props.challenges[`comb${this.state.solDisplay}`]}</h2>

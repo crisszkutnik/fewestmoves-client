@@ -93,7 +93,7 @@ class SubmittedSol extends React.Component {
             else
                 return (
                     <div id='dashboard-submitted'>
-                        <div id='see-users'>
+                        <div className='fade-in' id='see-users'>
                             <SimpleBar id='simple-bar'>
                                 <Container id='user-container'>
                                         {this.renderNames()}       

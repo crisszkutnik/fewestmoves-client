@@ -87,7 +87,7 @@ class DashboardActual extends React.Component {
         super();
         this.submitResponse = this.submitResponse.bind(this);
         this.showPanel = this.showPanel.bind(this);
-        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 1};
+        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 0};
 
         this.fetch1url = '/challData/getChallenge';
         this.fetch1Props = {
@@ -160,7 +160,7 @@ class DashboardActual extends React.Component {
                     <div id='header'>
                         <h1>Take a look at this week's challenges</h1>
                     </div>
-                    <div id='challenges'>
+                    <div id='challenges' className='fade-in'>
                         <ChallengeData challenge={this.state.challenges.comb1} solMoves={this.state.userResponse.comb1.moves} showPanel={(n) => this.setState({showComb: n})} comb={1}/>
                         <ChallengeData challenge={this.state.challenges.comb2} solMoves={this.state.userResponse.comb2.moves} showPanel={(n) => this.setState({showComb: n})} comb={2}/>
                         <ChallengeData challenge={this.state.challenges.comb3} solMoves={this.state.userResponse.comb3.moves} showPanel={(n) => this.setState({showComb: n})} comb={3}/>
