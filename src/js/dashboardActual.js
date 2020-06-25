@@ -87,7 +87,7 @@ class DashboardActual extends React.Component {
         super();
         this.submitResponse = this.submitResponse.bind(this);
         this.showPanel = this.showPanel.bind(this);
-        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 0};
+        this.state = {challenges: {}, userResponse: {}, loaded: false, showComb: 1};
 
         this.fetch1url = '/challData/getChallenge';
         this.fetch1Props = {
@@ -121,7 +121,7 @@ class DashboardActual extends React.Component {
         if(this.props.user.logged)
             return (<ModifyPanel challenge={this.state.challenges[`comb${this.state.showComb}`]} nComb={this.state.showComb} submitRes={this.submitResponse} resData={this.state.userResponse[`comb${this.state.showComb}`]}/>);
         else
-            return (<LoginPanel/>);
+            return (<LoginPanel closePanel={() => this.setState({showComb: 0})}/>);
     }
 
     submitResponse(newSol, newExp, modComb) {

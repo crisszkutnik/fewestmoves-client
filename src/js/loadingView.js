@@ -8,6 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    overflow: 'hidden',
     '& > * + *': {
       marginLeft: theme.spacing(2),
     },
@@ -19,7 +20,7 @@ function CircularIndeterminate() {
 
   return (
     <div className={classes.root}>
-      <CircularProgress />
+      <CircularProgress style={{height: '60px', width: '60px', overflow: 'hidden', color: 'var(--darker-violet)'}}/>
     </div>
   );
 }
@@ -43,7 +44,7 @@ class LoadingView extends React.Component {
    render() {
       return(
          <div id='loading-view'>
-            <CircularIndeterminate />
+            <CircularIndeterminate/>
             <h2>Loading{'.'.repeat(this.state.dots)}</h2>
          </div>
       )

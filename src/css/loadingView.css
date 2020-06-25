@@ -11,10 +11,6 @@ div#loading-view {
    flex-direction: column;
 }
 
-div#loading-view svg {
-   transform: scale(1.5);
-}
-
 div#loading-view h2 {
    color: white;
    margin-top: 50px;

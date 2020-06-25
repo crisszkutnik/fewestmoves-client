@@ -1,20 +1,32 @@
 import React from 'react'
 import '../css/loginPanel.css'
 import wca_logo from '../img/wca_logo.svg'
-import {Container, Row} from "react-bootstrap"
+import {Container, Row, Col} from "react-bootstrap"
 
 const LoginPanel = (props) => {
+   const closePanel = () => {
+      document.getElementById('login-panel').classList.add('fade-out-big');
+      setTimeout(() => props.closePanel(), 250);
+   };
+
    return (
       <div id="login-background">
-         <Container id='login-panel' className="px-5 py-3">
-            <Row className="justify-content-end">
-               <button onClick={props.closePanel}>x</button>
+      <div></div>
+         <Container id='login-panel' className="fade-in">
+            <Row>
+               <Col>
+                  <button onClick={closePanel}>x</button>
+               </Col>
             </Row>
-            <Row className="justify-content-center my-3">
-               <h3>Select a method to log in</h3>
+            <Row>
+               <Col>
+                  <h3>Select a method to log in</h3>
+               </Col>
             </Row>
-            <Row className="justify-content-center">
-               <a className="px-3 py-3" href='http://localhost:9000/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
+            <Row id='options'>
+               <Col>
+                  <a  href='http://localhost:9000/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
+               </Col>
             </Row>
          </Container>
       </div>
