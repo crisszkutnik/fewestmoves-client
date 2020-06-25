@@ -1,11 +1,11 @@
 class Cube {
 	constructor(){
-		this.state = { //definition of each piece
-			cp: [0,1,2,3,4,5,6,7], //UBL, UBR, UFR, UFL, DFL, DFR, DBR, DBL
-			co: [0,0,0,0,0,0,0,0],//clockwise = +1
-			ep: [0,1,2,3,4,5,6,7,8,9,10,11], //UB, UR, UF, UL, BL, BR, FR, FL, DF, DR, DB, DL
-			eo: [0,0,0,0,0,0,0,0,0,0,0,0], //1 = flipped
-			xp: [0,1,2,3,4,5] //U, L, F, R, B, D
+		this.state = { 							//definition of each piece
+			cp: [0,1,2,3,4,5,6,7], 				//UBL, UBR, UFR, UFL, DFL, DFR, DBR, DBL
+			co: [0,0,0,0,0,0,0,0],				//clockwise = +1
+			ep: [0,1,2,3,4,5,6,7,8,9,10,11], 	//UB, UR, UF, UL, BL, BR, FR, FL, DF, DR, DB, DL
+			eo: [0,0,0,0,0,0,0,0,0,0,0,0], 		//1 = flipped
+			xp: [0,1,2,3,4,5] 					//U, L, F, R, B, D
 		};
 	}
 	applyManeuver(maneuver){ //apply a sequence of moves to the cube state
@@ -14,15 +14,15 @@ class Cube {
 		}
 	}
 	moveOf(move){
-		if(move=="R") this.R();
-		if(move=="U") this.U();
-		if(move=="F") this.F();
-		if(move=="L") this.L();
-		if(move=="D") this.D();
-		if(move=="B") this.B();
-		if(move=="x") this.x();
-		if(move=="y") this.y();
-		if(move=="z") this.z();
+		if(move==="R") this.R();
+		if(move==="U") this.U();
+		if(move==="F") this.F();
+		if(move==="L") this.L();
+		if(move==="D") this.D();
+		if(move==="B") this.B();
+		if(move==="x") this.x();
+		if(move==="y") this.y();
+		if(move==="z") this.z();
 	}
 
 	//DEFINITION OF MOVES//
@@ -79,7 +79,7 @@ class Cube {
 		[co[0],co[1],co[2],co[3],co[4],co[5],co[6],co[7]] = [co[3],co[2],co[5],co[4],co[7],co[6],co[1],co[0]];
 		[ep[0],ep[1],ep[2],ep[3],ep[4],ep[5],ep[6],ep[7],ep[8],ep[9],ep[10],ep[11]] = [ep[2],ep[6],ep[8],ep[7],ep[3],ep[1],ep[9],ep[11],ep[10],ep[5],ep[0],ep[4]];
 		[eo[0],eo[1],eo[2],eo[3],eo[4],eo[5],eo[6],eo[7],eo[8],eo[9],eo[10],eo[11]] = [eo[2],eo[6],eo[8],eo[7],eo[3],eo[1],eo[9],eo[11],eo[10],eo[5],eo[0],eo[4]];
-		[xp[0],xp[1],xp[2],xp[3],xp[4],xp[5]] = [xp[2],xp[1],xp[5],xp[3],xp[0],xp[4]];
+		[xp[0],xp[2],xp[4],xp[5]] = [xp[2],xp[5],xp[0],xp[4]];
 		co[0] = (co[0]+2)%3;
 		co[1] = (co[1]+1)%3;
 		co[2] = (co[2]+2)%3;
@@ -104,7 +104,7 @@ class Cube {
 		[co[0],co[1],co[2],co[3],co[4],co[5],co[6],co[7]] = [co[3],co[0],co[1],co[2],co[5],co[6],co[7],co[4]];
 		[ep[0],ep[1],ep[2],ep[3],ep[4],ep[5],ep[6],ep[7],ep[8],ep[9],ep[10],ep[11]] = [ep[3],ep[0],ep[1],ep[2],ep[7],ep[4],ep[5],ep[6],ep[9],ep[10],ep[11],ep[8]];
 		[eo[0],eo[1],eo[2],eo[3],eo[4],eo[5],eo[6],eo[7],eo[8],eo[9],eo[10],eo[11]] = [eo[3],eo[0],eo[1],eo[2],eo[7],eo[4],eo[5],eo[6],eo[9],eo[10],eo[11],eo[8]];
-		[xp[0],xp[1],xp[2],xp[3],xp[4],xp[5]] = [xp[0],xp[2],xp[3],xp[4],xp[1],xp[5]];
+		[xp[1],xp[2],xp[3],xp[4]] = [xp[2],xp[3],xp[4],xp[1]];
 
 		eo[4] = (eo[4]+1)%2;
 		eo[5] = (eo[5]+1)%2;
@@ -127,33 +127,33 @@ class Cube {
 //end of Cube class
 
 function wideEquivalent(move){ //convert Rw to L x, etc
-	if(move=="R") return "Lx";
-	if(move=="U") return "Dy";
-	if(move=="F") return "Bz";
-	if(move=="L") return "Rxxx";
-	if(move=="D") return "Uyyy";
-	if(move=="B") return "Fzzz";
+	if(move==="R") return "Lx";
+	if(move==="U") return "Dy";
+	if(move==="F") return "Bz";
+	if(move==="L") return "Rxxx";
+	if(move==="D") return "Uyyy";
+	if(move==="B") return "Fzzz";
 }
 
 function parseMove(move){ //convert any move into just string of {F,B,U,L,R,D,x,y,z}
-	if (move[1]=="'"){ //F', B', etc
+	if (move[1]==="'"){ //F', B', etc
 		return move[0]+move[0]+move[0];
 	}
-	else if (move[1]=="2"){ //F2, B2, etc
+	else if (move[1]==="2"){ //F2, B2, etc
 		return move[0]+move[0];
 	}
-	else if (move[1] == "w"){ //move is wide
-		if(move.length == 2){ //Fw, Bw...
+	else if (move[1] === "w"){ //move is wide
+		if(move.length === 2){ //Fw, Bw...
 			return wideEquivalent(move[0]);
 		}
-		else if(move.length == 3 && move[2]=="2"){ //Fw2, Bw2...
+		else if(move.length === 3 && move[2]==="2"){ //Fw2, Bw2...
 			return wideEquivalent(move[0]) + wideEquivalent(move[0]);
 		}
-		else if(move.length == 3 && move[2]=="'"){ //Fw', Bw'...
+		else if(move.length === 3 && move[2]==="'"){ //Fw', Bw'...
 			return wideEquivalent(move[0]) + wideEquivalent(move[0]) + wideEquivalent(move[0]);
 		}
 	}
-	else if (move.length == 1 && validChars(move)){ //F, B, U, D, R, L, x, y, z
+	else if (move.length === 1 && validChars(move)){ //F, B, U, D, R, L, x, y, z
 		return move[0];
 	}
 	else if(!validChars(move)){
@@ -180,7 +180,7 @@ function simplifyManeuver(scramble){ //convert any *sequence* into just string o
 
 function arrEq(arr1, arr2){ //to compare arrays
 	for(let i=0; i<arr1.length; i++){
-		if (arr1[i]!=arr2[i]) return false;
+		if (arr1[i]!==arr2[i]) return false;
 	}
 	return true;
 }
@@ -215,12 +215,47 @@ function statesAreEqual(s1,s2){ //comparison of cube.state objects
 function solLength(solution){ //length of solution (x,y,z = 0, others = 1)
 	let rots = 0;
 	for(let i=0; i<solution.length; i++){
-		if(solution[i]=="" || solution[i].includes("x") || solution[i].includes("y") || solution[i].includes("z")){
+		if(solution[i]==="" || solution[i].includes("x") || solution[i].includes("y") || solution[i].includes("z")){
 			rots++;
 		}
 	}
 
 	return (solution.length) - rots;
+}
+
+//Checks if a solution doesn't begin like the inverse scramble
+//(checks for first 4 moves up to first 10 moves,
+//to prevent someone disguising R2 as R Lw, for example)
+function ushakovMethod(scr, sol) {
+	let scrarr = scr.split(" ");
+	let last = [];
+	for(let i=0; i<4; i++){
+		last.unshift(scrarr[scrarr.length-1-i]);
+	}
+	last = last.join(" ");
+	let first;
+	for(let j=4; j<10; j++){
+		first = firstNMoves(j,sol);
+		if(isSolved(last, first) !== -1) return 1;
+	}
+	return 0;
+}
+
+//Last N non-rotation moves of a maneuver, return includes rotations
+//Example: firstNMoves(3, "R U F R D' L' B2 x y") => D' L' B2 x y
+function firstNMoves(n,m){
+	m = m.split(" ");
+	let out = [];
+	let i = 0;
+	while(m[i].includes("x") || m[i].includes("y") || m[i].includes("z")){
+		out.push(m[i]);
+		i++;
+	}
+	for(n; n>0; n--){
+		out.push(m[i]);
+		i++;
+	}
+	return out.join(" ");
 }
 
 // "MAIN" FUNCTION //
@@ -239,8 +274,9 @@ export function isSolved(scramble, solution){
 	//console.log(solution.split(" "));
 
 	let output;
-	if(!parsedSolution.includes("error") && checkSymmetries(cube, solvedCube)){
+	if(!parsedSolution.includes("error") && !ushakovMethod(scramble,solution) && checkSymmetries(cube, solvedCube)){
 		output = solLength(solution.split(" "));
+		if(output > 80) output = -1;
 	}
 	else output=-1;
 

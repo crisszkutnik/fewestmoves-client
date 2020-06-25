@@ -11,7 +11,7 @@ You will see 3 scrambles, which make up the current week's contest, as shown:
 ![dashboard](screenshots/dashboard.png)
 
 Click on the button next to each scramble to open the submission panel:  
-![scramble panel](screenshots/scramble-panel.PNG)
+![scramble panel](screenshots/scramble-panel.png)
 
 You should submit your solution and explanation in the input fields, as follows:  
 ![submission example](screenshots/scramble-panel-text.PNG)
