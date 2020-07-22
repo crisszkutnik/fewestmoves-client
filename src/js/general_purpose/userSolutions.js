@@ -1,5 +1,4 @@
 import React from 'react'
-import '../css/userSolutions.css'
 import {Container, Row, Col} from 'react-bootstrap'
 import 'simplebar/dist/simplebar.min.css';
 

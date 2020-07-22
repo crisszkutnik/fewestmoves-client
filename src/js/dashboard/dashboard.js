@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import DashboardActual from './dashboardActual';
-import SubmittedSol from './submitted';
-import PageNavbar from './navbar'
-import PrevResults from './prevResults'
-import '../css/general.css'
-import '../css/anim.css'
+import SubmittedSol from '../general_purpose/submitted';
+import PageNavbar from '../navbar_login/navbar'
+import PrevResults from '../general_purpose/prevResults'
+
 
 const Dashboard = () => {
     const [user, setUser] = useState({

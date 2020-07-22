@@ -1,8 +1,7 @@
 import React from 'react'
 import LoadingView from './loadingView'
-import showSol from '../functions/func'
+import {showSol} from '../../functions/func'
 import UserSolutions from './userSolutions'
-import '../css/prevResults.css'
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import {Container, Row, Col} from 'react-bootstrap'

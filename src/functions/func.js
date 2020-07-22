@@ -9,4 +9,8 @@ function showSol(moves) {
         return (<span className='mr-4'>{moves}</span>);
 }
 
-export default showSol;
+function hasTime(startTime) {
+    return startTime + 3.6e+6 - Date.now() > 0;
+}
+
+export {showSol, hasTime};
