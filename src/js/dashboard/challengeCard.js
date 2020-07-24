@@ -4,23 +4,49 @@ import {hasTime} from '../../functions/func'
 import correctIMG from '../../img/tick.svg'
 import incorrectIMG from '../../img/incorrect.svg'
 import notLoadedIMG from '../../img/exclamation.svg'
+import {Redirect} from 'react-router-dom'
 
-const ConfirmationPanel = () => {
-   return (
-      <div className='black-background'>
-         <div className='scramble-alert'>
-            <div id='conf-text'>
-               <p><strong>Be careful!</strong> Once you start you will have one hour to submit your solution.</p>
-               <span>Are you sure you want to continue?</span>
+class ConfirmationPanel extends React.Component {
+    constructor(props) {
+        super(props);
+        this.startChallenge = this.startChallenge.bind(this);
+
+        this.state = {redirect: false}
+    }
+
+    startChallenge() {
+        fetch('/newChallData/startChallenge', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include'
+        })
+        .then(() => this.setState({redirect: true}))
+    }
+
+    render() {
+        let redirect = `/modifySolution/comb${this.props.comb}`
+
+        return (
+            <div className='black-background'>
+               <div className='scramble-alert'>
+                  <div id='conf-text'>
+                     <p><strong>Be careful!</strong> Once you start you will have one hour to submit your solution.</p>
+                     <span>Are you sure you want to continue?</span>
+                  </div>
+                  <div id='conf-button'>
+                     <button onClick={this.startChallenge}>Continue</button>
+                     <button>Cancel</button>
+                     <p>Note: your solution is saved every 5 minutes.</p>
+                  </div>
+               </div>
+               {this.state.redirect &&
+                <Redirect to={redirect} />}
             </div>
-            <div id='conf-button'>
-               <button>Continue</button>
-               <button>Cancel</button>
-               <p>Note: your solution is saved every 5 minutes.</p>
-            </div>
-         </div>
-      </div>
-   );
+         );
+    }
 }
 
 class ChallengeCard extends React.Component {
@@ -50,7 +76,7 @@ class ChallengeCard extends React.Component {
 
    modifyRes() {
       if(hasTime(this.props.startDate) || this.props.startDate === 0)
-         return <ConfirmationPanel />
+         return <ConfirmationPanel comb={this.props.comb}/>
       else
          alert(`You do not have time left, ${Number(this.props.startDate) + 3.6e+6 - Date.now()}`);
    }
@@ -61,7 +87,9 @@ class ChallengeCard extends React.Component {
        let moves;
        let image;
 
-       if(this.props.solMoves === 0) {
+        console.log(this.props.startDate);
+
+       if(this.props.solMoves === 0 && this.props.startDate === 0) {
            text = 'Not loaded yet';
            showClass += ' sol-not-loaded';
            moves = 0;

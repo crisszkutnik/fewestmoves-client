@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Dashboard from './dashboard/dashboard'
+import Test from './startChallengeTest'
 import ModifySection from './modify_section/modifyChallenge'
 import '../css/general.css'
 import '../css/anim.css'
@@ -17,6 +18,7 @@ const App = () => {
 			<div>
 			<Switch>
 				<Route path='/modifySolution/:comb' component={ModifySection} />
+				<Route path='/test' component={Test} />
 				<Route path="/dashboard">
 					<Dashboard />
 				</Route>

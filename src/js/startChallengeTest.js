@@ -6,7 +6,7 @@ class Test extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:9000/newChallData/modifyChallenge', {
+        fetch('http://localhost:9000/newChallData/getScramble', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,8 +22,8 @@ class Test extends React.Component {
                 }
             })
         })
-        //.then(res => res.json())
-        //.then(data => console.log(data));
+        .then(res => res.json())
+        .then(data => console.log(data));
     }
 
     render() {
