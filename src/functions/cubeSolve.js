@@ -172,10 +172,11 @@ function validChars(move){ //sorry for the ugly syntax
 }
 
 function simplifyManeuver(scramble){ //convert any *sequence* into just string of {F,B,U,L,R,D,x,y,z}
+	let outscr = [...scramble];
 	for(let i=0; i<scramble.length; i++){
-		scramble[i] = parseMove(scramble[i]);
+		outscr[i] = parseMove(scramble[i]);
 	}
-	return scramble.join("");
+	return outscr.join("");
 }
 
 function arrEq(arr1, arr2){ //to compare arrays
@@ -223,20 +224,30 @@ function solLength(solution){ //length of solution (x,y,z = 0, others = 1)
 	return (solution.length) - rots;
 }
 
-//Checks if a solution doesn't begin like the inverse scramble
+//Checks if a solution starts like the inverse scramble
 //(checks for first 4 moves up to first 10 moves,
 //to prevent someone disguising R2 as R Lw, for example)
 function ushakovMethod(scr, sol) {
+	//console.log(scr, sol);
 	let scrarr = scr.split(" ");
 	let last = [];
-	for(let i=0; i<4; i++){
+	for(let i=0; i<10; i++){
 		last.unshift(scrarr[scrarr.length-1-i]);
 	}
-	last = last.join(" ");
+	// Mimicking isSolved() to avoid infinite recursion
 	let first;
+	let cube;
+	let solvedCube = new Cube();
+	// Checking if first 4, 5, ..., 10 moves are inversely equivalent
 	for(let j=4; j<10; j++){
+		cube = new Cube();
 		first = firstNMoves(j,sol);
-		if(isSolved(last, first) !== -1) return 1;
+
+		let all = simplifyManeuver(first) + simplifyManeuver(last.slice(last.length - j));
+		//console.log(all);
+		cube.applyManeuver(all);
+
+		if(checkSymmetries(cube, solvedCube)) return 1;
 	}
 	return 0;
 }
@@ -247,15 +258,15 @@ function firstNMoves(n,m){
 	m = m.split(" ");
 	let out = [];
 	let i = 0;
-	while(m[i].includes("x") || m[i].includes("y") || m[i].includes("z")){
+	let moves_added = 0;
+	while(moves_added < n){
+		if(!(m[i].includes("x") || m[i].includes("y") || m[i].includes("z"))){
+			moves_added++;
+		}
 		out.push(m[i]);
 		i++;
 	}
-	for(n; n>0; n--){
-		out.push(m[i]);
-		i++;
-	}
-	return out.join(" ");
+	return out;
 }
 
 // "MAIN" FUNCTION //
@@ -274,7 +285,7 @@ export function isSolved(scramble, solution){
 	//console.log(solution.split(" "));
 
 	let output;
-	if(!parsedSolution.includes("error") && !ushakovMethod(scramble,solution) && checkSymmetries(cube, solvedCube)){
+	if(!parsedSolution.includes("error") && checkSymmetries(cube, solvedCube) && !ushakovMethod(scramble,solution)){
 		output = solLength(solution.split(" "));
 		if(output > 80) output = -1;
 	}
@@ -282,3 +293,5 @@ export function isSolved(scramble, solution){
 
 	return output;
 }
+
+//console.log(isSolved("R U R F U R F2 B2 R' U' L'","Rw Fw Uw y' x y F2 Fw2 R' U' F' R' U' R'"));
