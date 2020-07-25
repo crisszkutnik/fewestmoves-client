@@ -1,5 +1,5 @@
 import React from 'react'
-import {useFormik} from  'formik'
+import {useFormik} from 'formik'
 import {Container, Row, Col} from 'react-bootstrap'
 
 const ModifyPanel = (props) => {

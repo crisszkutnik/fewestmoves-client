@@ -1,14 +1,18 @@
 import React from 'react'
-import {useFormik} from  'formik'
+import correctIMG from "../../img/tick.svg";
+import incorrectIMG from "../../img/incorrect.svg";
+import arrow from "../../img/arrow.svg"
+import LoadingView from "../general_purpose/loadingView"
+import ScrambleTime from './scrambleTime'
+import ModifyForm from './modifyForm'
+import { Container, Row, Col } from "react-bootstrap";
 
 class ModifySection extends React.Component {
    constructor(props) {
       super(props);
-      this.state = {resData: {}}
-   }
+      this.state = {resData: {}, scramble: '', loaded: false}
 
-   componentWillMount() {
-      fetch('/newChallData/activeChallengeData', {
+      this.headers = {
          method: 'POST',
          headers: { 
             'Content-Type': 'application/json',
@@ -16,14 +20,51 @@ class ModifySection extends React.Component {
          },
          credentials: 'include',
          body: JSON.stringify({reqComb: this.props.match.params.comb})
-      })
-      .then(res => res.json())
-      .then(data => this.setState({resData: data}))
-      .catch(e => alert("An error occurred"))
+      }
+   }
+
+   componentWillMount() {
+      Promise.all([fetch('/newChallData/activeChallengeData', this.headers), fetch('/newChallData/getScramble', this.headers)])
+      .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+      .then(([resData, scramble]) => this.setState({resData: resData, scramble: scramble, loaded: true}))
+      .catch(() => alert("An error ocurred"));
    }
 
    render() {
-      return (<h1>{this.props.match.params.comb}</h1>)
+      if(!this.state.loaded)
+         return (<LoadingView />);
+      else
+         return (
+            <div id='modify-challenge'>
+               <BackButton />
+               <Container>
+                  <Row>
+                     <Col>
+                        <ScrambleTime startDate={this.state.resData.startDate} scramble={this.state.scramble}/>
+                     </Col>
+                     <Col>
+                        <scramble-display scramble={this.state.scramble}></scramble-display>
+                     </Col>
+                  </Row>
+                  <Row>
+                     <Col>
+                        <ModifyForm sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
+                     </Col>
+                  </Row>
+               </Container>
+            </div>
+         );
+   }
+}
+
+class BackButton extends React.Component {
+   render() {
+      return (
+         <div id='back-button' style={{paddingTop: '150px'}}>
+            <img src={arrow} alt='arrow' />
+            <h1>Return to home page</h1>
+         </div>
+      );
    }
 }
 
