@@ -4,16 +4,15 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import DashboardActual from './dashboard/dashboardActual';
 import SubmittedSol from './general_purpose/submitted';
 import PrevResults from './general_purpose/prevResults';
-import Test from './startChallengeTest'
 import ModifySection from './modify_section/modifyChallenge'
 import '../css/general.css'
 import '../css/anim.css'
 import '../css/submitted.css'
 import '../css/prevResults.css'
-import '../css/modifyPanel.css'
 import '../css/loadingView.css'
 import '../css/userSolutions.css'
 import '../css/loginPanel.css'
+import '../css/modifyChallenge.css'
 
 const App = () => {
 	const [user, setUser] = useState({
@@ -50,7 +49,6 @@ const App = () => {
 			<PageNavbar user={user} />
 			<Switch>
 				<Route exact path='/modifySolution/:comb' component={ModifySection} />
-				<Route exact path='/test' component={Test} />
 				<Route exact path='/dashboard/actual'>
                     <DashboardActual user={user}/>
                 </Route>

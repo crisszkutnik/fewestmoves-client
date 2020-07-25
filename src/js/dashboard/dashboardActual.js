@@ -1,9 +1,6 @@
 import React from 'react'
 import '../../css/dashboardActual.css'
 import LoadingView from '../general_purpose/loadingView'
-import {isSolved} from '../../functions/cubeSolve'
-import ModifyPanel from './modifyPanel'
-import LoginPanel from '../navbar_login/loginPanel'
 import ChallengeCard from './challengeCard'
 
 class DashboardActual extends React.Component {
