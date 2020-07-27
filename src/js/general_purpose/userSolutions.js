@@ -23,15 +23,15 @@ class UserSolutions extends React.Component {
       }
 
       let containerClass = 'fade-in'
-      let startTime = this.props.userSol[`comb${this.state.solDisplay}`].startDate;
 
-      console.log(!this.props.userSol[`comb${this.state.solDisplay}`].startDate);
-      console.log(hasTime(startTime))
+      let showWarning = false;
 
-      let showWarning = (!startTime || hasTime(startTime)) && !this.state.disableBlur;
+      if(this.props.canBlur) {
+         let startTime = this.props.loggedData[`comb${this.state.solDisplay}`].startDate;
 
-      if(showWarning && this.props.canBlur)
-         containerClass += ' no-answer';
+         if((startTime == 0 || hasTime(startTime)) && !this.state.disableBlur)
+            containerClass += ' no-answer';
+      }
 
       return (
          <Container className={containerClass} id='display-all'>
