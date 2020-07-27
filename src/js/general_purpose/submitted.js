@@ -15,9 +15,10 @@ class SubmittedSol extends React.Component {
         this.renderNames = this.renderNames.bind(this);
 
         this.fetch1 = '/allRes/otherUsers';
-        this.fetch2 = '/challData/getChallenge';
+        this.fetch2 = '/newChallData/getAllScrambles';
 
         this.headers = {
+            method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -31,7 +32,7 @@ class SubmittedSol extends React.Component {
     } 
 
     componentWillMount() {
-        Promise.all([fetch(this.fetch1, Object.assign({method: 'POST'}, this.headers)), fetch(this.fetch2, Object.assign({method: 'GET'}, this.headers))])
+        Promise.all([fetch(this.fetch1, this.headers), fetch(this.fetch2, this.headers)])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([responses, rChallenges]) => {
             setTimeout(() => this.setState({info: responses, fetchedData: true, challenges: rChallenges}), 400);
@@ -102,7 +103,7 @@ class SubmittedSol extends React.Component {
                                 <button onClick={this.getMore}>Load more</button>
                             </div>
                         </div>
-                        <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges} />
+                        <UserSolutions userSol={this.state.info[this.state.display]} canBlur={true} challenges={this.state.challenges} />
                     </div>
                 );
         else

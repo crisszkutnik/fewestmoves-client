@@ -22,6 +22,8 @@ class ModifyForm extends React.Component {
    componentDidMount() {
       // every 5 minutes
       this.interval = setInterval(this.saveData, 300000);
+
+      // Save and send when there is no time left
       this.timeout = setTimeout(() => {
          this.saveData();
          this.setState({redirect: true});

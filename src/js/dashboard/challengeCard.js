@@ -4,6 +4,7 @@ import { hasTime } from "../../functions/func";
 import correctIMG from "../../img/tick.svg";
 import incorrectIMG from "../../img/incorrect.svg";
 import notLoadedIMG from "../../img/exclamation.svg";
+import LoginPanel from '../navbar_login/loginPanel'
 import { Redirect } from "react-router-dom";
 
 const ConfirmationPanel = (props) => {
@@ -35,7 +36,7 @@ const ConfirmationPanel = (props) => {
 			</div>
 			<div id="conf-button">
 			  <button onClick={startChallenge}>Continue</button>
-			  <button>Cancel</button>
+			  <button onClick={props.closePanel}>Cancel</button>
 			  <p>Note: your solution is saved every 5 minutes.</p>
 			</div>
 		  </div>
@@ -87,10 +88,14 @@ class ChallengeCard extends React.Component {
   }
 
   modifyRes() {
-    if (hasTime(this.props.startDate) || this.props.startDate === 0)
-      return <ConfirmationPanel comb={this.props.comb} />;
+    if(!this.props.isLogged)
+      return <LoginPanel closePanel={() => this.setState({ showConf: false })} />
+    else if(this.props.startDate === 0)
+      return <ConfirmationPanel comb={this.props.comb} closePanel={() => this.setState({ showConf: false })} />
+    else if(hasTime(this.props.startDate))
+      return <Redirect to={`/modifySolution/comb${this.props.comb}`} />
     else
-      alert(`You do not have time left, ${Number(this.props.startDate) + 3.6e6 - Date.now()}`);
+      alert('You do not have time left')
   }
 
   render() {
@@ -117,6 +122,8 @@ class ChallengeCard extends React.Component {
     }
 
     return (
+      <>
+      {this.state.showConf && this.modifyRes()}
       <Container className={showClass} id={`scramble${this.props.comb}`}>
         <Row className="sol-status">
           <Col className="sol-status-info">
@@ -141,8 +148,8 @@ class ChallengeCard extends React.Component {
             </button>
           </Col>
         </Row>
-        {this.state.showConf && this.modifyRes()}
       </Container>
+      </>
     );
   }
 }
