@@ -87,7 +87,7 @@ class ModifyForm extends React.Component {
    }
 
    render() {
-      let moves = isSolved(this.state.solution, this.props.scramble);
+      let moves = isSolved(this.props.scramble, this.state.solution);
 
       return (
          <div>

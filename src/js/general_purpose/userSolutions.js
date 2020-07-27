@@ -29,8 +29,10 @@ class UserSolutions extends React.Component {
       if(this.props.canBlur) {
          let startTime = this.props.loggedData[`comb${this.state.solDisplay}`].startDate;
 
-         if((startTime == 0 || hasTime(startTime)) && !this.state.disableBlur)
+         if((startTime == 0 || hasTime(startTime)) && !this.state.disableBlur) {
             containerClass += ' no-answer';
+            showWarning = true;
+         }
       }
 
       return (
