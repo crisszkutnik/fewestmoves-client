@@ -27,18 +27,18 @@ const ConfirmationPanel = (props) => {
 	return (
 		<div className="black-background">
 		  <div className="scramble-alert">
-			<div id="conf-text">
-			  <p>
-				<strong>Be careful!</strong> Once you start you will have one hour
-				to submit your solution.
-			  </p>
-			  <span>Are you sure you want to continue?</span>
-			</div>
-			<div id="conf-button">
-			  <button onClick={startChallenge}>Continue</button>
-			  <button onClick={props.closePanel}>Cancel</button>
-			  <p>Note: your solution is saved every 5 minutes.</p>
-			</div>
+        <div id="conf-text">
+          <p>
+          <strong>Be careful!</strong> Once you start you will have one hour
+          to submit your solution.
+          </p>
+          <span>Are you sure you want to continue?</span>
+        </div>
+        <div id="conf-button">
+          <button onClick={startChallenge}>Continue</button>
+          <button onClick={props.closePanel}>Cancel</button>
+          <p><strong>Note:</strong> your solution is saved automatically every 5 minutes.</p>
+        </div>
 		  </div>
 			{redirect && <Redirect to={`/modifySolution/comb${props.comb}`} />}
 		</div>

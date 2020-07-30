@@ -13,6 +13,7 @@ import '../css/loadingView.css'
 import '../css/userSolutions.css'
 import '../css/loginPanel.css'
 import '../css/modifyChallenge.css'
+import '../css/challengeWarning.css'
 
 const App = () => {
 	const [user, setUser] = useState({
