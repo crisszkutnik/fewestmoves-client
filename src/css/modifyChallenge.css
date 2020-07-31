@@ -1,0 +1,158 @@
+#modify-challenge {
+   background-color: var(--dark1);
+   color: white;
+   padding-top: 56px;
+   padding-bottom: 80px;
+   padding-left: 15px;
+   padding-right: 15px;
+   font-size: 16px;
+}
+
+#back-button {
+   display: flex;
+   color: var(--default-violet);
+   height: 50px;
+   align-items: center;
+   padding-left: 10px;
+   cursor: pointer;
+}
+
+#back-button h1 {
+   font-size: 1.5em;
+   margin-bottom: 0;
+   margin-left: 10px;
+}
+
+#back-button img {
+   height: 30px;
+   width: 30px;
+}
+
+.page-card {
+   background-color: var(--dark2);
+   border-radius: 5px;
+}
+/*
+.page-card-top-left {
+   margin-bottom: 10px;
+   margin-right: 5px;
+}
+
+.page-card-top-right {
+   margin-left: 5px;
+   margin-bottom: 10px;
+}
+*/
+
+.page-card-top-left, .page-card-top-right {
+   height: 300px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.page-card-top-left p {
+   font-size: 1em;
+   text-align: center;
+}
+
+.page-card-top-left h1 {
+   font-size: 5em;
+}
+
+#bottom-container label {
+   font-size:  1.5em;
+}
+
+#sol-input {
+   display: flex;
+}
+
+#bottom-container input,  #bottom-container textarea, #bottom-container .moves {
+   background: var(--dark3);
+   border: none;
+   color: white;
+   padding: 5px
+}
+
+#bottom-container .moves {
+   display: flex;
+   align-items: center;
+   width: 50px;
+}
+
+#bottom-container textarea {
+   resize: none;
+   height: 300px;
+}
+
+#bottom-container input, #bottom-container .moves {
+   height: 30px;
+}
+
+#bottom-container input {
+   margin-bottom: 20px;
+   width: calc(100% - 50px);
+}
+
+#bottom-container div form {
+   display: flex;
+   flex-direction: column;
+}
+
+#save-status {
+   display: flex;
+   flex-direction: row;
+   height: 100px;
+   margin-top: 15px;
+   align-items: center;
+}
+
+#save-status img {
+   height: 40px;
+   width: 40px;
+}
+
+#save-status p {
+   font-size: 1.5em;
+   margin-left: 10px;
+   margin-bottom: 0;
+}
+
+#save-status button {
+   color: white;
+   border: none;
+   background: var(--incorrect-red);
+   height: 30px;
+   width: 80px;
+   font-size: 1em;
+   margin-left: 10px;
+   border-radius: 5px;
+   transition: all 0.25s ease-in-out;
+}
+
+#save-status button:hover {
+   transform: scale(1.1);
+   background: var(--darker-red);
+}
+
+@media (max-width: 991.98px) {
+   #bottom-container {
+      padding: 20px 20px;
+   }
+}
+
+@media (min-width: 992px) {
+   .page-card-top-left {
+      margin-right: 0.5rem;
+   }
+
+   #bottom-container {
+      margin-left: 0.25rem;
+   }
+
+   #bottom-container {
+      padding: 20px 50px;
+   }
+}

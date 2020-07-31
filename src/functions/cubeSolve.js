@@ -293,5 +293,3 @@ export function isSolved(scramble, solution){
 
 	return output;
 }
-
-//console.log(isSolved("R U R F U R F2 B2 R' U' L'","Rw Fw Uw y' x y F2 Fw2 R' U' F' R' U' R'"));

@@ -7,10 +7,17 @@
     -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
     -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
     box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
+    position: relative;
 }
 
 #display-all > *:not(#title) {
     padding: 0 15px;
+}
+
+.no-answer .col *:not(button) {
+    user-select: none;
+    filter: blur(5px);
+    pointer-events: none;
 }
 
 #title {

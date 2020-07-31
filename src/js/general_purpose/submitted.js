@@ -1,8 +1,7 @@
 import React from 'react'
-import '../css/submitted.css'
 import LoadingView from './loadingView'
 import UserSolutions from './userSolutions'
-import showSol from '../functions/func'
+import {showSol} from '../../functions/func'
 import {Container, Row, Col} from 'react-bootstrap'
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
@@ -10,15 +9,17 @@ import 'simplebar/dist/simplebar.min.css';
 class SubmittedSol extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {amountReceived: 0, info: [], fetchedData: false, display: 0, challenges: {}};
+        this.state = {amountReceived: 0, info: [], fetchedData: false, display: 0, challenges: {}, userRes: {}};
         this.getMore = this.getMore.bind(this);
         this.changeDisplayInfo = this.changeDisplayInfo.bind(this);
         this.renderNames = this.renderNames.bind(this);
 
         this.fetch1 = '/allRes/otherUsers';
-        this.fetch2 = '/challData/getChallenge';
+        this.fetch2 = '/challData/getAllScrambles';
+        this.fetch3 = '/challData/getChallengeData'
 
         this.headers = {
+            method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -32,10 +33,10 @@ class SubmittedSol extends React.Component {
     } 
 
     componentWillMount() {
-        Promise.all([fetch(this.fetch1, Object.assign({method: 'POST'}, this.headers)), fetch(this.fetch2, Object.assign({method: 'GET'}, this.headers))])
-        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-        .then(([responses, rChallenges]) => {
-            setTimeout(() => this.setState({info: responses, fetchedData: true, challenges: rChallenges}), 400);
+        Promise.all([fetch(this.fetch1, this.headers), fetch(this.fetch2, this.headers), fetch(this.fetch3, this.headers)])
+        .then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
+        .then(([responses, rChallenges, uData]) => {
+            setTimeout(() => this.setState({info: responses, fetchedData: true, challenges: rChallenges, userRes: uData}), 400);
         });
     }
 
@@ -103,7 +104,7 @@ class SubmittedSol extends React.Component {
                                 <button onClick={this.getMore}>Load more</button>
                             </div>
                         </div>
-                        <UserSolutions userSol={this.state.info[this.state.display]} challenges={this.state.challenges} />
+                        <UserSolutions loggedData={this.state.userRes} userSol={this.state.info[this.state.display]} canBlur={true} challenges={this.state.challenges} />
                     </div>
                 );
         else

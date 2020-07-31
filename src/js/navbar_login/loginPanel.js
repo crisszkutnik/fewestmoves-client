@@ -1,6 +1,6 @@
 import React from 'react'
-import '../css/loginPanel.css'
-import wca_logo from '../img/wca_logo.svg'
+
+import wca_logo from '../../img/wca_logo.svg'
 import {Container, Row, Col} from "react-bootstrap"
 
 const LoginPanel = (props) => {

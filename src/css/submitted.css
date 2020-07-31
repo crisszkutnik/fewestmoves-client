@@ -71,6 +71,59 @@
     background: var(--default-violet-75);
 }
 
+.answer-warning {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: var(--dark1);
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+    border-radius: 5px;
+    top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.answer-warning div {
+    display: flex;
+    align-items: center;
+}
+
+.answer-warning div h2 {
+    font-size: 2em;
+    margin-bottom: 0;
+    color: var(--default-violet);
+}
+
+.answer-warning div img {
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+}
+
+.answer-warning p {
+    margin: 20px 0;
+    font-size: 1.4em;
+}
+
+.answer-warning button {
+    border: none;
+    background: var(--default-violet);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 3px;
+    font-size: 1.2em;
+    transition: all 0.25s ease-in-out;
+}
+
+.answer-warning button:hover {
+    transform: scale(1.1);
+}
+
+
 @media (max-width: 990px) {
     #dashboard-submitted {
         flex-direction: column;
@@ -79,14 +132,18 @@
         align-items: center;
     }
 
+    .answer-warning {
+        width: 95%;
+    }
+
     #see-users {
-        width: 70%;
+        width: 85%;
         height: 700px;
         font-size: 12px;
     }
 
     #dashboard-submitted #display-all {
-        width: 70%;
+        width: 85%;
         margin-top: 20px;
         height: 600px;
         font-size: 9px;
@@ -110,13 +167,13 @@
 
 @media (min-width: 767px) {
     #see-users {
-        width: 70%;
+        width: 80%;
         height: 700px;
         font-size: 12px;
     }
 
     #dashboard-submitted #display-all {
-        width: 70%;
+        width: 80%;
         height: 800px;
         font-size: 12px;
     }
@@ -135,6 +192,11 @@
         height: 80%;
         margin-right: 50px;
         font-size: 12px;
+    }
+
+    .answer-warning {
+        font-size: 10px;
+        width: 80%;
     }
 
     #dashboard-submitted #display-all {
@@ -156,6 +218,11 @@
         height: 80%;
         font-size: 12px;
     }
+
+    .answer-warning {
+        font-size: 10px;
+        width: 80%;
+    }
 }
 
 @media (min-width: 1500px) {
@@ -167,5 +234,10 @@
     #dashboard-submitted #display-all {
         width: 50%;
         height: 80%;
+    }
+
+    .answer-warning {
+        font-size: 12px;
+        width: 60%;
     }
 }
