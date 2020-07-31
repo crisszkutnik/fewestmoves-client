@@ -52,7 +52,7 @@ class ModifyForm extends React.Component {
          reqComb: this.props.reqComb
       };
 
-      fetch('/newChallData/modifyChallenge', {
+      fetch('/challData/modifyChallenge', {
             method: 'POST',
             headers: { 
                'Content-Type': 'application/json',

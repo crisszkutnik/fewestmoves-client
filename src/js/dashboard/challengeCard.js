@@ -11,7 +11,7 @@ const ConfirmationPanel = (props) => {
 	const [redirect, setRedirect] = useState(false);
 
 	const startChallenge = () => {
-		fetch("/newChallData/startChallenge", {
+		fetch("/challData/startChallenge", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

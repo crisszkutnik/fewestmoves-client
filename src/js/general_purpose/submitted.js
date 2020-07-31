@@ -15,8 +15,8 @@ class SubmittedSol extends React.Component {
         this.renderNames = this.renderNames.bind(this);
 
         this.fetch1 = '/allRes/otherUsers';
-        this.fetch2 = '/newChallData/getAllScrambles';
-        this.fetch3 = '/newChallData/getChallengeData'
+        this.fetch2 = '/challData/getAllScrambles';
+        this.fetch3 = '/challData/getChallengeData'
 
         this.headers = {
             method: 'POST',

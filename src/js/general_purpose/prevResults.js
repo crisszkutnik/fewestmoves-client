@@ -14,9 +14,10 @@ class PrevResults extends React.Component {
         this.getMore = this.getMore.bind(this);
 
         this.fetch1 = '/prevRes';
-        this.fetch2 = '/challData/getChallenge';
+        this.fetch2 = '/challData/getAllScrambles';
 
         this.headers = {
+            method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -26,7 +27,7 @@ class PrevResults extends React.Component {
     }
 
     componentWillMount() {
-        Promise.all([fetch(this.fetch1, Object.assign({method: 'POST'}, this.headers)), fetch(this.fetch2, Object.assign({method: 'GET'}, this.headers))])
+        Promise.all([fetch(this.fetch1, this.headers), fetch(this.fetch2, this.headers)])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([responses, rChallenges]) => {
             setTimeout(() => this.setState({resData: this.state.resData.concat(responses), fetchedData: true, challenges: rChallenges}), 400);

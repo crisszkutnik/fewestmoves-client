@@ -10,7 +10,7 @@ class DashboardActual extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/newChallData/getChallengeData', {
+        fetch('/challData/getChallengeData', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

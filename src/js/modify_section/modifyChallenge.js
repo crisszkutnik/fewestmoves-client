@@ -29,7 +29,7 @@ class ModifySection extends React.Component {
    }
 
    componentWillMount() {
-      Promise.all([fetch('/newChallData/activeChallengeData', this.headers), fetch('/newChallData/getScramble', this.headers)])
+      Promise.all([fetch('/challData/activeChallengeData', this.headers), fetch('/challData/getScramble', this.headers)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([resData, scramble]) => {
          let time = Date.now();
