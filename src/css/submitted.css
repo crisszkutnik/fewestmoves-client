@@ -128,7 +128,7 @@
     #dashboard-submitted {
         flex-direction: column;
         height: 1800px;
-        padding-top: 100px;
+        padding-top: 70px;
         align-items: center;
     }
 
@@ -182,6 +182,7 @@
 @media (min-width: 991px) {
     #dashboard-submitted {
         height: 100vh;
+        padding-top: 60px;
         justify-content: center;
         align-items: center;
         flex-direction: row;
@@ -209,14 +210,14 @@
 @media (min-width: 1200px) {
     #see-users {
         width: 22%;
-        height: 80%;
-        font-size: 14px;
+        height: 98%;
+        font-size: 12px;
     }
 
     #dashboard-submitted #display-all {
         width: 50%;
-        height: 80%;
-        font-size: 12px;
+        height: 98%;
+        font-size: 11px;
     }
 
     .answer-warning {
@@ -228,12 +229,12 @@
 @media (min-width: 1500px) {
     #see-users {
         width: 18%;
-        height: 80%;
+        height: 90%;
     }
 
     #dashboard-submitted #display-all {
         width: 50%;
-        height: 80%;
+        height: 90%;
     }
 
     .answer-warning {

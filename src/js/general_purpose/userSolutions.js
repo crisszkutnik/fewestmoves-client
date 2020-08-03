@@ -59,7 +59,7 @@ class UserSolutions extends React.Component {
             </Row>
             <Row id='solution'>
                <Col>
-                  <input type='text' readOnly value={this.props.userSol[`comb${this.state.solDisplay}`].sol || ''}></input>
+                  <input type='text' value={this.props.userSol[`comb${this.state.solDisplay}`].sol || ''}></input>
                </Col>
             </Row>
             <Row className='body-title'>

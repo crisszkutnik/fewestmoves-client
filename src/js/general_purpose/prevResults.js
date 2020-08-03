@@ -4,7 +4,7 @@ import {showSol} from '../../functions/func'
 import UserSolutions from './userSolutions'
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-import {Container, Row, Col} from 'react-bootstrap'
+import {Table} from 'react-bootstrap'
 
 class PrevResults extends React.Component {
     constructor(props) {
@@ -73,17 +73,17 @@ class ResTable extends React.Component {
         
         this.state = {};
         this.displayAll = this.displayAll.bind(this);
-        this.configResize = this.configResize.bind(this);
+        //this.configResize = this.configResize.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.configResize);
+   //     window.addEventListener('resize', this.configResize);
 
-        this.configResize();
+     //   this.configResize();
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.configResize);
+       // window.removeEventListener('resize', this.configResize);
     }
 
     configResize() {
@@ -103,51 +103,57 @@ class ResTable extends React.Component {
             if(index === this.props.display)
                 className += ' selected';
 
-            let moves1 = showSol(elem.comb1.moves);
-            let moves2 = showSol(elem.comb2.moves);
-            let moves3 = showSol(elem.comb3.moves);
+            let moves1 = showSol(elem.comb1);
+            let moves2 = showSol(elem.comb2);
+            let moves3 = showSol(elem.comb3);
 
-            console.log(elem);
+            let average;
+
+            /*
+            Verify that the item exists. Then verify if it is greater than zero
+            */
+            if(elem.comb1 && elem.comb2 && elem.comb3 && elem.comb1.moves > 0 && elem.comb2.moves > 0 && elem.comb3.moves > 0)
+                // Check if number is float or integer
+                average = elem.average % 1 === 0 ? elem.average : elem.average.toFixed(2);
+            else
+                average = 'DNF';
 
             all.push(
-                <Row className={className} onClick={() => this.props.changeDisplay(index)} key={index}>
-                    <Col xs="1">{elem.position}</Col>
-                    <Col xs="3"><p>{elem.name}</p></Col>
-                    <Col xs="2">{moves1}</Col>
-                    <Col xs="2">{moves2}</Col>
-                    <Col xs="2">{moves3}</Col>
-                    <Col xs="1">{(elem.comb1.moves !== 0 && elem.comb2.moves !== 0 && elem.comb3.moves !== 0) ? elem.average : 'DNF'}</Col>
-                    <Col xs="1">{elem.lowest}</Col>
-                </Row>
-            );
+                <tr onClick={() => this.props.changeDisplay(index)} key={index}>
+                    <td>{elem.position}</td>
+                    <td>{elem.name}</td>
+                    <td>{moves1}</td>
+                    <td>{moves2}</td>
+                    <td>{moves3}</td>
+                    <td>{average}</td>
+                    <td>{elem.lowest}</td>
+                </tr>
+            )
         })
         return all;
     }
 
     render() {
+        let width = window.innerWidth;
+
         return (
-            <div className='fade-in' id='table-container'>
-                <Container id='table-head'>
-                    <Row id='thead'>
-                        <Col xs="1">Pos.</Col>
-                        <Col xs="3">Name</Col>
-                        <Col xs="2">Scramble 1</Col>
-                        <Col xs="2">Scramble 2</Col>
-                        <Col xs="2">Scramble 3</Col>
-                        <Col xs="1">Mean</Col>
-                        <Col xs="1">Single</Col>
-                    </Row>
-                </Container>
-                <SimpleBar id='simple-bar' style={{maxHeight: `${this.state.maxHeight}px`}}>
-                    <Container id='table-body'>
+            <div id='table-container'>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>{width < 576 ? "Pos." : "Position"}</th>
+                            <th>Name</th>
+                            <th>{width < 576 ? "Scr. 1" : "Scramble 1"}</th>
+                            <th>{width < 576 ? "Scr. 2" : "Scramble 2"}</th>
+                            <th>{width < 576 ? "Scr. 3" : "Scramble 3"}</th>
+                            <th>Mean</th>
+                            <th>Single</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {this.displayAll()}
-                        <Row id='end-button'>
-                            <Col>
-                                <button onClick={() => this.props.getMore()}>Load more</button>
-                            </Col>
-                        </Row>
-                    </Container>
-                </SimpleBar>
+                    </tbody>
+                </Table>
             </div>
         );
     }
