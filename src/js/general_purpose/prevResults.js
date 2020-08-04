@@ -2,7 +2,6 @@ import React from 'react'
 import LoadingView from './loadingView'
 import {showSol} from '../../functions/func'
 import UserSolutions from './userSolutions'
-import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import {Table} from 'react-bootstrap'
 
@@ -119,7 +118,7 @@ class ResTable extends React.Component {
                 average = 'DNF';
 
             all.push(
-                <tr onClick={() => this.props.changeDisplay(index)} key={index}>
+                <tr onClick={() => this.props.changeDisplay(index)} key={index} className={className}>
                     <td>{elem.position}</td>
                     <td>{elem.name}</td>
                     <td>{moves1}</td>

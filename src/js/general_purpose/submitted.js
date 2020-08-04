@@ -94,7 +94,7 @@ class SubmittedSol extends React.Component {
     render() {
         if(this.state.fetchedData)
             if(this.state.info.length === 0)
-                return(<div id='dashboard-submitted'><h1>Nothing loaded yet!</h1></div>);
+                return(<div id='dashboard-submitted'><h1 style={{color: 'white'}}>Nothing loaded yet!</h1></div>);
             else
                 return (
                     <div id='dashboard-submitted'>

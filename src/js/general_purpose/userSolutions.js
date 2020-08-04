@@ -59,7 +59,7 @@ class UserSolutions extends React.Component {
             </Row>
             <Row id='solution'>
                <Col>
-                  <input type='text' value={this.props.userSol[`comb${this.state.solDisplay}`].sol || ''}></input>
+                  <input type='text' value={this.props.userSol[`comb${this.state.solDisplay}`] ? this.props.userSol[`comb${this.state.solDisplay}`].sol : ''}></input>
                </Col>
             </Row>
             <Row className='body-title'>
@@ -69,7 +69,7 @@ class UserSolutions extends React.Component {
             </Row>
             <Row id='explanation'>
                <Col>
-                  <textarea readOnly value={this.props.userSol[`comb${this.state.solDisplay}`].explanation || ''}></textarea>
+                  <textarea readOnly value={this.props.userSol[`comb${this.state.solDisplay}`] ? this.props.userSol[`comb${this.state.solDisplay}`].explanation : ''}></textarea>
                </Col>
             </Row>
             <Row id="buttons">

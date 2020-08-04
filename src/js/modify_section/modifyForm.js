@@ -37,16 +37,21 @@ class ModifyForm extends React.Component {
 
    handleChange(e) {
       let target = e.target;
+      let str = target.value;
+
+      // Parse the solution
+      if(target.name === 'solution')
+         str = str.replace(/^\s/gm, "").replace(/\s\s+/gm, " ").replace(/’/gm, "'");
 
       this.setState({
-         [target.name]: target.value,
+         [target.name]: str,
       });
    }
 
    saveData() {
       let save = {
          modComb: {
-            sol: this.state.solution,
+            sol: this.state.solution.trim(),
             explanation: this.state.explanation
          },
          reqComb: this.props.reqComb
@@ -87,7 +92,7 @@ class ModifyForm extends React.Component {
    }
 
    render() {
-      let moves = isSolved(this.props.scramble, this.state.solution);
+      let moves = isSolved(this.props.scramble, this.state.solution.trim());
 
       return (
          <div>
