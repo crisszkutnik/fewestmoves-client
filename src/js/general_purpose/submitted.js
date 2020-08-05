@@ -61,9 +61,9 @@ class SubmittedSol extends React.Component {
                     <Row>
                         <Col>
                             <p>
-                                {showSol(elem.comb1, true)}
-                                {showSol(elem.comb2, true)}
-                                {showSol(elem.comb3, true)}
+                                {showSol(elem.comb1.moves, true)}
+                                {showSol(elem.comb2.moves, true)}
+                                {showSol(elem.comb3.moves, true)}
                             </p>
                         </Col>
                     </Row>

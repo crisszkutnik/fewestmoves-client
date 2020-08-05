@@ -72,26 +72,7 @@ class ResTable extends React.Component {
         
         this.state = {};
         this.displayAll = this.displayAll.bind(this);
-        //this.configResize = this.configResize.bind(this);
     }
-
-    componentDidMount() {
-   //     window.addEventListener('resize', this.configResize);
-
-     //   this.configResize();
-    }
-
-    componentWillUnmount() {
-       // window.removeEventListener('resize', this.configResize);
-    }
-
-    configResize() {
-        let displayAllHeight = document.getElementById('display-all').offsetHeight;
-        let theadHeight = document.getElementById('thead').offsetHeight;
-
-        this.setState({maxHeight: displayAllHeight - theadHeight});
-    }
-
 
     displayAll() {
         let all = [];
@@ -102,9 +83,9 @@ class ResTable extends React.Component {
             if(index === this.props.display)
                 className += ' selected';
 
-            let moves1 = showSol(elem.comb1);
-            let moves2 = showSol(elem.comb2);
-            let moves3 = showSol(elem.comb3);
+            let moves1 = elem.comb1 ? showSol(elem.comb1.moves) : 'DNS';
+            let moves2 = elem.comb2 ? showSol(elem.comb2.moves) : 'DNS';
+            let moves3 = elem.comb3 ? showSol(elem.comb3.moves) : 'DNS';
 
             let average;
 

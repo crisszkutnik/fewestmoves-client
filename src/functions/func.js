@@ -1,13 +1,13 @@
 import React from 'react'
 
-function showSol(comb, margin) {
+function showSol(moves, margin) {
     let className = margin ? 'mr-4' : '';
 
-    if(comb) {
-        if(comb.moves <= 0)
+    if(moves !== undefined) {
+        if(moves <= 0)
             return (<span className={className}>DNF</span>);
         else
-            return (<span className={className}>{comb.moves}</span>);
+            return (<span className={className}>{moves}</span>);
     } else {
         return (<span className={className}>DNS</span>)
     }
