@@ -74,7 +74,7 @@ class ModifyForm extends React.Component {
 
 	 console.log(save);
 
-    fetch(this.props.modifyExp ? fetchAll : fetchExp, {
+    fetch(this.props.modifySol ? fetchAll : fetchExp, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
