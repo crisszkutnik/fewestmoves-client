@@ -1,10 +1,6 @@
 import React from 'react'
 
 class ScrambleTime extends React.Component {
-   constructor(props) {
-      super(props);
-   }
-
    parseNumber(num) {
       return (num >= 10 ? num : '0' + num)
    }

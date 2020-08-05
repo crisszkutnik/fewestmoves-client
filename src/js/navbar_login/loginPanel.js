@@ -1,5 +1,4 @@
 import React from 'react'
-
 import wca_logo from '../../img/wca_logo.svg'
 import {Container, Row, Col} from "react-bootstrap"
 
@@ -25,7 +24,7 @@ const LoginPanel = (props) => {
             </Row>
             <Row id='options'>
                <Col>
-                  <a  href='http://localhost:9000/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
+                  <a href='http://localhost:9000/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
                </Col>
             </Row>
          </Container>
