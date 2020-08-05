@@ -19,4 +19,5 @@
 
 body {
     background-color: var(--dark1);
+    overflow-x: hidden;
 }

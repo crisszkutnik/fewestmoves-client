@@ -27,11 +27,11 @@ class DashboardActual extends React.Component {
     render() {
         if(this.state.loaded)
             return(
-                <div id='dashboardActual'>
+                <div id='dashboardActual' style={{overflow: 'hidden'}}>
                     <div id='header'>
                         <h1>Take a look at this week's challenges</h1>
                     </div>
-                    <div id='challenges' className='fade-in'>
+                    <div id='challenges' className='fade-in' style={{overflow: 'hidden'}}>
                         <ChallengeCard isLogged={this.props.user.logged} comb={1} solMoves={this.state.userResponse.comb1.moves} startDate={this.state.userResponse.comb1.startDate}/>
                         <ChallengeCard isLogged={this.props.user.logged} comb={2} solMoves={this.state.userResponse.comb2.moves} startDate={this.state.userResponse.comb2.startDate}/>
                         <ChallengeCard isLogged={this.props.user.logged} comb={3} solMoves={this.state.userResponse.comb3.moves} startDate={this.state.userResponse.comb3.startDate}/>

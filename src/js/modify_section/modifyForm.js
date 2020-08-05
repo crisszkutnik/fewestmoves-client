@@ -5,127 +5,151 @@ import correctIMG from "../../img/tick.svg";
 import incorrectIMG from "../../img/incorrect.svg";
 
 class ModifyForm extends React.Component {
-   constructor(props) {
-      super(props);
-      this.handleChange = this.handleChange.bind(this);
-      this.saveData = this.saveData.bind(this);
-      this.saveStatus = this.saveStatus.bind(this);
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.saveData = this.saveData.bind(this);
+    this.saveStatus = this.saveStatus.bind(this);
 
-      this.state = {
-         solution: this.props.sol,
-         explanation: this.props.explanation,
-         savedSol: this.props.sol,
-         savedExp: this.props.explanation
-      }
-   }
+    this.state = {
+      solution: this.props.sol,
+      explanation: this.props.explanation,
+      savedSol: this.props.sol,
+      savedExp: this.props.explanation,
+    };
+  }
 
-   componentDidMount() {
-      // every 5 minutes
-      this.interval = setInterval(this.saveData, 300000);
+  componentDidMount() {
+    // every 5 minutes
+    this.interval = setInterval(this.saveData, 300000);
 
+    if (this.props.modifySol) {
       // Save and send when there is no time left
       this.timeout = setTimeout(() => {
-         this.saveData();
-         this.setState({redirect: true});
+        this.saveData();
+        this.setState({ redirect: true });
       }, this.props.timeLeft);
-   }
+    }
+  }
 
-   componentWillUnmount() {
-      clearInterval(this.interval);
-      clearTimeout(this.setTimeout);
-   }
+  componentWillUnmount() {
+		clearInterval(this.interval);
 
-   handleChange(e) {
-      let target = e.target;
-      let str = target.value;
+		if(this.props.modifySol)
+   		clearTimeout(this.timeout);
+  }
 
+  handleChange(e) {
+    let target = e.target;
+    let str = target.value;
+
+    if (target.name !== "solution" || this.props.modifySol) {
       // Parse the solution
-      if(target.name === 'solution')
-         str = str.replace(/^\s/gm, "").replace(/\s\s+/gm, " ").replace(/’/gm, "'");
+      if (target.name === "solution")
+        str = str
+          .replace(/^\s/gm, "")
+          .replace(/\s\s+/gm, " ")
+          .replace(/’/gm, "'");
 
       this.setState({
-         [target.name]: str,
+        [target.name]: str,
       });
-   }
+    }
+  }
 
-   saveData() {
-      let save = {
-         modComb: {
-            sol: this.state.solution.trim(),
-            explanation: this.state.explanation
-         },
-         reqComb: this.props.reqComb
-      };
+  saveData() {
+    let modComb = {};
 
-      fetch('/challData/modifyChallenge', {
-            method: 'POST',
-            headers: { 
-               'Content-Type': 'application/json',
-               'Accept': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify(save)
-      })
+    if (this.props.modifySol) modComb.sol = this.state.solution.trim();
+
+    modComb.explanation = this.state.explanation;
+
+    let save = {
+      modComb: modComb,
+      reqComb: this.props.reqComb,
+    };
+
+	 let fetchAll = "/challData/modifyChallenge";
+	 let fetchExp = "/challData/modifyExplanation"
+
+	 console.log(save);
+
+    fetch(this.props.modifyExp ? fetchAll : fetchExp, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(save),
+    })
       .then(() => {
-         this.setState({
-            savedSol: save.modComb.sol,
-            savedExp: save.modComb.explanation
-         });
+        let changeState = {
+          savedExp: save.modComb.explanation,
+        };
+
+        if (this.props.modifySol) changeState.savedSol = save.modComb.sol;
+
+        this.setState(changeState);
       })
-      .catch(() => alert('An error ocurred'));
-   }
+      .catch(() => alert("An error ocurred"));
+  }
 
-   saveStatus() {
-      if(this.state.solution === this.state.savedSol && this.state.explanation === this.state.savedExp)
-         return (
-            <>
-            <img alt="Saved" src={correctIMG}/><p style={{color: 'var(--ok-green)'}}>Solution saved</p>
-            </>
-         );
-      else
-         return (
-            <>
-            <img alt="Not saved" src={incorrectIMG} /><p style={{color: 'var(--incorrect-red)'}}>Solution not saved!</p>
-            <button onClick={this.saveData}>Save now</button>
-            </>
-         );
-   }
-
-   render() {
-      let moves = isSolved(this.props.scramble, this.state.solution.trim());
-
+  saveStatus() {
+    if (
+      this.state.solution === this.state.savedSol &&
+      this.state.explanation === this.state.savedExp
+    )
       return (
-         <div>
-            <form>
-               <label htmlFor='solution'>Solution</label>
-                  <div id="sol-input">
-                     <input 
-                        id='solution' 
-                        className='inputField'         
-                        name='solution'
-                        type='text'
-                        onChange={this.handleChange}
-                        value={this.state.solution} 
-                     />
-                     <div className='moves'><span>{moves === -1 ? 'DNF':moves}</span></div>
-                  </div>
-               <label htmlFor='explanation'>Explanation</label>
-               <textarea 
-                  spellCheck='false' 
-                  className='inputField' 
-                  name='explanation'
-                  onChange={this.handleChange}
-                  value={this.state.explanation}>
-               </textarea>
-            </form>
-            <div id='save-status'>
-               {this.saveStatus()}
-            </div>
-            {this.state.redirect &&
-            <Redirect to='/dashboard/actual' />}
-         </div>
+        <>
+          <img alt="Saved" src={correctIMG} />
+          <p style={{ color: "var(--ok-green)" }}>Solution saved</p>
+        </>
       );
-   }
+    else
+      return (
+        <>
+          <img alt="Not saved" src={incorrectIMG} />
+          <p style={{ color: "var(--incorrect-red)" }}>Solution not saved!</p>
+          <button onClick={this.saveData}>Save now</button>
+        </>
+      );
+  }
+
+  render() {
+    let moves = isSolved(this.props.scramble, this.state.solution.trim());
+
+    return (
+      <div>
+        <form>
+          <label htmlFor="solution">Solution</label>
+          <div id="sol-input">
+            <input
+              id="solution"
+              className="inputField"
+              name="solution"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.solution}
+            />
+            <div className="moves">
+              <span>{moves === -1 ? "DNF" : moves}</span>
+            </div>
+          </div>
+          <label htmlFor="explanation">Explanation</label>
+          <textarea
+            spellCheck="false"
+            className="inputField"
+            name="explanation"
+            onChange={this.handleChange}
+            value={this.state.explanation}
+          ></textarea>
+        </form>
+        <div id="save-status">{this.saveStatus()}</div>
+        {this.state.redirect && <Redirect to="/dashboard/actual" />}
+      </div>
+    );
+  }
 }
 
 export default ModifyForm;

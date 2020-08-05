@@ -20,6 +20,38 @@
   } 
 }
 
+@keyframes slide-in-right {
+  from {
+    transform: translateX(500px);
+  } to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0px);
+  } to {
+    transform: translateX(500px);
+  }
+}
+
+.slide-in-right {
+  animation-name: slide-in-right;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.slide-out-right {
+  animation-name: slide-out-right;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 .fade-in {
   animation-name: fade-in-big;
   animation-duration: 0.1s;

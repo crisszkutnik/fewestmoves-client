@@ -1,48 +1,97 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { hasTime } from "../../functions/func";
 import correctIMG from "../../img/tick.svg";
 import incorrectIMG from "../../img/incorrect.svg";
 import notLoadedIMG from "../../img/exclamation.svg";
-import LoginPanel from '../navbar_login/loginPanel'
+import LoginPanel from "../navbar_login/loginPanel";
 import { Redirect } from "react-router-dom";
 
 const ConfirmationPanel = (props) => {
-	const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
-	const startChallenge = () => {
-		fetch("/challData/startChallenge", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-			credentials: "include",
-			body: JSON.stringify({reqComb: `comb${props.comb}`})
-		})
-		.then(() => setRedirect(true))
-	}
+  const startChallenge = () => {
+    fetch("/challData/startChallenge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ reqComb: `comb${props.comb}` }),
+    }).then(() => setRedirect(true));
+  };
 
-
-	return (
-		<div className="black-background">
-		  <div className="scramble-alert">
+  return (
+    <div className="black-background">
+      <div className="scramble-alert">
         <div id="conf-text">
           <p>
-          <strong>Be careful!</strong> Once you start you will have one hour
-          to submit your solution.
+            <strong>Be careful!</strong> Once you start you will have one hour
+            to submit your solution.
           </p>
           <span>Are you sure you want to continue?</span>
         </div>
         <div id="conf-button">
           <button onClick={startChallenge}>Continue</button>
           <button onClick={props.closePanel}>Cancel</button>
-          <p><strong>Note:</strong> your solution is saved automatically every 5 minutes.</p>
+          <p>
+            <strong>Note:</strong> your solution is saved automatically every 5
+            minutes.
+          </p>
         </div>
-		  </div>
-			{redirect && <Redirect to={`/modifySolution/comb${props.comb}`} />}
-		</div>
-	  );
+      </div>
+      {redirect && <Redirect to={`/modifySolution/comb${props.comb}`} />}
+    </div>
+  );
+};
+
+class NoTimeLeft extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			redirectComponent: ''
+		}
+	}
+
+	componentDidMount() {
+		let slide_duration = 0.25;
+		let on_screen = 10;
+
+		let elem  = document.getElementById("progress-slider");
+		let container = document.getElementById("no-time-warning");
+
+		elem.classList.add("progress-expand");
+		this.slideInTimeout = setTimeout(() => container.classList.add("slide-out-right"), (on_screen + slide_duration) * 1000);
+		// Dissapear after animation
+		this.closeTimeout = setTimeout(this.props.closePanel, (on_screen + 2 * slide_duration) * 1000);
+	}
+
+	componentWillUnmount() {
+		clearTimeout(this.slideInTimeout);
+		clearTimeout(this.closeTimeout);
+	}
+
+	render() {
+		let redirect1 = <Redirect to={`/modifyExplanation/comb${this.props.comb}`}/>;
+
+		return (
+			<div id="no-time-warning" className='slide-in-right'>
+      		<div id="no-time-button">
+					<div id='progress-slider'></div>
+        			<button onClick={this.props.closePanel}>X</button>
+      		</div>
+      		<div id="no-time-text">
+        			<p><strong>You do not have time left!</strong> However, you can still...</p>
+        			<div>
+          			<button onClick={() => this.setState({redirectComponent: redirect1})}>Modify explanation and see your solution</button>
+					</div>
+				</div>
+				{this.state.redirectComponent}
+			</div>
+		);
+	}
 }
 
 class ChallengeCard extends React.Component {
@@ -52,6 +101,7 @@ class ChallengeCard extends React.Component {
     this.expandAdd = this.expandAdd.bind(this);
     this.expandRemove = this.expandRemove.bind(this);
 
+	// Must change this later
     this.state = { showConf: false };
   }
 
@@ -89,13 +139,19 @@ class ChallengeCard extends React.Component {
 
   modifyRes() {
     if(!this.props.isLogged)
-      return <LoginPanel closePanel={() => this.setState({ showConf: false })} />
+      return (
+        <LoginPanel closePanel={() => this.setState({ showConf: false })} />
+      );
     else if(this.props.startDate === 0)
-      return <ConfirmationPanel comb={this.props.comb} closePanel={() => this.setState({ showConf: false })} />
+      return (
+        <ConfirmationPanel
+          comb={this.props.comb}
+          closePanel={() => this.setState({ showConf: false })}
+        />
+      );
     else if(hasTime(this.props.startDate))
-      return <Redirect to={`/modifySolution/comb${this.props.comb}`} />
-    else
-      alert('You do not have time left')
+      return <Redirect to={`/modifySolution/comb${this.props.comb}`} />;
+    else return <NoTimeLeft closePanel={() => this.setState({ showConf: false })} comb={this.props.comb} />;
   }
 
   render() {
@@ -123,32 +179,32 @@ class ChallengeCard extends React.Component {
 
     return (
       <>
-      {this.state.showConf && this.modifyRes()}
-      <Container className={showClass} id={`scramble${this.props.comb}`}>
-        <Row className="sol-status">
-          <Col className="sol-status-info">
-            {image}
-            <p>{text}</p>
-          </Col>
-        </Row>
-        <Row className="sol-moves">
-          <Col>
-            <h2>{moves}</h2>
-            <br />
-            {moves >= 0 && <span>moves</span>}
-          </Col>
-        </Row>
-        <Row className="sol-button">
-          <Col>
-            <button
-              id={`load-sol-button${this.props.comb}`}
-              onClick={() => this.setState({ showConf: true })}
-            >
-              Load solution
-            </button>
-          </Col>
-        </Row>
-      </Container>
+        {this.state.showConf && this.modifyRes()}
+        <Container className={showClass} id={`scramble${this.props.comb}`}>
+          <Row className="sol-status">
+            <Col className="sol-status-info">
+              {image}
+              <p>{text}</p>
+            </Col>
+          </Row>
+          <Row className="sol-moves">
+            <Col>
+              <h2>{moves}</h2>
+              <br />
+              {moves >= 0 && <span>moves</span>}
+            </Col>
+          </Row>
+          <Row className="sol-button">
+            <Col>
+              <button
+                id={`load-sol-button${this.props.comb}`}
+                onClick={() => this.setState({ showConf: true })}
+              >
+                Load solution
+              </button>
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }

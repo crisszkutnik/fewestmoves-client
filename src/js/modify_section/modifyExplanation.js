@@ -6,16 +6,14 @@ import ModifyForm from './modifyForm'
 import { Container, Row, Col } from "react-bootstrap";
 import { useHistory } from 'react-router-dom'
 
-class ModifySection extends React.Component {
+class ModifyExplanation extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
          resData: {},
-          scramble: '',
-           loaded: false,
-         }
-
-      this.timerControl = this.timerControl.bind(this);
+         scramble: '',
+         loaded: false,
+      }
 
       this.headers = {
          method: 'POST',
@@ -32,38 +30,13 @@ class ModifySection extends React.Component {
       Promise.all([fetch('/challData/activeChallengeData', this.headers), fetch('/challData/getScramble', this.headers)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([resData, scramble]) => {
-         let time = Date.now();
-         let endTime = resData.startDate + 3.6e+6;
-
-         let timeLeft = endTime - time
-
-         let minutes = Math.floor(timeLeft/60000);
-
          this.setState({
             resData: resData,
             scramble: scramble,
-            minutes: minutes, 
-            seconds: Math.round(timeLeft/1000 - minutes*60),
             loaded: true,
-            timeLeft: timeLeft
          })
       })
       .catch(() => alert("An error ocurred"));
-   }
-
-   componentDidMount() {
-      this.interval = setInterval(this.timerControl, 1000);
-   }
-
-   componentWillUnmount() {
-      clearInterval(this.interval);
-   }
-
-   timerControl() {
-      if(this.state.seconds !== 0)
-         this.setState({ seconds: this.state.seconds - 1 });
-      else 
-         this.setState({ seconds: 59, minutes: this.state.minutes - 1 });
    }
 
    render() {
@@ -76,7 +49,7 @@ class ModifySection extends React.Component {
                <Container id='modify-container'>
                   <Row>
                      <Col className='page-card page-card-top-left mb-2' lg='6' md='12'>
-                        <ScrambleTime minutes={this.state.minutes} seconds={this.state.seconds} scramble={this.state.scramble}/>
+                        <ScrambleTime minutes={0} seconds={0} scramble={this.state.scramble}/>
                      </Col>
                      <Col className='page-card page-card-top-right mb-2' lg='5' md='12'>
                         <scramble-display scramble={this.state.scramble}></scramble-display>
@@ -84,7 +57,7 @@ class ModifySection extends React.Component {
                   </Row>
                   <Row>
                      <Col id='bottom-container' className='page-card page-card-bottom' lg='11' md='12'>
-                        <ModifyForm timeLeft={this.state.timeLeft} reqComb={this.props.match.params.comb} modifySol={true} sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
+                        <ModifyForm timeLeft={this.state.timeLeft} reqComb={this.props.match.params.comb} modifySol={false} sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
                      </Col>
                   </Row>
                </Container>
@@ -104,4 +77,4 @@ const BackButton = () => {
    );
 }
 
-export default ModifySection;
+export default ModifyExplanation;
