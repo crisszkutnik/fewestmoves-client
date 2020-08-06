@@ -15,6 +15,19 @@ table {
     width: 100%;
     text-align: center;
     background: var(--dark2);
+    border-radius: 3px;
+}
+
+th:first-of-type {
+    border-top-left-radius: 3px;
+}
+
+th:last-of-type {
+    border-top-right-radius: 3px;
+}
+
+table thead {
+    border-radius: 3px;
 }
 
 table td {
@@ -32,6 +45,15 @@ table * {
 
 table tr:nth-child(odd) {
     background: var(--dark4);
+}
+
+table tr {
+    transition: all 0.2s ease-in-out;
+}
+
+table tr:hover {
+    cursor: pointer;
+    background: rgba(124, 63, 239, 0.25);
 }
 
 #end-button {
@@ -63,10 +85,7 @@ table tr:nth-child(odd) {
     div#prev-results #display-all {
         height: 700px;
         width: 95%;
-        max-width: calc(95%) !important;
-        /*
-            Bootstrap sets max-width for some reason
-        */
+        max-width: calc(100%) !important;
     }
     
     #table-container {
@@ -82,24 +101,13 @@ table tr:nth-child(odd) {
     div#prev-results #display-all {
         height: 800px;
         width: 90%;
-        max-width: calc(90%) !important;
-        /*
-            Bootstrap sets max-width for some reason
-        */
-    }
-    
-    #table-container {
-        width: 90%;
+        max-width: calc(100%) !important;
     }
 }
 
 @media (min-width: 768px) {
     div#prev-results #display-all {
         height: 800px;
-        width: 70%;        
-    }
-    
-    #table-container {
         width: 70%;
     }
 }

@@ -3,7 +3,7 @@ import PageNavbar from './navbar_login/navbar'
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import DashboardActual from './dashboard/dashboardActual';
 import SubmittedSol from './general_purpose/submitted';
-import PrevResults from './general_purpose/prevResults';
+import PrevResults from './prevResults/prevResults';
 import ModifySection from './modify_section/modifyChallenge'
 import ModifyExplanation from './modify_section/modifyExplanation'
 import '../css/general.css'
@@ -16,6 +16,7 @@ import '../css/loginPanel.css'
 import '../css/modifyChallenge.css'
 import '../css/challengeWarning.css'
 import '../css/noTimeLeft.css'
+import '../css/prevResultsTable.css'
 
 const App = () => {
 	const [user, setUser] = useState({

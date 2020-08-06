@@ -7,7 +7,6 @@
 
 #header {
     display: flex;
-    padding-top: 56px;
     align-items: center;
 }
 
@@ -16,6 +15,7 @@
     background: var(--default-violet);
     color: white;
     font-weight: 200;
+    margin-bottom: 0;
     -webkit-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
     -moz-box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
     box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
@@ -23,8 +23,7 @@
 
 #challenges {
     display: flex;
-    height: 80%;
-    padding-top: 50px;
+    height: calc(80%);
 }
 
 .solution-card {
@@ -135,7 +134,7 @@
     }
 
     .solution-card {
-        font-size: 12px;
+        font-size: 11px;
         margin-top: 30px;
         min-height: 400px;
     }
@@ -190,6 +189,7 @@
 
     #header {
         height: 20%;
+        align-items: flex-end;
     }
 
     .solution-card {
@@ -205,17 +205,26 @@
 
 @media (min-width: 1200px) {
     #challenges {
-        height: 80%;
+        align-items: center;
     }
 
     .solution-card {
         font-size: 12px;
         width: 25%;
-        height: 70%;
+        height: 95%;
     }
 }
 
 @media (min-width: 1500px) {
+    #header {
+        padding-top: 70px;
+        align-items: center;
+    }
+
+    #challenges {
+        align-items: flex-start;
+    }
+
     .solution-card {
         font-size: 15px;
         width: 20%;
