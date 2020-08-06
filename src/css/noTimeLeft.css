@@ -3,26 +3,20 @@
    z-index: 5;
    flex-direction: column;
    background: rgb(213,78,67);
-   /*background: linear-gradient(135deg, rgba(213,78,67,1) 0%, rgba(212,56,44,1) 100%);*/
-   position: absolute;
+   position: fixed;
    bottom: 30px;
-   right: 30px;
-   width: 450px;
    color: white;
    border-radius: 3px;
-   overflow: hidden;
 }
 
 #no-time-button {
    display: flex;
    align-items: center;
    justify-content: flex-end;
-   height: 35px;
 }
 
 #progress-slider {
    position: fixed;
-   height: 35px;
    background: rgba(212,56,44,1);
    transition: all 5s ease-in-out;
    left: 0;
@@ -35,15 +29,6 @@
    animation-delay: 0.25s;
    animation-timing-function: linear;
    animation-fill-mode: forwards;
-}
-
-@keyframes progress-expand {
-   from {
-      width: 0;
-   }
-   to {
-      width: 450px
-   }
 }
 
 #no-time-warning #no-time-button button {
@@ -61,15 +46,13 @@
 #no-time-text {
    display: flex;
    flex-direction: column;
-   height: 130px;
    justify-content: center;
    align-items: center;
 }
 
 #no-time-text p {
-   height: 50px;
    margin-bottom: 0;
-   font-size: 1 em;
+   font-size: 1em;
 }
 
 #no-time-text p strong {
@@ -79,7 +62,6 @@
 #no-time-text div {
    display: flex;
    width: 100%;
-   height: 50px;
    justify-content: space-evenly;
 }
 
@@ -89,7 +71,7 @@
    transition: all 0.25s ease-in-out;
    padding: 0 10px;
    border-radius: 5px;
-   height: 40px;
+   font-size: 1em;
 }
 
 #no-time-text div button:hover {
@@ -98,4 +80,93 @@
    -moz-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.05);
    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.05);
    transform: scale(1.1);
+}
+
+@media (max-width: 499.98px) {
+   #no-time-warning {
+      width: 320px;
+      left: 0;
+      right: 0;
+      margin-left: auto; 
+      margin-right: auto; 
+      font-size: 12px;
+   }
+
+   #no-time-button {
+      height: 25px;
+   }
+   
+   #progress-slider {
+      height: 25px;
+   }
+
+   #no-time-text {
+      height: 100px;
+   }
+   
+   #no-time-text p {
+      height: 50px;
+      line-height: 50px;
+   }
+
+   #no-time-text div {
+      width: 100%;
+      height: 50px;
+   }
+   
+   #no-time-text div button {
+      padding: 0 6px;
+      height: 30px;
+   }
+   
+   @keyframes progress-expand {
+      from {
+         width: 0;
+      }
+      to {
+         width: 320px
+      }
+   }
+}
+
+@media (min-width: 500px) {
+   #no-time-warning {
+      right: 30px;
+      width: 450px;
+   }
+
+   #no-time-button {
+      height: 35px;
+   }
+   
+   #progress-slider {
+      height: 35px;
+   }
+
+   #no-time-text {
+      height: 130px;
+   }
+   
+   #no-time-text p {
+      height: 50px;
+   }
+
+   #no-time-text div {
+      width: 100%;
+      height: 50px;
+   }
+   
+   #no-time-text div button {
+      padding: 0 10px;
+      height: 40px;
+   }
+
+   @keyframes progress-expand {
+      from {
+         width: 0;
+      }
+      to {
+         width: 450px
+      }
+   }
 }

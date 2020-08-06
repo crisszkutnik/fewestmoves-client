@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import PageNavbar from './navbar_login/navbar'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import DashboardActual from './dashboard/dashboardActual';
 import SubmittedSol from './general_purpose/submitted';
 import PrevResults from './general_purpose/prevResults';
@@ -62,11 +62,10 @@ const App = () => {
                 <Route exact path ='/dashboard/results'>
                     <PrevResults />
                 </Route>
-				
+				<Route render={() => <Redirect to='/dashboard/actual' />} />
 			</Switch>
 			</div>
 		</BrowserRouter>
 	);
 }
-// <Route render={() => <Redirect to='/dashboard/actual' />}></Route>
 export default App;
