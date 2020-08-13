@@ -28,3 +28,13 @@ footer div {
     justify-content: space-evenly;
     width: 400px;
 }
+
+@media (max-width: 576px) {
+    footer p, footer a {
+        font-size: 11px;
+    }
+
+    footer div {
+        width: 100%;
+    }
+}
