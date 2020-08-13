@@ -5,6 +5,7 @@ div#prev-results {
     align-items: center;
     padding-top: 70px;
     background-color: var(--dark1);
+    min-height: 1080px;
 }
 
 /*

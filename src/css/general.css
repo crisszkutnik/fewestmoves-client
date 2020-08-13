@@ -21,3 +21,19 @@ body {
     background-color: var(--dark1);
     overflow-x: hidden;
 }
+
+body::-webkit-scrollbar {
+    width: 6px;
+    position: absolute;
+    background: var(--dark1);
+}
+
+body::-webkit-scrollbar-track {
+    
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--dark3);
+    border-radius: 20px;
+    outline: 1px solid slategrey;
+}

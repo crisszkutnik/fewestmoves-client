@@ -6,6 +6,7 @@ import SubmittedSol from './general_purpose/submitted';
 import PrevResults from './prevResults/prevResults';
 import ModifySection from './modify_section/modifyChallenge'
 import ModifyExplanation from './modify_section/modifyExplanation'
+import Footer from './general_purpose/footer'
 import '../css/general.css'
 import '../css/anim.css'
 import '../css/submitted.css'
@@ -17,6 +18,7 @@ import '../css/modifyChallenge.css'
 import '../css/challengeWarning.css'
 import '../css/noTimeLeft.css'
 import '../css/prevResultsTable.css'
+import '../css/footer.css'
 
 const App = () => {
 	const [user, setUser] = useState({
@@ -65,6 +67,7 @@ const App = () => {
                 </Route>
 				<Route render={() => <Redirect to='/dashboard/actual' />} />
 			</Switch>
+            <Footer />
 			</div>
 		</BrowserRouter>
 	);
