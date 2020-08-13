@@ -5,7 +5,7 @@ class Footer extends React.Component {
     render() {
         return (
             <footer>
-                <p>Weekly fewest moves competition.</p>
+                <p>Weekly <a href="https://www.speedsolving.com/wiki/index.php/Fewest_Moves_Challenge">FMC</a> competition ✍️</p>
                 <p>Developed by <a href='https://github.com/crisszkutnik'>Cristobal Szkutnik</a> in collaboration with <a href='https://github.com/GuidoDipietro'>Guido Dipietro</a></p>
                 <div>
                 <p>View on <a href='https://github.com/crisszkutnik/fewestmoves-client'>GitHub</a></p>
