@@ -30,7 +30,7 @@ class DashboardActual extends React.Component {
                 <div>
                     <div id='dashboardActual' style={{overflow: 'hidden'}}>
                         <div id='header'>
-                            <h1>Take a look at this week's challenges</h1>
+                            <h1>Take a look at this week's scrambles 👀</h1>
                         </div>
                         <div id='challenges' className='fade-in' style={{overflow: 'hidden'}}>
                             <ChallengeCard isLogged={this.props.user.logged} comb={1} solMoves={this.state.userResponse.comb1.moves} startDate={this.state.userResponse.comb1.startDate}/>

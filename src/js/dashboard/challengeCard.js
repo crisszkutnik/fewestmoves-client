@@ -159,11 +159,19 @@ class ChallengeCard extends React.Component {
     let text;
     let moves;
     let image;
+    let btnText;
 
+    // Button text
+    if (this.props.solMoves === 0)
+      btnText = "Start!";
+    else
+      btnText = "Modify explanation";
+
+    // Card content (title, number, class)
     if (this.props.solMoves === 0 && this.props.startDate === 0) {
-      text = "Not loaded yet";
+      text = "No result yet";
       showClass += " sol-not-loaded";
-      moves = 0;
+      moves = "DNS";
       image = <img alt="Exclamation sign" src={notLoadedIMG}></img>;
     } else if (this.props.solMoves > 0) {
       text = "Correct solution";
@@ -200,7 +208,7 @@ class ChallengeCard extends React.Component {
                 id={`load-sol-button${this.props.comb}`}
                 onClick={() => this.setState({ showConf: true })}
               >
-                Load solution
+                {btnText}
               </button>
             </Col>
           </Row>
