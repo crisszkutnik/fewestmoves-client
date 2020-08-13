@@ -33,6 +33,7 @@
     box-shadow: 11px 16px 47px -26px rgba(0,0,0,0.75);
     border-radius: 3px;
     transition: 0.2s ease-in-out;
+    max-height: 65vh;
 }
 
 .sol-status {
@@ -95,6 +96,8 @@
     justify-content: center;
     align-items: center;
     height: 20%;
+    padding: 2pt;
+    font-size: 1.2em;
 }
 
 .sol-button button {
@@ -172,13 +175,16 @@
     }
 
     .solution-card {
-        width: 50%;
+        width: 60%;
     }
 }
 
 @media (min-width: 767px) {
     .solution-card {
-        width: 40%;
+        width: 55%;
+    }
+    .solution-card button {
+        font-size: 1.1em;
     }
 }
 
@@ -199,7 +205,8 @@
     }
 
     #challenges {
-        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
     }
 }
 
