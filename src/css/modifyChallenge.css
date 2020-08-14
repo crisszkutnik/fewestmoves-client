@@ -32,17 +32,6 @@
    background-color: var(--dark2);
    border-radius: 5px;
 }
-/*
-.page-card-top-left {
-   margin-bottom: 10px;
-   margin-right: 5px;
-}
-
-.page-card-top-right {
-   margin-left: 5px;
-   margin-bottom: 10px;
-}
-*/
 
 .page-card-top-left, .page-card-top-right {
    height: 300px;

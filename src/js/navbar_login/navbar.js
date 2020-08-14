@@ -1,6 +1,7 @@
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import React from "react";
 import LoginPanel from "./loginPanel";
+import MarkdownRead from './markdownRead'
 
 class PageNavbar extends React.Component {
   constructor(props) {
@@ -20,7 +21,14 @@ class PageNavbar extends React.Component {
   render() {
     let name;
 
-    if (this.props.user.logged)
+    let extraDropdown = (
+      <>
+        <NavDropdown.Item>About the contest</NavDropdown.Item>
+        <NavDropdown.Item>Report an error</NavDropdown.Item>
+      </>
+    );
+
+    if(this.props.user.logged)
       name = (
         <NavDropdown title={this.props.user.name} id="basic-nav-dropdown">
           <NavDropdown.Item
@@ -29,6 +37,7 @@ class PageNavbar extends React.Component {
           >
             Log Out
           </NavDropdown.Item>
+          {extraDropdown}
         </NavDropdown>
       );
     else
@@ -37,6 +46,7 @@ class PageNavbar extends React.Component {
           <NavDropdown.Item onClick={() => this.setState({ showLogin: true })}>
             Log in
           </NavDropdown.Item>
+          {extraDropdown}
         </NavDropdown>
       );
 
@@ -63,6 +73,7 @@ class PageNavbar extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <MarkdownRead />
         {this.state.showLogin && (
           <LoginPanel closePanel={() => this.setState({ showLogin: false })} />
         )}

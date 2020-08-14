@@ -29,10 +29,10 @@ class ScrambleTime extends React.Component {
    render() {
       return (
          <>
-         <p>{this.props.scramble}</p>
-         <h1 style={{opacity: this.state.opacity}}>{this.parseNumber(this.props.minutes)}:{this.parseNumber(this.props.seconds)}</h1>
-         <span style={{opacity: this.state.opacity}}>minutes left</span>
-         <button onClick={this.changeTimeVisibility}>{this.state.opacity === 1 ? "Hide time" : "Show time"}</button>
+            <p>{this.props.scramble}</p>
+            <h1 style={{opacity: this.state.opacity}}>{this.parseNumber(this.props.minutes)}:{this.parseNumber(this.props.seconds)}</h1>
+            <span style={{opacity: this.state.opacity}}>minutes left</span>
+            <button onClick={this.changeTimeVisibility}>{this.state.opacity === 1 ? "Hide time" : "Show time"}</button>
          </>
       );
    }
