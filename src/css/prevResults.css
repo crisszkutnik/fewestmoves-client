@@ -1,11 +1,9 @@
 div#prev-results {
     display: flex;
     width: 100%;
-    max-width: 1920px;
-    align-items: center;
+    max-width: 1920px;    
     padding-top: 70px;
     background-color: var(--dark1);
-    min-height: 1080px;
 }
 
 /*
@@ -116,6 +114,7 @@ table tr:hover {
 @media (max-width: 1199.98px) {
     #prev-results {
         flex-direction: column-reverse;
+        align-items: center;
     }
 
     #table-container {
@@ -125,12 +124,13 @@ table tr:hover {
 
 @media (min-width: 1200px) {
     div#prev-results {
-        align-items: center;
         justify-content: center;
+        min-height: 1080px;
     }
 
     #table-container {
         margin-right: 40%;
+        /*margin-right: 30px;*/
         width: 50%;
     }
 
@@ -139,7 +139,6 @@ table tr:hover {
         width: 40%;
         margin-left: calc(50% + 50px);
         position: fixed;
-        top: 70px;
     } 
 }
 

@@ -23,17 +23,17 @@ class NormalTable extends React.Component {
 
            [moves1, moves2, moves3, average] = SetUpDisplay(elem);
 
-           all.push(
-               <tr onClick={() => this.props.changeDisplay(index)} key={index} className={className}>
-                   <td>{elem.position}</td>
-                   <td>{elem.name}</td>
-                   <td>{moves1}</td>
-                   <td>{moves2}</td>
-                   <td>{moves3}</td>
-                   <td>{average}</td>
-                   <td>{elem.lowest}</td>
-               </tr>
-           )
+            all.push(
+                <tr onClick={() => this.props.changeDisplay(index)} key={index} className={className}>
+                    <td>{elem.position}</td>
+                    <td>{elem.name}</td>
+                    <td>{moves1}</td>
+                    <td>{moves2}</td>
+                    <td>{moves3}</td>
+                    <td>{average}</td>
+                    <td>{elem.lowest}</td>
+                </tr>
+            );
        })
        return all;
    }

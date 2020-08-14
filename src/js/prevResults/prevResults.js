@@ -19,6 +19,7 @@ class PrevResults extends React.Component {
 		this.getMore = this.getMore.bind(this);
         this.displayTable = this.displayTable.bind(this);
         this.configResize = this.configResize.bind(this);
+        this.configScroll = this.configScroll.bind(this);
 
         this.fetch1 = '/prevRes';
         this.fetch2 = '/challData/getAllScrambles';
@@ -43,10 +44,34 @@ class PrevResults extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.configResize);
+        window.addEventListener('scroll', this.configScroll);
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.configResize);
+        window.removeEventListener('scroll', this.configScroll);
+    }
+
+    configScroll() {
+        // For desktop only
+
+        if(this.state.width >= 1200 && this.state.fetchedData) {
+            let containerHeight = document.getElementById("prev-results").offsetHeight;
+            let userSol = document.getElementById("display-all");
+    
+            if(containerHeight > 1080) {
+                let scroll = window.pageYOffset;
+                let table = document.getElementsByTagName("table")[0];
+                let height = userSol.offsetHeight;
+
+                if(scroll + height >= table.offsetHeight + 56)
+                    userSol.style.bottom = parseFloat(window.getComputedStyle(table).getPropertyValue("margin-bottom")) + 130 + 'px';
+                else
+                    userSol.style.bottom = "";
+            } else {
+                userSol.style.position = "absolute";
+            }
+        }
     }
 
     configResize() {
@@ -90,8 +115,8 @@ class PrevResults extends React.Component {
         if(this.state.fetchedData)
             return (
                <div id='prev-results'>
-						{this.displayTable()}
-                  <UserSolutions userSol={this.state.resData[this.state.display]} challenges={this.state.challenges}/>
+				    {this.displayTable()}
+                    <UserSolutions userSol={this.state.resData[this.state.display]} challenges={this.state.challenges}/>
                </div>
             );
         else
