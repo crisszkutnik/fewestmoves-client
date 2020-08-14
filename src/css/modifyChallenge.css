@@ -52,6 +52,22 @@
    align-items: center;
 }
 
+.page-card-top-left * {
+   transition: all 0.1s ease-in-out;
+}
+
+.page-card-top-left button {
+   outline: none;
+   background: rgba(0, 0, 0, 0);
+   border: none;
+   color: var(--default-violet);
+   margin-top: 10px;
+}
+
+.page-card-top-left button:hover {
+   text-decoration: underline;
+}
+
 .page-card-top-left p {
    font-size: 1em;
    text-align: center;
