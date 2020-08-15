@@ -1,8 +1,6 @@
 import React from 'react'
 import GitHubButton from 'react-github-btn'
 import ReactMarkdown from 'react-markdown'
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
 import { toggle_bg_blur } from '../../functions/func'
 
 class MarkdownRead extends React.Component {
@@ -32,34 +30,32 @@ class MarkdownRead extends React.Component {
         if(this.state.loaded)
             return (
                 <div id="md-container">
-                    <SimpleBar id='simplebar' className='fade-in'>
-                        <div id='md-text'>
-                            <button onClick={this.props.closePanel}>X</button>
-                            <ReactMarkdown source={this.state.text}/>
-                            <div id='github-btns'>
-                                <GitHubButton 
-                                    href="https://github.com/crisszkutnik/fewestmoves-client" 
-                                    data-color-scheme="no-preference: dark; light: dark; dark: dark;" 
-                                    data-icon="octicon-star" 
-                                    data-size="large"
-                                    data-show-count="true" 
-                                    aria-label="Star crisszkutnik/fewestmoves-client on GitHub"
-                                >
-                                Star
-                                </GitHubButton>
-                                <GitHubButton 
-                                    href="https://github.com/crisszkutnik/fewestmoves-client/issues" 
-                                    data-color-scheme="no-preference: dark; light: dark; dark: dark;" 
-                                    data-icon="octicon-issue-opened" 
-                                    data-size="large"
-                                    data-show-count="true"
-                                    aria-label="Issue crisszkutnik/fewestmoves-client on GitHub"
-                                >
-                                Issue
-                                </GitHubButton>
-                            </div>
+                    <div id='md-text'>
+                        <button onClick={this.props.closePanel}>X</button>
+                        <ReactMarkdown source={this.state.text}/>
+                        <div id='github-btns'>
+                            <GitHubButton 
+                                href="https://github.com/crisszkutnik/fewestmoves-client" 
+                                data-color-scheme="no-preference: dark; light: dark; dark: dark;" 
+                                data-icon="octicon-star" 
+                                data-size="large"
+                                data-show-count="true" 
+                                aria-label="Star crisszkutnik/fewestmoves-client on GitHub"
+                            >
+                            Star
+                            </GitHubButton>
+                            <GitHubButton 
+                                href="https://github.com/crisszkutnik/fewestmoves-client/issues" 
+                                data-color-scheme="no-preference: dark; light: dark; dark: dark;" 
+                                data-icon="octicon-issue-opened" 
+                                data-size="large"
+                                data-show-count="true"
+                                aria-label="Issue crisszkutnik/fewestmoves-client on GitHub"
+                            >
+                            Issue
+                            </GitHubButton>
                         </div>
-                    </SimpleBar>
+                    </div>
                 </div>
             );
         else

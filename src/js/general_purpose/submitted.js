@@ -10,7 +10,7 @@ class SubmittedSol extends React.Component {
     constructor(props) {
         super(props);
         this.state = {amountReceived: 0, info: [], fetchedData: false, display: 0, challenges: {}, userRes: {}};
-        this.getMore = this.getMore.bind(this);
+        //this.getMore = this.getMore.bind(this);
         this.changeDisplayInfo = this.changeDisplayInfo.bind(this);
         this.renderNames = this.renderNames.bind(this);
 
@@ -75,6 +75,8 @@ class SubmittedSol extends React.Component {
     }
 
     //Loads 10 elements from the user responses
+    // Not used but may be in the future
+    /*
     getMore() {
         fetch('/allRes/otherUsers', {
             method: 'POST',
@@ -89,7 +91,7 @@ class SubmittedSol extends React.Component {
         .then(usersRes => {
             this.setState({info: this.state.info.concat(usersRes)})
         });
-    }
+    }*/
 
     render() {
         if(this.state.fetchedData)
@@ -104,9 +106,6 @@ class SubmittedSol extends React.Component {
                                         {this.renderNames()}       
                                 </Container>
                             </SimpleBar>
-                            <div id='load-button'>
-                                <button onClick={this.getMore}>Load more</button>
-                            </div>
                         </div>
                         <UserSolutions loggedData={this.state.userRes} userSol={this.state.info[this.state.display]} canBlur={true} challenges={this.state.challenges} />
                     </div>
@@ -117,3 +116,9 @@ class SubmittedSol extends React.Component {
 }
 
 export default SubmittedSol;
+
+/*
+<div id='load-button'>
+                                <button onClick={this.getMore}>Load more</button>
+                            </div>
+*/

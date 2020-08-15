@@ -16,7 +16,7 @@ class PrevResults extends React.Component {
             width: window.innerWidth
         };
 
-		this.getMore = this.getMore.bind(this);
+		//this.getMore = this.getMore.bind(this);
         this.displayTable = this.displayTable.bind(this);
         this.configResize = this.configResize.bind(this);
         this.configScroll = this.configScroll.bind(this);
@@ -80,7 +80,9 @@ class PrevResults extends React.Component {
         });
     }
 
-    getMore() {
+    // This function is not used but may be in the future
+
+    /*getMore() {
         fetch('/prevRes/', {
             method: 'POST',
             headers: { 
@@ -98,7 +100,7 @@ class PrevResults extends React.Component {
                 this.setState({resData: this.state.resData.concat(data)});
         })
         .catch(e => alert('Critical error :('));
-    }
+    }*/
 
     displayTable() {
         if(this.state.width < 1200)

@@ -14,13 +14,8 @@
     background: var(--dark1);
     color: white;
     display: flex;
-    width: 600px;
     flex-direction: column;
     padding: 15px 15px;
-}
-
-#md-text #simplebar {
-    max-height: 500px;
 }
 
 #md-text h2 {
@@ -33,6 +28,7 @@
 
 #md-text p {
     font-size: 1em;
+    width: 100%;
 }
 
 #md-text button {
@@ -51,37 +47,34 @@
 }
 
 @media (max-width: 575px) {
+    #md-text {
+        width: 300px;
+        font-size: 12px;
+    }
 
+    #md-text h2 {
+        width: 90%;
+    }
 }
 
 @media (min-width: 576px) {
 
+    #md-text {
+        width: 95vw;
+    }
 }
 
 @media (min-width: 767px) {
-
 }
 
 @media (min-width: 991px) {
-
+    #md-text {
+        width: 600px;
+    }
 }
 
 @media (min-width: 1200px) {
-    #md-text {
-        width: 600px;
-    }
-    
-    #md-text #simplebar {
-        max-height: 500px;
-    }
 }
 
 @media (min-width: 1500px) {
-    #md-text {
-        width: 600px;
-    }
-    
-    #md-text #simplebar {
-        max-height: 800px;
-    }
 }
