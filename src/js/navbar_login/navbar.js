@@ -7,7 +7,7 @@ class PageNavbar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showLogin: false };
+    this.state = { showPanel: 0 };
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -23,7 +23,7 @@ class PageNavbar extends React.Component {
 
     let extraDropdown = (
       <>
-        <NavDropdown.Item>About the contest</NavDropdown.Item>
+        <NavDropdown.Item onClick={() =>  this.setState({ showPanel: 2 })}>About the contest</NavDropdown.Item>
       </>
     );
 
@@ -42,7 +42,7 @@ class PageNavbar extends React.Component {
     else
       name = (
         <NavDropdown title="Log in" id="basic-nav-dropdown">
-          <NavDropdown.Item onClick={() => this.setState({ showLogin: true })}>
+          <NavDropdown.Item onClick={() => this.setState({ showPanel: 1 })}>
             Log in
           </NavDropdown.Item>
           {extraDropdown}
@@ -72,10 +72,12 @@ class PageNavbar extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <MarkdownRead />
-        {this.state.showLogin && (
-          <LoginPanel closePanel={() => this.setState({ showLogin: false })} />
+        {this.state.showPanel === 1 && (
+          <LoginPanel closePanel={() => this.setState({ showPanel: 0 })} />
         )}
+        {this.state.showPanel === 2 &&
+          <MarkdownRead closePanel={() => this.setState({ showPanel: 0 })} />
+        }
       </>
     );
   }

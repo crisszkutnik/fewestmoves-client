@@ -37,4 +37,13 @@ const SetUpDisplay = (elem) => {
     return [moves1, moves2, moves3, average];
 }
 
-export {showSol, hasTime, SetUpDisplay};
+const toggle_bg_blur = (notSelected) => {
+    let body = document.querySelectorAll(`div#root > div > *:not(${notSelected})`);
+
+    for(let i = 0; i < body.length; i++) {
+        let actual = body[i].style.filter;
+        body[i].style.filter = actual === '' ? "blur(5px)" : "";    
+    }
+}
+
+export { showSol, hasTime, SetUpDisplay, toggle_bg_blur };

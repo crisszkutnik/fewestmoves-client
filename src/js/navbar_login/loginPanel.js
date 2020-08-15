@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import wca_logo from '../../img/wca_logo.svg'
 import {Container, Row, Col} from "react-bootstrap"
+import { toggle_bg_blur } from '../../functions/func'
 
 const LoginPanel = (props) => {
    const closePanel = () => {
@@ -8,9 +9,14 @@ const LoginPanel = (props) => {
       setTimeout(() => props.closePanel(), 250);
    };
 
+   useEffect(() => {
+      toggle_bg_blur("#login-background");
+
+      return () => toggle_bg_blur("#login-background");
+   }, []);
+
    return (
       <div id="login-background">
-      <div></div>
          <Container id='login-panel' className="fade-in">
             <Row>
                <Col>

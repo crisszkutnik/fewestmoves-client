@@ -1,5 +1,87 @@
 #md-container {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#md-text {
+    border-radius: 5px;
+    background: var(--dark1);
+    color: white;
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    padding: 15px 15px;
+}
+
+#md-text #simplebar {
+    max-height: 500px;
+}
+
+#md-text h2 {
+    width: 70%;
+    color: var(--default-violet);
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--default-violet);
+    font-size: 2em;
+}
+
+#md-text p {
+    font-size: 1em;
+}
+
+#md-text button {
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    color: var(--incorrect-red);
+    align-self: flex-end;
+    font-weight: 600;
+}
+
+#md-text #github-btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 575px) {
+
+}
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 767px) {
+
+}
+
+@media (min-width: 991px) {
+
+}
+
+@media (min-width: 1200px) {
+    #md-text {
+        width: 600px;
+    }
+    
+    #md-text #simplebar {
+        max-height: 500px;
+    }
+}
+
+@media (min-width: 1500px) {
+    #md-text {
+        width: 600px;
+    }
+    
+    #md-text #simplebar {
+        max-height: 800px;
+    }
 }
