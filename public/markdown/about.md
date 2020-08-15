@@ -4,4 +4,6 @@ The contest runs from Sunday to Sunday. Every week three scrambles are automatic
 At the end of the week all responses are rated based on how many of the three scrambles they solved, their mean and the solution with the fewest moves.
 
 ## Contributing
-This project was made with no intention but to learn and improve our rubik's cube solving skills. Constructive criticism and contributions are welcomed. Recomendations, enhancements and bugs can be posted on our [GitHub repo](https://github.com/crisszkutnik/fewestmoves-client)
+This project was made with no intention but to learn and improve our rubik's cube solving skills. Constructive criticism and contributions are welcomed. Recomendations, enhancements and bugs can be posted on our [GitHub repo](https://github.com/crisszkutnik/fewestmoves-client)  
+
+Leaving a star on the repository would mean a lot to us.

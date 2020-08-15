@@ -24,7 +24,6 @@ class PageNavbar extends React.Component {
     let extraDropdown = (
       <>
         <NavDropdown.Item>About the contest</NavDropdown.Item>
-        <NavDropdown.Item>Report an error</NavDropdown.Item>
       </>
     );
 

@@ -19,6 +19,7 @@ import '../css/challengeWarning.css'
 import '../css/noTimeLeft.css'
 import '../css/prevResultsTable.css'
 import '../css/footer.css'
+import '../css/markdown.css'
 
 const App = () => {
 	const [user, setUser] = useState({
