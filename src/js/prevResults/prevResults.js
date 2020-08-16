@@ -5,6 +5,13 @@ import 'simplebar/dist/simplebar.min.css';
 import NormalTable from './normalTable'
 import ResponsiveTable from './responsiveTable'
 
+const byPosition = (a, b) => {
+    if(a.position > b.position)
+        return 1;
+    else
+        return -1;
+}
+
 class PrevResults extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +45,8 @@ class PrevResults extends React.Component {
         Promise.all([fetch(this.fetch1, this.headers), fetch(this.fetch2, this.headers)])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([responses, rChallenges]) => {
-            setTimeout(() => this.setState({resData: this.state.resData.concat(responses), fetchedData: true, challenges: rChallenges}), 400);
+            responses.sort(byPosition);
+            this.setState({resData: this.state.resData.concat(responses), fetchedData: true, challenges: rChallenges});
         });
     }
 

@@ -7,6 +7,8 @@ class MarkdownRead extends React.Component {
     constructor(props) {
         super(props);
 
+        this.closePanel = this.closePanel.bind(this);
+
         this.state = {
             text: '',
             loaded: false
@@ -22,16 +24,20 @@ class MarkdownRead extends React.Component {
         toggle_bg_blur("#md-contaiener");
     }
 
-    componentWillUnmount() {
-        toggle_bg_blur("#md-contaiener");
+    closePanel() {
+        document.getElementById('md-text').classList.add('fade-out-big');
+        setTimeout(() => {
+            toggle_bg_blur("#md-contaiener");
+            this.props.closePanel();
+        }, 250);
     }
 
     render() {
         if(this.state.loaded)
             return (
                 <div id="md-container">
-                    <div id='md-text'>
-                        <button onClick={this.props.closePanel}>X</button>
+                    <div id='md-text' className='fade-in'>
+                        <button onClick={this.closePanel}>X</button>
                         <ReactMarkdown source={this.state.text}/>
                         <div id='github-btns'>
                             <GitHubButton 
