@@ -1,5 +1,5 @@
-import React from 'react'
-import GitHubButton from 'react-github-btn'
+import React from "react";
+import GitHubButton from "react-github-btn";
 
 class Footer extends React.Component {
     render() {

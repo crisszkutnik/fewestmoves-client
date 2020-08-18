@@ -1,7 +1,7 @@
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import React from "react";
 import LoginPanel from "./loginPanel";
-import MarkdownRead from './markdownRead'
+import MarkdownRead from "./markdownRead";
 
 class PageNavbar extends React.Component {
   constructor(props) {

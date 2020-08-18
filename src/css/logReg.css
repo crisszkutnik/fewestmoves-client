@@ -1,16 +1,17 @@
 div.bad-response {
-    background: #b53131;
+	background: #b53131;
 }
 
 div.ok-response {
-    background: #2dbd46;
+	background: #2dbd46;
 }
 
-div.ok-response, div.bad-response {
-    width: 500px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+div.ok-response,
+div.bad-response {
+	width: 500px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 5px;
+	margin-bottom: 20px;
 }

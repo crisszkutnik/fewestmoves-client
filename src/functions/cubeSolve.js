@@ -198,7 +198,7 @@ function checkSymmetries(c1,c2){ //checking solved state for every possible orie
 						"xx","yyyxx","yyxx","yxx",
 						"x","yyyx","yyx","yx",
 						"zzz","yyyzzz","yyzzz","yzzz",
-						"z","yyyz","yyz","yz",]
+						"z","yyyz","yyz","yz"];
 	//console.log(c2.state);
 	//console.log(c2.applyManeuver("y"));
 	for (let i=0; i<24; i++){

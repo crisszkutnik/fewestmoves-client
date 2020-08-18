@@ -1,7 +1,7 @@
-import React from 'react'
-import GitHubButton from 'react-github-btn'
-import ReactMarkdown from 'react-markdown'
-import { toggle_bg_blur } from '../../functions/func'
+import React from "react";
+import GitHubButton from "react-github-btn";
+import ReactMarkdown from "react-markdown";
+import { toggle_bg_blur } from "../../functions/func";
 
 class MarkdownRead extends React.Component {
     constructor(props) {
@@ -17,8 +17,8 @@ class MarkdownRead extends React.Component {
 
     componentWillMount() {
         fetch("https://raw.githubusercontent.com/crisszkutnik/fewestmoves-client/master/public/markdown/about.md")
-        .then(res => res.text())
-        .then(res => this.setState({text: res, loaded: true}))
+        .then((res) => res.text())
+        .then((res) => this.setState({text: res, loaded: true}))
         .catch(() => alert("An error occurred"));
 
         toggle_bg_blur("#md-contaiener");

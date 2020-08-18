@@ -1,172 +1,172 @@
 #no-time-warning {
-   display: flex;
-   z-index: 15;
-   flex-direction: column;
-   background: rgb(213,78,67);
-   position: fixed;
-   bottom: 30px;
-   color: white;
-   border-radius: 3px;
+	display: flex;
+	z-index: 15;
+	flex-direction: column;
+	background: rgb(213, 78, 67);
+	position: fixed;
+	bottom: 30px;
+	color: white;
+	border-radius: 3px;
 }
 
 #no-time-button {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 #progress-slider {
-   position: fixed;
-   background: rgba(212,56,44,1);
-   transition: all 5s ease-in-out;
-   left: 0;
+	position: fixed;
+	background: rgba(212, 56, 44, 1);
+	transition: all 5s ease-in-out;
+	left: 0;
 }
 
 .progress-expand {
-   animation-name: progress-expand;
-   animation-duration: 10s;
-   animation-iteration-count: 1;
-   animation-delay: 0.25s;
-   animation-timing-function: linear;
-   animation-fill-mode: forwards;
+	animation-name: progress-expand;
+	animation-duration: 10s;
+	animation-iteration-count: 1;
+	animation-delay: 0.25s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
 }
 
 #no-time-warning #no-time-button button {
-   color: white;
-   background: rgba(0,0,0,0);
-   font-weight: 800;
-   margin-right: 15px;
-   z-index: 5;
+	color: white;
+	background: rgba(0, 0, 0, 0);
+	font-weight: 800;
+	margin-right: 15px;
+	z-index: 5;
 }
 
 #no-time-warning button {
-   border: none;
+	border: none;
 }
 
 #no-time-text {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #no-time-text p {
-   margin-bottom: 0;
-   font-size: 1em;
+	margin-bottom: 0;
+	font-size: 1em;
 }
 
 #no-time-text p strong {
-   font-weight: 600;
+	font-weight: 600;
 }
 
 #no-time-text div {
-   display: flex;
-   width: 100%;
-   justify-content: space-evenly;
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
 }
 
 #no-time-text div button {
-   background: rgb(224, 62, 51);
-   color: white;
-   transition: all 0.25s ease-in-out;
-   padding: 0 10px;
-   border-radius: 5px;
-   font-size: 1em;
+	background: rgb(224, 62, 51);
+	color: white;
+	transition: all 0.25s ease-in-out;
+	padding: 0 10px;
+	border-radius: 5px;
+	font-size: 1em;
 }
 
 #no-time-text div button:hover {
-   background: rgba(212,56,44,1);
-   -webkit-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.05);
-   -moz-box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.05);
-   box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.05);
-   transform: scale(1.1);
+	background: rgba(212, 56, 44, 1);
+	-webkit-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.05);
+	box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.05);
+	transform: scale(1.1);
 }
 
 @media (max-width: 499.98px) {
-   #no-time-warning {
-      width: 320px;
-      left: 0;
-      right: 0;
-      margin-left: auto; 
-      margin-right: auto; 
-      font-size: 12px;
-   }
+	#no-time-warning {
+		width: 320px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 12px;
+	}
 
-   #no-time-button {
-      height: 25px;
-   }
-   
-   #progress-slider {
-      height: 25px;
-   }
+	#no-time-button {
+		height: 25px;
+	}
 
-   #no-time-text {
-      height: 100px;
-   }
-   
-   #no-time-text p {
-      height: 50px;
-      line-height: 50px;
-   }
+	#progress-slider {
+		height: 25px;
+	}
 
-   #no-time-text div {
-      width: 100%;
-      height: 50px;
-   }
-   
-   #no-time-text div button {
-      padding: 0 6px;
-      height: 30px;
-   }
-   
-   @keyframes progress-expand {
-      from {
-         width: 0;
-      }
-      to {
-         width: 320px
-      }
-   }
+	#no-time-text {
+		height: 100px;
+	}
+
+	#no-time-text p {
+		height: 50px;
+		line-height: 50px;
+	}
+
+	#no-time-text div {
+		width: 100%;
+		height: 50px;
+	}
+
+	#no-time-text div button {
+		padding: 0 6px;
+		height: 30px;
+	}
+
+	@keyframes progress-expand {
+		from {
+			width: 0;
+		}
+		to {
+			width: 320px;
+		}
+	}
 }
 
 @media (min-width: 500px) {
-   #no-time-warning {
-      right: 30px;
-      width: 450px;
-   }
+	#no-time-warning {
+		right: 30px;
+		width: 450px;
+	}
 
-   #no-time-button {
-      height: 35px;
-   }
-   
-   #progress-slider {
-      height: 35px;
-   }
+	#no-time-button {
+		height: 35px;
+	}
 
-   #no-time-text {
-      height: 130px;
-   }
-   
-   #no-time-text p {
-      height: 50px;
-   }
+	#progress-slider {
+		height: 35px;
+	}
 
-   #no-time-text div {
-      width: 100%;
-      height: 50px;
-   }
-   
-   #no-time-text div button {
-      padding: 0 10px;
-      height: 40px;
-   }
+	#no-time-text {
+		height: 130px;
+	}
 
-   @keyframes progress-expand {
-      from {
-         width: 0;
-      }
-      to {
-         width: 450px
-      }
-   }
+	#no-time-text p {
+		height: 50px;
+	}
+
+	#no-time-text div {
+		width: 100%;
+		height: 50px;
+	}
+
+	#no-time-text div button {
+		padding: 0 10px;
+		height: 40px;
+	}
+
+	@keyframes progress-expand {
+		from {
+			width: 0;
+		}
+		to {
+			width: 450px;
+		}
+	}
 }

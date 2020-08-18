@@ -1,10 +1,10 @@
-import React from 'react'
-import LoadingView from './loadingView'
-import UserSolutions from './userSolutions'
-import {showSol} from '../../functions/func'
-import {Container, Row, Col} from 'react-bootstrap'
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
+import React from "react";
+import LoadingView from "./loadingView";
+import UserSolutions from "./userSolutions";
+import {showSol} from "../../functions/func";
+import {Container, Row, Col} from "react-bootstrap";
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
 
 class SubmittedSol extends React.Component {
     constructor(props) {
@@ -69,7 +69,7 @@ class SubmittedSol extends React.Component {
                     </Row>
                 </div>
             )
-        })
+        });
 
         return all;
     }

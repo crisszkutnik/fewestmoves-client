@@ -1,141 +1,141 @@
 #login-background {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    max-height: 1080px;
-    max-width: 1920px;
-    background: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	max-height: 1080px;
+	max-width: 1920px;
+	background: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	z-index: 5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #login-panel {
-    background-color: var(--dark1);
-    border-radius: 5px;
+	background-color: var(--dark1);
+	border-radius: 5px;
 }
 
 /*Adjust row height*/
 
 #login-panel .row {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 #login-panel .row:first-of-type {
-    height: 10%;
-    background: var(--darker-violet);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+	height: 10%;
+	background: var(--darker-violet);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 #login-panel .row:nth-child(2) {
-    height: 12%;
-    background: var(--darker-violet);
+	height: 12%;
+	background: var(--darker-violet);
 }
 
 #login-panel #options {
-    height: 78%;
+	height: 78%;
 }
 
 /*Item settings*/
 
 #login-panel .col {
-    display: flex;
-    width: 100%;
-    justify-content: center;
+	display: flex;
+	width: 100%;
+	justify-content: center;
 }
 
 #login-panel .row:first-of-type .col {
-    justify-content: end;
+	justify-content: end;
 }
 
 #login-panel #options .col {
-    height: 70%;
+	height: 70%;
 }
 
 #login-panel a {
-    width: 85%;
-    height: 100%;
-    background: rgba(249, 229, 183);
-    border: 2px solid #e1c699;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2px;
+	width: 85%;
+	height: 100%;
+	background: rgba(249, 229, 183);
+	border: 2px solid #e1c699;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
 }
 
 #login-panel a:hover {
-    background: #e1c699;
-    transform: scale(1.05);
+	background: #e1c699;
+	transform: scale(1.05);
 }
 
 #login-panel img {
-    height: 85%;
-    width: 85%;
+	height: 85%;
+	width: 85%;
 }
 
 #login-panel button {
-    color: white;
-    background: rgba(0, 0, 0, 0);
-    outline: none;
-    border: none;
-    font-weight: 800;
-    font-size: 16px;
-    transition: all 0.2s ease-in-out;
+	color: white;
+	background: rgba(0, 0, 0, 0);
+	outline: none;
+	border: none;
+	font-weight: 800;
+	font-size: 16px;
+	transition: all 0.2s ease-in-out;
 }
 
 #login-panel button:hover {
-    color: var(--incorrect-red);
+	color: var(--incorrect-red);
 }
 
 #login-panel h3 {
-    color: white;
-    font-size: 2em;
-    text-align: center;
+	color: white;
+	font-size: 2em;
+	text-align: center;
 }
 
 @media (max-width: 575px) {
-    #login-panel {
-        width: 350px;
-        height: 300px;
-        font-size: 10px;
-    }
+	#login-panel {
+		width: 350px;
+		height: 300px;
+		font-size: 10px;
+	}
 }
 
 @media (min-width: 576px) {
-    #login-panel {
-        width: 550px;
-        height: 450px;
-        font-size: 10px;
-    }
+	#login-panel {
+		width: 550px;
+		height: 450px;
+		font-size: 10px;
+	}
 }
 
 @media (min-width: 767px) {
-    #login-panel {
-        font-size: 16px;
-    }
+	#login-panel {
+		font-size: 16px;
+	}
 }
 
 @media (min-width: 991px) {
-    #login-panel {
-        font-size: 16px;
-    }
+	#login-panel {
+		font-size: 16px;
+	}
 }
 
 @media (min-width: 1200px) {
-    #login-panel {
-        font-size: 16px;
-    }
+	#login-panel {
+		font-size: 16px;
+	}
 }
 
 @media (min-width: 1500px) {
-    #login-panel {
-        font-size: 18px;
-    } 
+	#login-panel {
+		font-size: 18px;
+	}
 }

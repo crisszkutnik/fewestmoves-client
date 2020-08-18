@@ -1,25 +1,25 @@
-import React, {useEffect, useState} from 'react'
-import PageNavbar from './navbar_login/navbar'
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
-import DashboardActual from './dashboard/dashboardActual';
-import SubmittedSol from './general_purpose/submitted';
-import PrevResults from './prevResults/prevResults';
-import ModifySection from './modify_section/modifyChallenge'
-import ModifyExplanation from './modify_section/modifyExplanation'
-import Footer from './general_purpose/footer'
-import '../css/general.css'
-import '../css/anim.css'
-import '../css/submitted.css'
-import '../css/prevResults.css'
-import '../css/loadingView.css'
-import '../css/userSolutions.css'
-import '../css/loginPanel.css'
-import '../css/modifyChallenge.css'
-import '../css/challengeWarning.css'
-import '../css/noTimeLeft.css'
-import '../css/prevResultsTable.css'
-import '../css/footer.css'
-import '../css/markdown.css'
+import React, {useEffect, useState} from "react";
+import PageNavbar from "./navbar_login/navbar";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import DashboardActual from "./dashboard/dashboardActual";
+import SubmittedSol from "./general_purpose/submitted";
+import PrevResults from "./prevResults/prevResults";
+import ModifySection from "./modify_section/modifyChallenge";
+import ModifyExplanation from "./modify_section/modifyExplanation";
+import Footer from "./general_purpose/footer";
+import "../css/general.css";
+import "../css/anim.css";
+import "../css/submitted.css";
+import "../css/prevResults.css";
+import "../css/loadingView.css";
+import "../css/userSolutions.css";
+import "../css/loginPanel.css";
+import "../css/modifyChallenge.css";
+import "../css/challengeWarning.css";
+import "../css/noTimeLeft.css";
+import "../css/prevResultsTable.css";
+import "../css/footer.css";
+import "../css/markdown.css";
 
 const App = () => {
 	const [user, setUser] = useState({
@@ -35,8 +35,8 @@ const App = () => {
             	'Content-Type': 'application/json'
 			},
         })
-        .then(res => res.json())
-        .then(resUser => {
+        .then((res) => res.json())
+        .then((resUser) => {
             if(resUser.logged)
                 setUser({
                     name: resUser.name,

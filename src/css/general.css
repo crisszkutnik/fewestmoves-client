@@ -1,40 +1,36 @@
 :root {
-    --default-violet: #7C3FEF;
-    --default-violet-75: rgba(124, 63, 239, 0.75);
-    --darker-violet: #6a0dad; /* #592bad */
-    --dark1: #16171B;
-    --dark2: #202125;
-    --dark3: #606060; /* --dark3: #3d3f45; */
-    --dark4: #27282D;
-    --incorrect-red:  rgb(247, 48, 77);
-    --darker-red: rgb(206, 28, 55);
-    --ok-green: #01B075;
+	--default-violet: #7c3fef;
+	--default-violet-75: rgba(124, 63, 239, 0.75);
+	--darker-violet: #6a0dad; /* #592bad */
+	--dark1: #16171b;
+	--dark2: #202125;
+	--dark3: #606060; /* --dark3: #3d3f45; */
+	--dark4: #27282d;
+	--incorrect-red: rgb(247, 48, 77);
+	--darker-red: rgb(206, 28, 55);
+	--ok-green: #01b075;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+	scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--dark1);
-    overflow-x: hidden;
+	background-color: var(--dark1);
+	overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
-    width: 6px;
-    position: absolute;
-    background: var(--dark1);
+	width: 6px;
+	position: absolute;
+	background: var(--dark1);
 }
 
-/* body::-webkit-scrollbar-track {
-    
-} */
-
 body::-webkit-scrollbar-thumb {
-    background-color: var(--dark3);
-    border-radius: 20px;
-    outline: 1px solid slategrey;
+	background-color: var(--dark3);
+	border-radius: 20px;
+	outline: 1px solid slategrey;
 }

@@ -1,8 +1,8 @@
-import React from 'react'
-import {Container, Row, Col} from 'react-bootstrap'
-import exclamation from '../../img/exclamation.svg'
-import 'simplebar/dist/simplebar.min.css';
-import { hasTime } from '../../functions/func';
+import React from "react";
+import {Container, Row, Col} from "react-bootstrap";
+import exclamation from "../../img/exclamation.svg";
+import "simplebar/dist/simplebar.min.css";
+import { hasTime } from "../../functions/func";
 
 class UserSolutions extends React.Component {
    constructor(props) {

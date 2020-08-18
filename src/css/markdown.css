@@ -1,80 +1,70 @@
 #md-container {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 15;
-    background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 15;
+	background: rgba(0, 0, 0, 0.5);
 }
 
 #md-text {
-    border-radius: 5px;
-    background: var(--dark1);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 15px 15px;
+	border-radius: 5px;
+	background: var(--dark1);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 15px 15px;
 }
 
 #md-text h2 {
-    width: 70%;
-    color: var(--default-violet);
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--default-violet);
-    font-size: 2em;
+	width: 70%;
+	color: var(--default-violet);
+	padding-bottom: 5px;
+	border-bottom: 1px solid var(--default-violet);
+	font-size: 2em;
 }
 
 #md-text p {
-    font-size: 1em;
-    width: 100%;
+	font-size: 1em;
+	width: 100%;
 }
 
 #md-text button {
-    border: none;
-    background: rgba(0, 0, 0, 0);
-    color: var(--incorrect-red);
-    align-self: flex-end;
-    font-weight: 600;
+	border: none;
+	background: rgba(0, 0, 0, 0);
+	color: var(--incorrect-red);
+	align-self: flex-end;
+	font-weight: 600;
 }
 
 #md-text #github-btns {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 @media (max-width: 575px) {
-    #md-text {
-        width: 300px;
-        font-size: 12px;
-    }
+	#md-text {
+		width: 300px;
+		font-size: 12px;
+	}
 
-    #md-text h2 {
-        width: 90%;
-    }
+	#md-text h2 {
+		width: 90%;
+	}
 }
 
 @media (min-width: 576px) {
-
-    #md-text {
-        width: 95vw;
-    }
-}
-
-@media (min-width: 767px) {
+	#md-text {
+		width: 95vw;
+	}
 }
 
 @media (min-width: 991px) {
-    #md-text {
-        width: 600px;
-    }
-}
-
-@media (min-width: 1200px) {
-}
-
-@media (min-width: 1500px) {
+	#md-text {
+		width: 600px;
+	}
 }

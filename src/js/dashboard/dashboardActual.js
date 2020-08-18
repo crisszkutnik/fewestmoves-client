@@ -1,8 +1,8 @@
-import React from 'react'
-import '../../css/dashboardActual.css'
-import LoadingView from '../general_purpose/loadingView'
-import ChallengeCard from './challengeCard'
-import LoginPanel from '../navbar_login/loginPanel';
+import React from "react";
+import "../../css/dashboardActual.css";
+import LoadingView from "../general_purpose/loadingView";
+import ChallengeCard from "./challengeCard";
+import LoginPanel from "../navbar_login/loginPanel";
 
 class DashboardActual extends React.Component {
     constructor() {
@@ -20,8 +20,8 @@ class DashboardActual extends React.Component {
             },
             credentials: 'include'
         })
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
             this.setState({userResponse: data, loaded: true});
         })
     }

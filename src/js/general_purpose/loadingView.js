@@ -1,6 +1,6 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Imported from Material UI webpage
 
@@ -46,7 +46,7 @@ class LoadingView extends React.Component {
             <CircularIndeterminate/>
             <h2>Loading{'.'.repeat(this.state.dots)}</h2>
          </div>
-      )
+      );
    }
 }
 

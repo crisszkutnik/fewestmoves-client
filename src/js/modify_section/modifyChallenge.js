@@ -1,10 +1,10 @@
-import React from 'react'
-import arrow from "../../img/arrow.svg"
-import LoadingView from "../general_purpose/loadingView"
-import ScrambleTime from './scrambleTime'
-import ModifyForm from './modifyForm'
+import React from "react";
+import arrow from "../../img/arrow.svg";
+import LoadingView from "../general_purpose/loadingView";
+import ScrambleTime from "./scrambleTime";
+import ModifyForm from "./modifyForm";
 import { Container, Row, Col } from "react-bootstrap";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 
 class ModifySection extends React.Component {
    constructor(props) {
@@ -40,12 +40,12 @@ class ModifySection extends React.Component {
          let minutes = Math.floor(timeLeft/60000);
 
          this.setState({
-            resData: resData,
-            scramble: scramble,
-            minutes: minutes, 
+            resData,
+            scramble,
+            minutes, 
             seconds: Math.round(timeLeft/1000 - minutes*60),
             loaded: true,
-            timeLeft: timeLeft
+            timeLeft
          })
       })
       .catch(() => alert("An error ocurred"));

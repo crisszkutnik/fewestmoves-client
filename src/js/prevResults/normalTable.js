@@ -1,7 +1,7 @@
-import React from 'react'
-import { SetUpDisplay } from '../../functions/func'
-import 'simplebar/dist/simplebar.min.css';
-import {Table} from 'react-bootstrap'
+import React from "react";
+import { SetUpDisplay } from "../../functions/func";
+import "simplebar/dist/simplebar.min.css";
+import {Table} from "react-bootstrap";
 
 class NormalTable extends React.Component {
    constructor(props) {

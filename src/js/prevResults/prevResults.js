@@ -1,9 +1,9 @@
-import React from 'react'
-import LoadingView from '../general_purpose/loadingView'
-import UserSolutions from '../general_purpose/userSolutions'
-import 'simplebar/dist/simplebar.min.css';
-import NormalTable from './normalTable'
-import ResponsiveTable from './responsiveTable'
+import React from "react";
+import LoadingView from "../general_purpose/loadingView";
+import UserSolutions from "../general_purpose/userSolutions";
+import "simplebar/dist/simplebar.min.css";
+import NormalTable from "./normalTable";
+import ResponsiveTable from "./responsiveTable";
 
 const byPosition = (a, b) => {
     if(a.position > b.position)

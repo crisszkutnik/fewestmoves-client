@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 class ScrambleTime extends React.Component {
    constructor(props) {

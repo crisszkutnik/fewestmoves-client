@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import wca_logo from '../../img/wca_logo.svg'
-import {Container, Row, Col} from "react-bootstrap"
-import { toggle_bg_blur } from '../../functions/func'
+import React, { useEffect } from "react";
+import wca_logo from "../../img/wca_logo.svg";
+import {Container, Row, Col} from "react-bootstrap";
+import { toggle_bg_blur } from "../../functions/func";
 
 const LoginPanel = (props) => {
    const closePanel = () => {

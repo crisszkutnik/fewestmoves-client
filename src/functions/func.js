@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function showSol(moves, margin) {
     let className = margin ? 'mr-4' : '';
@@ -9,7 +9,7 @@ function showSol(moves, margin) {
         else
             return (<span className={className}>{moves}</span>);
     } else {
-        return (<span className={className}>DNS</span>)
+        return (<span className={className}>DNS</span>);
     }
 }
 

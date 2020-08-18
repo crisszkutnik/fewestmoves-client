@@ -1,10 +1,10 @@
-import React from 'react'
-import arrow from "../../img/arrow.svg"
-import LoadingView from "../general_purpose/loadingView"
-import ScrambleTime from './scrambleTime'
-import ModifyForm from './modifyForm'
+import React from "react";
+import arrow from "../../img/arrow.svg";
+import LoadingView from "../general_purpose/loadingView";
+import ScrambleTime from "./scrambleTime";
+import ModifyForm from "./modifyForm";
 import { Container, Row, Col } from "react-bootstrap";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 class ModifyExplanation extends React.Component {
    constructor(props) {
@@ -13,7 +13,7 @@ class ModifyExplanation extends React.Component {
          resData: {},
          scramble: '',
          loaded: false,
-      }
+      };
 
       this.headers = {
          method: 'POST',
@@ -31,10 +31,10 @@ class ModifyExplanation extends React.Component {
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([resData, scramble]) => {
          this.setState({
-            resData: resData,
-            scramble: scramble,
+            resData,
+            scramble,
             loaded: true,
-         })
+         });
       })
       .catch(() => alert("An error ocurred"));
    }

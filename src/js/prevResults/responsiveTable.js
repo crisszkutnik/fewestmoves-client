@@ -1,9 +1,9 @@
-import React from 'react'
-import 'simplebar/dist/simplebar.min.css';
-import { SetUpDisplay } from '../../functions/func'
+import React from "react";
+import "simplebar/dist/simplebar.min.css";
+import { SetUpDisplay } from "../../functions/func";
 
 const ResponsiveTableData = (label, data) => {
-   let tData = data.map(elem => <p>{elem}</p>);
+   let tData = data.map((elem) => <p>{elem}</p>);
 
    return (
        <div className='res-table-data'>
@@ -11,7 +11,7 @@ const ResponsiveTableData = (label, data) => {
            <div className='res-table-elem'>{tData}</div>
        </div>
    );
-}
+};
 
 class ResponsiveTable extends React.Component {
    constructor(props) {
@@ -27,7 +27,7 @@ class ResponsiveTable extends React.Component {
          let className = 'res-table-row';
 
          if(index === this.props.display)
-            className += ' selected'
+            className += ' selected';
 
          let moves1, moves2, moves3, average;
 
@@ -41,7 +41,7 @@ class ResponsiveTable extends React.Component {
                {ResponsiveTableData('Mean / Single', [average, elem.lowest])}
             </div>
          );
-      })
+      });
 
       return all;
    }
