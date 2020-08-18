@@ -17,6 +17,10 @@ table {
 	border-radius: 3px;
 }
 
+table th {
+	background: var(--default-violet-75);
+}
+
 th:first-of-type {
 	border-top-left-radius: 3px;
 }
@@ -33,21 +37,17 @@ table td {
 	overflow: hidden;
 }
 
-table th {
-	background: var(--default-violet-75);
-}
-
 table * {
 	color: white;
 	border: none !important;
 }
 
-table tr:nth-child(odd) {
-	background: var(--dark4);
-}
-
 table tr {
 	transition: all 0.2s ease-in-out;
+}
+
+table tr:nth-child(odd) {
+	background: var(--dark4);
 }
 
 table tr:hover {
@@ -130,7 +130,6 @@ table tr:hover {
 
 	#table-container {
 		margin-right: 40%;
-		/*margin-right: 30px;*/
 		width: 50%;
 	}
 

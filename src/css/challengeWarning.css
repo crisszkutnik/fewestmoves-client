@@ -33,11 +33,16 @@
 	outline: none;
 	padding: 6px 10px;
 	margin: 20px 0;
+	transition: all 0.25s ease-in-out;
 }
 
 .scramble-alert #conf-text p,
 .scramble-alert #conf-text span {
 	font-size: 1.2em;
+}
+
+.scramble-alert p strong {
+	font-weight: 500;
 }
 
 .scramble-alert #conf-text p strong {
@@ -47,14 +52,6 @@
 .scramble-alert #conf-button p {
 	font-size: 1em;
 	color: #5d6069;
-}
-
-.scramble-alert p strong {
-	font-weight: 500;
-}
-
-.scramble-alert button {
-	transition: all 0.25s ease-in-out;
 }
 
 .scramble-alert button:first-of-type {

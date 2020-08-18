@@ -48,16 +48,16 @@
 	margin-left: 12px;
 }
 
-.sol-not-loaded .sol-status p {
-	color: var(--default-violet);
-}
-
 .sol-incorrect p {
 	color: var(--incorrect-red);
 }
 
 .sol-loaded p {
 	color: var(--ok-green);
+}
+
+.sol-not-loaded .sol-status p {
+	color: var(--default-violet);
 }
 
 .sol-status-info {
