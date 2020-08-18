@@ -1,5 +1,5 @@
 ![banner](public/banner.png)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d318849e904f47e1b03c87eba961019c)](https://www.codacy.com/manual/crisszkutnik/fewestmoves-client?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=crisszkutnik/fewestmoves-client&amp;utm_campaign=Badge_Grade)
 ## About the contest
 
 The contest runs from Sunday to Sunday. Every week three scrambles are automatically generated. The participants have one hour for each scramble and they can start the attempt whenever they want. After one hour the solution is automatically sent and modifications are no longer possible. However, the explanation of the solution can still be modified.  
