@@ -1,6 +1,6 @@
 #no-time-warning {
    display: flex;
-   z-index: 5;
+   z-index: 15;
    flex-direction: column;
    background: rgb(213,78,67);
    position: fixed;
@@ -66,7 +66,7 @@
 }
 
 #no-time-text div button {
-   background: rgba(0,0,0,0);
+   background: rgb(224, 62, 51);
    color: white;
    transition: all 0.25s ease-in-out;
    padding: 0 10px;

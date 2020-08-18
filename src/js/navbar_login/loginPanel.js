@@ -30,7 +30,7 @@ const LoginPanel = (props) => {
             </Row>
             <Row id='options'>
                <Col>
-                  <a href='https://fewestmoves.herokuapp.com/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
+                  <a href='http://localhost:9000/wcalogin/login'><img alt='WCA Logo' src={wca_logo}></img></a>
                </Col>
             </Row>
          </Container>

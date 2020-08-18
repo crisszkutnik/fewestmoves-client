@@ -4,7 +4,6 @@ import { hasTime } from "../../functions/func";
 import correctIMG from "../../img/tick.svg";
 import incorrectIMG from "../../img/incorrect.svg";
 import notLoadedIMG from "../../img/exclamation.svg";
-import LoginPanel from "../navbar_login/loginPanel";
 import { Redirect } from "react-router-dom";
 
 const ConfirmationPanel = (props) => {
@@ -100,6 +99,7 @@ class ChallengeCard extends React.Component {
     this.modifyRes = this.modifyRes.bind(this);
     this.expandAdd = this.expandAdd.bind(this);
     this.expandRemove = this.expandRemove.bind(this);
+    this.clickedButton = this.clickedButton.bind(this);
 
 	// Must change this later
     this.state = { showConf: false };
@@ -137,12 +137,15 @@ class ChallengeCard extends React.Component {
       .removeEventListener("mouseout", this.expandRemove);
   }
 
-  modifyRes() {
+  clickedButton() {
     if(!this.props.isLogged)
-      return (
-        <LoginPanel closePanel={() => this.setState({ showConf: false })} />
-      );
-    else if(this.props.startDate === 0)
+      this.props.showLogin();
+    else
+      this.setState({ showConf: true });
+  }
+
+  modifyRes() {
+    if(this.props.startDate === 0)
       return (
         <ConfirmationPanel
           comb={this.props.comb}
@@ -206,7 +209,7 @@ class ChallengeCard extends React.Component {
             <Col>
               <button
                 id={`load-sol-button${this.props.comb}`}
-                onClick={() => this.setState({ showConf: true })}
+                onClick={this.clickedButton}
               >
                 {btnText}
               </button>
