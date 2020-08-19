@@ -168,7 +168,7 @@ class ChallengeCard extends React.Component {
     if (this.props.solMoves === 0)
       btnText = "Start!";
     else
-      btnText = "Modify explanation";
+      btnText = "Edit";
 
     // Card content (title, number, class)
     if (this.props.solMoves === 0 && this.props.startDate === 0) {
