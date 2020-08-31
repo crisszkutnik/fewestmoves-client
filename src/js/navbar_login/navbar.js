@@ -61,7 +61,7 @@ class PageNavbar extends React.Component {
             zIndex: "3",
           }}
         >
-          <Navbar.Brand href="/dashboard/actual">Fewest Moves</Navbar.Brand>
+          <Navbar.Brand href="/dashboard/actual">FMC Weekly</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>{name}</Nav>
