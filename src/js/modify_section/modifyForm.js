@@ -20,22 +20,31 @@ class ModifyForm extends React.Component {
 	}
 
 	componentDidMount() {
+
+		console.log(this.props.timeLeft);
+
 		// every 5 minutes
-		this.interval = setInterval(this.saveData, 300000);
+		this.setState({
+			interval: setInterval(this.saveData, 300000)
+		});
+		
 
 		if (this.props.modifySol) {
 			// Save and send when there is no time left
-			this.timeout = setTimeout(() => {
-				this.saveData();
-				this.setState({ redirect: true });
-			}, this.props.timeLeft);
+			this.setState({
+				timeout: setTimeout(() => {
+					this.saveData();
+					this.setState({ redirect: true });
+				}, this.props.timeLeft)
+			});
 		}
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.interval);
+		clearInterval(this.state.interval);
 
-		if (this.props.modifySol) clearTimeout(this.timeout);
+		if (this.props.modifySol)
+			clearTimeout(this.state.timeout);
 	}
 
 	handleChange(e) {

@@ -16,6 +16,7 @@ class ModifySection extends React.Component {
          }
 
       this.timerControl = this.timerControl.bind(this);
+      this.updateTime = this.updateTime.bind(this);
 
       this.headers = {
          method: 'POST',
@@ -28,7 +29,7 @@ class ModifySection extends React.Component {
       }
    }
 
-   componentWillMount() {
+   updateTime() {
       Promise.all([fetch('/challData/activeChallengeData', this.headers), fetch('/challData/getScramble', this.headers)])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
       .then(([resData, scramble]) => {
@@ -51,12 +52,18 @@ class ModifySection extends React.Component {
       .catch(() => alert("An error ocurred"));
    }
 
-   componentDidMount() {
-      this.interval = setInterval(this.timerControl, 1000);
+   componentWillMount() {
+      this.updateTime();
+
+      this.setState({
+         interval_update: setInterval(this.updateTime, 660000),
+         interval_timerControl: setInterval(this.timerControl, 1000)
+      });
    }
 
    componentWillUnmount() {
-      clearInterval(this.interval);
+      clearInterval(this.state.interval_update);
+      clearInterval(this.state.interval_timerControl);
    }
 
    timerControl() {
