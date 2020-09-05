@@ -36,7 +36,7 @@ const ConfirmationPanel = (props) => {
           <button onClick={props.closePanel}>Cancel</button>
           <p>
             <strong>Note:</strong> your solution is saved automatically every 5
-            minutes.
+            minutes, but make sure to click on "Save solution" if you return to the Homepage and it's unsaved!
           </p>
         </div>
       </div>
