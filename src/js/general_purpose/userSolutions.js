@@ -41,7 +41,7 @@ class UserSolutions extends React.Component {
 
       if(!userRes.sol) {
          userRes.sol = '';
-         userRes.explanation = '';
+         userRes.explanation = userRes.explanation || '';
       }
 
       return (

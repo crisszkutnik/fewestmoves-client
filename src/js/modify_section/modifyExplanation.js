@@ -1,10 +1,9 @@
 import React from "react";
-import arrow from "../../img/arrow.svg";
 import LoadingView from "../general_purpose/loadingView";
 import ScrambleTime from "./scrambleTime";
 import ModifyForm from "./modifyForm";
 import { Container, Row, Col } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import BackButton from "./backButton"
 
 class ModifyExplanation extends React.Component {
    constructor(props) {
@@ -13,6 +12,7 @@ class ModifyExplanation extends React.Component {
          resData: {},
          scramble: '',
          loaded: false,
+         redirect: false
       };
 
       this.headers = {
@@ -45,7 +45,7 @@ class ModifyExplanation extends React.Component {
       else
          return (
             <div id='modify-challenge'>
-               <BackButton />
+               <BackButton redFunc={() => this.setState({ redirect: true })} />
                <Container id='modify-container'>
                   <Row>
                      <Col className='page-card page-card-top-left mb-2' lg='6' md='12'>
@@ -57,24 +57,13 @@ class ModifyExplanation extends React.Component {
                   </Row>
                   <Row>
                      <Col id='bottom-container' className='page-card page-card-bottom' lg='11' md='12'>
-                        <ModifyForm timeLeft={this.state.timeLeft} reqComb={this.props.match.params.comb} modifySol={false} sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
+                        <ModifyForm redirect={this.state.redirect} timeLeft={this.state.timeLeft} reqComb={this.props.match.params.comb} modifySol={false} sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
                      </Col>
                   </Row>
                </Container>
             </div>
          );
    }
-}
-
-const BackButton = () => {
-   const history = useHistory();
-
-   return (
-      <div id='back-button' onClick={() => history.push('/dashboard/actual')}>
-         <img src={arrow} alt='arrow' />
-         <h1>Return to home page</h1>
-      </div>
-   );
 }
 
 export default ModifyExplanation;

@@ -10,6 +10,7 @@ class ModifyForm extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.saveData = this.saveData.bind(this);
 		this.saveStatus = this.saveStatus.bind(this);
+		this.redirect = this.redirect.bind(this);
 
 		this.state = {
 			solution: this.props.sol,
@@ -20,14 +21,12 @@ class ModifyForm extends React.Component {
 	}
 
 	componentDidMount() {
-
 		console.log(this.props.timeLeft);
 
 		// every 5 minutes
 		this.setState({
-			interval: setInterval(this.saveData, 300000)
+			interval: setInterval(this.saveData, 300000),
 		});
-		
 
 		if (this.props.modifySol) {
 			// Save and send when there is no time left
@@ -35,7 +34,7 @@ class ModifyForm extends React.Component {
 				timeout: setTimeout(() => {
 					this.saveData();
 					this.setState({ redirect: true });
-				}, this.props.timeLeft)
+				}, this.props.timeLeft),
 			});
 		}
 	}
@@ -43,8 +42,7 @@ class ModifyForm extends React.Component {
 	componentWillUnmount() {
 		clearInterval(this.state.interval);
 
-		if (this.props.modifySol)
-			clearTimeout(this.state.timeout);
+		if (this.props.modifySol) clearTimeout(this.state.timeout);
 	}
 
 	handleChange(e) {
@@ -124,11 +122,18 @@ class ModifyForm extends React.Component {
 			);
 	}
 
+	redirect() {
+		this.saveData();
+
+		return <Redirect to="/dashboard/actual" />;
+	}
+
 	render() {
 		let moves = isSolved(this.props.scramble, this.state.solution.trim());
 
 		return (
 			<div>
+				{this.props.redirect && this.redirect()}
 				<form>
 					<label htmlFor="solution">Solution</label>
 					<div id="sol-input">
