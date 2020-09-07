@@ -42,7 +42,10 @@ class PrevResults extends React.Component {
     }
 
     componentWillMount() {
-        Promise.all([fetch(this.fetch1, this.headers), fetch(this.fetch2, this.headers)])
+        Promise.all([
+            fetch(this.fetch1, this.headers),
+            fetch(this.fetch2, this.headers)
+        ])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([responses, rChallenges]) => {
             responses.sort(byPosition);

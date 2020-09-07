@@ -76,6 +76,24 @@ table tr:hover {
 	background: var(--darker-violet);
 }
 
+td.td-fst span {
+	color: rgba(212, 175, 55, 1);
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
+td.td-snd span {
+	color: #C0C0C0;
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
+td.td-trd span {
+	color: #b87333;
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
 @media (max-width: 575.98px) {
 	div#prev-results {
 		overflow-x: hidden;
