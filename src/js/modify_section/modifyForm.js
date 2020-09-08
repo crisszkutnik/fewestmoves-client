@@ -10,7 +10,7 @@ class ModifyForm extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.saveData = this.saveData.bind(this);
 		this.saveStatus = this.saveStatus.bind(this);
-		this.redirect = this.redirect.bind(this);
+		this.redirectHome = this.redirectHome.bind(this);
 
 		this.state = {
 			solution: this.props.sol,
@@ -21,8 +21,6 @@ class ModifyForm extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props.timeLeft);
-
 		// every 5 minutes
 		this.setState({
 			interval: setInterval(this.saveData, 300000),
@@ -42,7 +40,8 @@ class ModifyForm extends React.Component {
 	componentWillUnmount() {
 		clearInterval(this.state.interval);
 
-		if (this.props.modifySol) clearTimeout(this.state.timeout);
+		if (this.props.modifySol) 
+			clearTimeout(this.state.timeout);
 	}
 
 	handleChange(e) {
@@ -64,39 +63,46 @@ class ModifyForm extends React.Component {
 	}
 
 	saveData() {
-		let modComb = {};
+		return new Promise((resolve, reject) => {
+			let modComb = {};
 
-		if (this.props.modifySol) modComb.sol = this.state.solution.trim();
+			if (this.props.modifySol) modComb.sol = this.state.solution.trim();
 
-		modComb.explanation = this.state.explanation;
+			modComb.explanation = this.state.explanation;
 
-		let save = {
-			modComb,
-			reqComb: this.props.reqComb,
-		};
+			let save = {
+				modComb,
+				reqComb: this.props.reqComb,
+			};
 
-		let fetchAll = "/challData/modifyChallenge";
-		let fetchExp = "/challData/modifyExplanation";
+			let fetchAll = "/challData/modifyChallenge";
+			let fetchExp = "/challData/modifyExplanation";
 
-		fetch(this.props.modifySol ? fetchAll : fetchExp, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-			credentials: "include",
-			body: JSON.stringify(save),
-		})
-			.then(() => {
-				let changeState = {
-					savedExp: save.modComb.explanation,
-				};
-
-				if (this.props.modifySol) changeState.savedSol = save.modComb.sol;
-
-				this.setState(changeState);
+			fetch(this.props.modifySol ? fetchAll : fetchExp, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				credentials: "include",
+				body: JSON.stringify(save),
 			})
-			.catch(() => alert("An error ocurred"));
+				.then(() => {
+					let changeState = {
+						savedExp: save.modComb.explanation,
+					};
+
+					if (this.props.modifySol) changeState.savedSol = save.modComb.sol;
+
+					this.setState(changeState);
+
+					resolve();
+				})
+				.catch(() => {
+					alert("An error ocurred");
+					reject();
+				});
+		})
 	}
 
 	saveStatus() {
@@ -122,10 +128,13 @@ class ModifyForm extends React.Component {
 			);
 	}
 
-	redirect() {
-		this.saveData();
+	redirectHome() {
+		this.saveData()
+		.then(() => this.setState({ redirect: true }));
 
-		return <Redirect to="/dashboard/actual" />;
+		// TODO: Add a "Saving" alert
+
+		return <></>
 	}
 
 	render() {
@@ -133,7 +142,7 @@ class ModifyForm extends React.Component {
 
 		return (
 			<div>
-				{this.props.redirect && this.redirect()}
+				{this.props.redirectHome && this.redirectHome()}
 				<form>
 					<label htmlFor="solution">Solution</label>
 					<div id="sol-input">

@@ -12,7 +12,7 @@ class ModifySection extends React.Component {
 			resData: {},
 			scramble: "",
 			loaded: false,
-			redirect: false,
+			redirectHome: false,
 		};
 
 		this.timerControl = this.timerControl.bind(this);
@@ -72,7 +72,8 @@ class ModifySection extends React.Component {
 	timerControl() {
 		if (this.state.seconds !== 0)
 			this.setState({ seconds: this.state.seconds - 1 });
-		else this.setState({ seconds: 59, minutes: this.state.minutes - 1 });
+		else
+			this.setState({ seconds: 59, minutes: this.state.minutes - 1 });
 	}
 
 	render() {
@@ -80,7 +81,7 @@ class ModifySection extends React.Component {
 		else
 			return (
 				<div id="modify-challenge">
-					<BackButton redFunc={() => this.setState({ redirect: true })} />
+					<BackButton redFunc={() => this.setState({ redirectHome: true })} />
 					<Container id="modify-container">
 						<Row>
 							<Col
@@ -112,7 +113,7 @@ class ModifySection extends React.Component {
 								md="12"
 							>
 								<ModifyForm
-									redirect={this.state.redirect}
+									redirectHome={this.state.redirectHome}
 									timeLeft={this.state.timeLeft}
 									reqComb={this.props.match.params.comb}
 									modifySol={true}

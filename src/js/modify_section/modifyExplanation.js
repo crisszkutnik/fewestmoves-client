@@ -12,7 +12,7 @@ class ModifyExplanation extends React.Component {
          resData: {},
          scramble: '',
          loaded: false,
-         redirect: false
+         redirectHome: false
       };
 
       this.headers = {
@@ -45,7 +45,7 @@ class ModifyExplanation extends React.Component {
       else
          return (
             <div id='modify-challenge'>
-               <BackButton redFunc={() => this.setState({ redirect: true })} />
+               <BackButton redFunc={() => this.setState({ redirectHome: true })} />
                <Container id='modify-container'>
                   <Row>
                      <Col className='page-card page-card-top-left mb-2' lg='6' md='12'>
@@ -57,7 +57,7 @@ class ModifyExplanation extends React.Component {
                   </Row>
                   <Row>
                      <Col id='bottom-container' className='page-card page-card-bottom' lg='11' md='12'>
-                        <ModifyForm redirect={this.state.redirect} timeLeft={this.state.timeLeft} reqComb={this.props.match.params.comb} modifySol={false} sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
+                        <ModifyForm redirectHome={this.state.redirectHome} timeLeft={this.state.timeLeft} reqComb={this.props.match.params.comb} modifySol={false} sol={this.state.resData.sol} explanation={this.state.resData.explanation} scramble={this.state.scramble}/>
                      </Col>
                   </Row>
                </Container>
