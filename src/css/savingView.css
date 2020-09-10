@@ -1,0 +1,20 @@
+div#saving-view {
+	background: rgba(0, 0, 0, 0.9);
+	width: 100vw;
+	height: 100vh;
+	max-width: 1920px;
+	max-height: 1080px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+div#saving-view h2 {
+	color: white;
+	margin-top: 50px;
+}

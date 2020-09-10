@@ -20,6 +20,7 @@ import "../css/noTimeLeft.css";
 import "../css/prevResultsTable.css";
 import "../css/footer.css";
 import "../css/markdown.css";
+import "../css/savingView.css"
 
 const App = () => {
 	const [user, setUser] = useState({

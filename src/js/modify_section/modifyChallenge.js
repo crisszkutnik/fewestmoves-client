@@ -4,7 +4,6 @@ import ScrambleTime from "./scrambleTime";
 import ModifyForm from "./modifyForm";
 import { Container, Row, Col } from "react-bootstrap";
 import BackButton from "./backButton";
-
 class ModifySection extends React.Component {
 	constructor(props) {
 		super(props);

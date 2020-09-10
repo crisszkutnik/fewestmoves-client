@@ -3,6 +3,7 @@ import { isSolved } from "../../functions/cubeSolve";
 import { Redirect } from "react-router-dom";
 import correctIMG from "../../img/tick.svg";
 import incorrectIMG from "../../img/incorrect.svg";
+import SavingView from "./savingView"
 
 class ModifyForm extends React.Component {
 	constructor(props) {
@@ -132,9 +133,7 @@ class ModifyForm extends React.Component {
 		this.saveData()
 		.then(() => this.setState({ redirect: true }));
 
-		// TODO: Add a "Saving" alert
-
-		return <></>
+		return <SavingView />
 	}
 
 	render() {
