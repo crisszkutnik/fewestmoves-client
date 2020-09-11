@@ -3,11 +3,17 @@ import "../../css/dashboardActual.css";
 import LoadingView from "../general_purpose/loadingView";
 import ChallengeCard from "./challengeCard";
 import LoginPanel from "../navbar_login/loginPanel";
+import PodiumSVG from "./podiumSVG"
 
 class DashboardActual extends React.Component {
     constructor() {
         super();
-        this.state = {userResponse: {}, loaded: false, showLogin: false};
+        this.state = {
+            userResponse: {}, 
+            loaded: false, 
+            showLogin: false,
+            topThree: []
+        };
         this.showLogin = this.showLogin.bind(this);
     }
 
@@ -22,7 +28,7 @@ class DashboardActual extends React.Component {
         })
         .then((res) => res.json())
         .then((data) => {
-            this.setState({userResponse: data, loaded: true});
+            this.setState({userResponse: data});
         })
 
         fetch("/prevRes/topThree", {
@@ -36,6 +42,7 @@ class DashboardActual extends React.Component {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
+            this.setState({topThree: data, loaded: true});
         })
     }
 
@@ -49,6 +56,11 @@ class DashboardActual extends React.Component {
         if(this.state.loaded)
             return(
                 <>
+                    <div id="topThree">
+                        <div>
+                            <PodiumSVG first={this.state.topThree[0]} second={this.state.topThree[1]} third={this.state.topThree[2]}  />
+                        </div>
+                    </div>
                     {this.state.showLogin &&
                     <LoginPanel closePanel={this.showLogin} />}
                     <div id='dashboardActual' style={{overflow: 'hidden'}}>
