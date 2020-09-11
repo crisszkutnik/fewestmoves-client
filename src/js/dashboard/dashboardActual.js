@@ -24,6 +24,19 @@ class DashboardActual extends React.Component {
         .then((data) => {
             this.setState({userResponse: data, loaded: true});
         })
+
+        fetch("/prevRes/topThree", {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include'
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+        })
     }
 
     showLogin() {

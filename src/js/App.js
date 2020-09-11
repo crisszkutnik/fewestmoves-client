@@ -4,9 +4,9 @@ import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import DashboardActual from "./dashboard/dashboardActual";
 import SubmittedSol from "./general_purpose/submitted";
 import PrevResults from "./prevResults/prevResults";
-import ModifySection from "./modify_section/modifyChallenge";
 import ModifyExplanation from "./modify_section/modifyExplanation";
 import Footer from "./general_purpose/footer";
+import ModifySolution from "./modify_section/modifySolution";
 import "../css/general.css";
 import "../css/anim.css";
 import "../css/submitted.css";
@@ -56,7 +56,7 @@ const App = () => {
 			<div>
 			<PageNavbar user={user} />
 			<Switch>
-				<Route exact path='/modifySolution/:comb' component={ModifySection} />
+				<Route exact path='/modifySolution/:comb' component={ModifySolution} />
                 <Route exact path='/modifyExplanation/:comb' component={ModifyExplanation} />
 				<Route exact path='/dashboard/actual'>
                     <DashboardActual user={user}/>

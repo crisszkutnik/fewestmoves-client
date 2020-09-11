@@ -4,7 +4,8 @@ import ScrambleTime from "./scrambleTime";
 import ModifyForm from "./modifyForm";
 import { Container, Row, Col } from "react-bootstrap";
 import BackButton from "./backButton";
-class ModifySection extends React.Component {
+
+class ModifySolution extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -128,4 +129,4 @@ class ModifySection extends React.Component {
 	}
 }
 
-export default ModifySection;
+export default ModifySolution;
