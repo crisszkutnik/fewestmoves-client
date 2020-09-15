@@ -20,6 +20,27 @@
 	align-items: center;
 }
 
-#topThree svg {
-	transform: scale(0.75);
+#topThree table {
+	width: 80%;
+	color: white;
+}
+
+#topThree thead {
+	background: var(--default-violet-75);
+}
+
+#topThree table * {
+	border: none;
+}
+
+#topThree .first-color {
+	background: rgba(226, 190, 90, 0.4);
+}
+
+#topThree .second-color {
+	background: rgba(160, 167, 173, 0.25);
+}
+
+#topThree .third-color {
+	background: rgba(187, 119, 96, 0.25);
 }

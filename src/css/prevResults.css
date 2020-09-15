@@ -9,7 +9,7 @@ div#prev-results {
 /*
     Table setup
 */
-
+#prev-results 
 table {
 	width: 100%;
 	text-align: center;
@@ -17,40 +17,40 @@ table {
 	border-radius: 3px;
 }
 
-table th {
+#prev-results table th {
 	background: var(--default-violet-75);
 }
 
-th:first-of-type {
+#prev-results th:first-of-type {
 	border-top-left-radius: 3px;
 }
 
-th:last-of-type {
+#prev-results th:last-of-type {
 	border-top-right-radius: 3px;
 }
 
-table thead {
+#prev-results table thead {
 	border-radius: 3px;
 }
 
-table td {
+#prev-results table td {
 	overflow: hidden;
 }
 
-table * {
+#prev-results table * {
 	color: white;
 	border: none !important;
 }
 
-table tr {
+#prev-resultstable tr {
 	transition: all 0.2s ease-in-out;
 }
 
-table tr:nth-child(odd) {
+#prev-results table tr:nth-child(odd) {
 	background: var(--dark4);
 }
 
-table tr:hover {
+#prev-results table tr:hover {
 	cursor: pointer;
 	background: rgba(124, 63, 239, 0.25);
 }
