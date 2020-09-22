@@ -21,7 +21,7 @@ import "../css/prevResultsTable.css";
 import "../css/footer.css";
 import "../css/markdown.css";
 import "../css/savingView.css"
-import "../css/topThree.css";
+import "../sass/topThree.scss";
 
 const App = () => {
 	const [user, setUser] = useState({

@@ -13,6 +13,7 @@ class DashboardActual extends React.Component {
 			loaded: false,
 			showLogin: false,
 			topThree: [],
+			showPositions: true
 		};
 		this.showLogin = this.showLogin.bind(this);
 	}
@@ -51,9 +52,8 @@ class DashboardActual extends React.Component {
 		if (this.state.loaded)
 			return (
 				<>
-					<div id="topThree">
-						<Podium user={ this.props.user } places={this.state.topThree} />
-					</div>
+					{this.state.showPositions &&
+					<Podium closePanel={() => this.setState({ showPositions: false })} user={ this.props.user } places={this.state.topThree} /> }
 					{this.state.showLogin && (
 						<LoginPanel closePanel={this.showLogin} />
 					)}
