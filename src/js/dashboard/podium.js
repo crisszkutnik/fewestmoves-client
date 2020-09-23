@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Table } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 const Podium = (props) => {
 	const history = useHistory();
-	let isWinner = false;
+	let isWinner = props.userPosition <= 3;
+
+	const [text, setText] = useState("");
+
+	const position = (pos) => {
+		if (pos === 1) return "1st";
+		else if (pos === 2) return "2nd";
+		else if (pos === 3) return "3rd";
+		else return `${pos}th`;
+	};
 
 	const table = () => {
 		let res = [];
@@ -15,8 +24,6 @@ const Podium = (props) => {
 			if (e.position === 1) className = "first-color";
 			else if (e.position === 2) className = "second-color";
 			else className = "third-color";
-
-			if (e.name === props.user.name) isWinner = true;
 
 			res.push(
 				<tr className={className}>
@@ -30,6 +37,49 @@ const Podium = (props) => {
 		return res;
 	};
 
+	//let text;
+
+	useEffect(() => {
+		fetch("/prevRes/userPosition", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+			credentials: "include",
+		})
+			.then((res) => res.json())
+			.then((userPosition) => {
+				if (userPosition === -1) {
+					setText(
+						<>
+							<h4>You did not participate last week!</h4>
+							<h4>Be sure to complete each scramble before Sunday</h4>
+						</>
+					);
+				} else {
+					if (isWinner) {
+						setText(
+							<h4>
+								Congratulations! You ended up on{" "}
+								{position(props.userPosition)} place
+							</h4>
+						);
+					} else {
+						setText(
+							<>
+								<h4>
+									You ended up on {position(props.userPosition)} place
+									:(
+								</h4>
+								<h4>Better luck this week!</h4>
+							</>
+						);
+					}
+				}
+			});
+	}, []);
+
 	return (
 		<div id="topThree-bg">
 			<Container id="topThree">
@@ -41,20 +91,9 @@ const Podium = (props) => {
 						<tbody>{table()}</tbody>
 					</Table>
 				</Row>
+				<Row>{text}</Row>
 				<Row>
-					{isWinner ? (
-						<h4>Congratulations! You made it to the top 3</h4>
-					) : (
-						<>
-							<h4>You didn't make it to the top 3 :(</h4>
-							<h4>Better luck this week!</h4>
-						</>
-					)}
-				</Row>
-				<Row>
-					<p onClick={ props.closePanel }>
-						Close
-					</p>
+					<p onClick={props.closePanel}>Close</p>
 					<p onClick={() => history.push("/dashboard/results")}>
 						Check all results
 					</p>

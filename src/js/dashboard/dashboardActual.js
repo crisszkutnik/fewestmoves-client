@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "universal-cookie";
 import "../../css/dashboardActual.css";
 import LoadingView from "../general_purpose/loadingView";
 import ChallengeCard from "./challengeCard";
@@ -12,8 +13,7 @@ class DashboardActual extends React.Component {
 			userResponse: {},
 			loaded: false,
 			showLogin: false,
-			topThree: [],
-			showPositions: true
+			topThree: []
 		};
 		this.showLogin = this.showLogin.bind(this);
 	}
@@ -21,6 +21,7 @@ class DashboardActual extends React.Component {
 	componentDidMount() {
 		let fetch1 = "/challData/getChallengeData";
 		let fetch2 = "/prevRes/topThree";
+		let fetch3 = "/challData/weekStartDate";
 
 		let headers = {
 			method: "POST",
@@ -31,13 +32,22 @@ class DashboardActual extends React.Component {
 			credentials: "include",
 		};
 
-		Promise.all([fetch(fetch1, headers), fetch(fetch2, headers)])
-			.then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-			.then(([data1, data2]) => {
+		Promise.all([fetch(fetch1, headers), fetch(fetch2, headers), fetch(fetch3, headers)])
+			.then(([res1, res2, res3]) => Promise.all([res1.json(), res2.json(), res3.json()]))
+			.then(([data1, data2, data3]) => {
+				let cookies = new Cookies();
+				let showWinners = false;
+
+				if(!cookies.get("alreadyEntered")) {
+					showWinners = true;
+					cookies.set("alreadyEntered", true, { maxAge: (data3.startDate + 6.048e+8 - Date.now()) / 1000 });
+				}
+
 				this.setState({
 					userResponse: data1,
 					topThree: data2,
-					loaded: true,
+					showWinners,
+					loaded: true
 				});
 			});
 	}
@@ -52,8 +62,8 @@ class DashboardActual extends React.Component {
 		if (this.state.loaded)
 			return (
 				<>
-					{this.state.showPositions &&
-					<Podium closePanel={() => this.setState({ showPositions: false })} user={ this.props.user } places={this.state.topThree} /> }
+					{this.state.showWinners &&
+					<Podium closePanel={() => this.setState({ showPositions: false })} places={this.state.topThree} /> }
 					{this.state.showLogin && (
 						<LoginPanel closePanel={this.showLogin} />
 					)}
